@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Which Fuel?</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="topApp">Enter the cost value for each fuel.</string>
+    <string name="lblGas">Gasoline cost U$:</string>
+    <string name="fieldGas"></string>
+    <string name="lblEthanol">Ethanol cost U$:</string>
+    <string name="fieldEthanol"></string>
+    <string name="btnActLbl">Calculate</string>
+    <string name="lblBestFuel">The better choose to Fuel is:</string>
+    <string name="lblREsult">@null</string>
+    <string name="ethResult">ETHANOL</string>
+    <string name="gasResult">GASOLINE</string>
+    <string name="btnAct2lbl">Details</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="lblAct2Tilte">Details Info</string>
+    <string name="lblAct2Gas">Gasoline price U$:</string>
+    <string name="lblAct2GasPrice">\@null</string>
+    <string name="lblAct2Eth">Ethanol price U$:</string>
+    <string name="lblAct2EthPrice">\@null</string>
+    <string name="btnAct2Back">Back</string>
+    <string name="lblAct2Result"></string>
+    <string name="lblAct2ResultValueEth">"The price of Ethanol Fuel is lower then 70% th Gasoline price. Use Ethanol Fuel. "</string>
+    <string name="lblAct2ResultGas">The price of Ethanol is upper than 70% of the Gasoline tax. Use Gasoline.</string>
+
+</resources>

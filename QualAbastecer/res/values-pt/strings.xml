@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Qual Combustível?</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="topApp">Digite o valor de cada combustível.</string>
+    <string name="lblGas">Preço da Gasolina R$:</string>
+    <string name="fieldGas"></string>
+    <string name="lblEthanol">Preço do Etanol R$:</string>
+    <string name="fieldEthanol"></string>
+    <string name="btnActLbl">Calcular</string>
+    <string name="lblBestFuel">A melhor escolha de combustível é:</string>
+    <string name="lblREsult">@null</string>
+    <string name="ethResult">ETANOL</string>
+    <string name="gasResult">GASOLINA</string>
+     <string name="btnAct2lbl">Detalhes</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="lblAct2Tilte">Informações Detalhadas</string>
+    <string name="lblAct2Gas">Preço da gasolina R$:</string>
+    <string name="lblAct2GasPrice">\@null</string>
+    <string name="lblAct2Eth">Preço do Etanol R$:</string>
+    <string name="lblAct2EthPrice">\@null</string>
+    <string name="btnAct2Back">Voltar</string>
+    <string name="lblAct2Result"></string>
+    <string name="lblAct2ResultValueEth">O preço do Etanol é abaixo de 70% do preço da Gasolina. Abasteça com Etanol.</string>
+    <string name="lblAct2ResultGas">O preço do Etanol é acima de 70% do preço da Gasolina. Abasteça com Gasolina.</string>
+
+</resources>
