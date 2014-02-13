@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Class 03</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="digite_algo">Type Something</string>
+    <string name="txtResultado"></string>
+    <string name="txtoResultado">\@null</string>
+
+</resources>
