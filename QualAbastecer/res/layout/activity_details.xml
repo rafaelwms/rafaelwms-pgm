@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:textAlignment="center"
     tools:context=".DetailsActivity" >
 
     <TextView
@@ -16,6 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
         android:text="@string/lblAct2Tilte"
+        android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -57,22 +59,13 @@
         android:text="@string/lblAct2EthPrice"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/btnAct2Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="71dp"
-        android:text="@string/btnAct2Back" />
-
     <TextView
         android:id="@+id/lblAct2Result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnAct2Back"
+        android:layout_below="@+id/lblAct2EthPrice"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="31dp"
+        android:layout_marginTop="56dp"
         android:text="@string/lblAct2Result"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

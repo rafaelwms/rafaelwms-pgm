@@ -11,11 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class DetailsActivity extends Activity implements OnClickListener {
-	
+	double gaso;
 	TextView gasCost;
 	TextView ethCost;
 	TextView result;
-	Button back;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +25,10 @@ public class DetailsActivity extends Activity implements OnClickListener {
 		ethCost = (TextView)findViewById(id.lblAct2EthPrice);
 		result = (TextView)findViewById(id.lblAct2Result);
 		
-		back = (Button)findViewById(id.btnAct2Back);
-
 		Intent it = getIntent();
 		gasCost.setText(it.getStringExtra("lblAct2GasPrice"));
 		ethCost.setText(it.getStringExtra("lblAct2EthPrice"));
-		
+		gaso = (Double.parseDouble(gasCost.getText().toString()) * 0.7);
 		if(it.getBooleanExtra("text", false) == true){
 			result.setText(R.string.lblAct2ResultGas);
 		}else{
@@ -40,7 +37,7 @@ public class DetailsActivity extends Activity implements OnClickListener {
 		
 		
 
-		back.setOnClickListener(this);
+
 	}
 
 	@Override
@@ -53,12 +50,7 @@ public class DetailsActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
-		if(arg0.getId() == R.id.btnAct2Back){
-			
-			Intent inn = new Intent(this, MainActivity.class);
-			startActivity(inn);
-			
-		}
+
 	}
 
 }

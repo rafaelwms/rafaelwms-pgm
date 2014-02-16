@@ -1,5 +1,7 @@
 package br.edu.unibratec.qualabastecer;
 
+import java.nio.channels.ByteChannel;
+
 import br.edu.unibratec.qualabastecer.R.id;
 import android.os.Bundle;
 import android.app.Activity;
@@ -42,7 +44,19 @@ public class MainActivity extends Activity implements OnClickListener {
         btnAct.setOnClickListener(this);
         btnAct2.setOnClickListener(this);
         
+        String res = "";
+        boolean btn2 = false;
         
+        if(savedInstanceState != null){
+        res = savedInstanceState.getString("resultado");
+        btn2 = savedInstanceState.getBoolean("btn2");
+        }
+        
+        if(btn2 == true){
+        	btnAct2.setEnabled(true);
+        }
+        
+        txtResult.setText(res);
     }
 
 
@@ -52,7 +66,18 @@ public class MainActivity extends Activity implements OnClickListener {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+@Override
+protected void onSaveInstanceState(Bundle outState) {
+	super.onSaveInstanceState(outState);
+	outState.putString("resultado", txtResult.getText().toString());
+	
+	if(btnAct2.isEnabled()== true){
+		outState.putBoolean("btn2", true);		
+	}else{
+		outState.putBoolean("btn2", false);
+	}
+	
+}
 
 	@Override
 	public void onClick(View v) {

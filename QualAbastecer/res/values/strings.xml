@@ -22,7 +22,7 @@
     <string name="lblAct2Eth">Ethanol price U$:</string>
     <string name="lblAct2EthPrice">\@null</string>
     <string name="btnAct2Back">Back</string>
-    <string name="lblAct2Result"></string>
+    <string name="lblAct2Result">\@null</string>
     <string name="lblAct2ResultValueEth">"The price of Ethanol Fuel is lower then 70% th Gasoline price. Use Ethanol Fuel. "</string>
     <string name="lblAct2ResultGas">The price of Ethanol is upper than 70% of the Gasoline tax. Use Gasoline.</string>
 
