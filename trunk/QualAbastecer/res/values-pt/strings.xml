@@ -15,7 +15,7 @@
     <string name="ethResult">ETANOL</string>
     <string name="gasResult">GASOLINA</string>
      <string name="btnAct2lbl">Detalhes</string>
-    <string name="title_activity_details">DetailsActivity</string>
+    <string name="title_activity_details">Qual Combustívrl - Detalhes</string>
     <string name="lblAct2Tilte">Informações Detalhadas</string>
     <string name="lblAct2Gas">Preço da gasolina R$:</string>
     <string name="lblAct2GasPrice">\@null</string>
