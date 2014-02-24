@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Lesson 02</string>
+    <string name="action_settings">Settings</string>
+    <string name="lblAct01Name">Name:</string>
+    <string name="btnAct01Social">Social Networking</string>
+    <string name="btnAct01State">Select State</string>
+    <string name="btnAct01Next">Next</string>
+    <string name="chkbxAct01True">True Information</string>
+    <string name="title_activity_social_network">SocialNetworkActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="rdbAct02Badoo">Badoo</string>
+    <string name="rdbAct02Facebook">Facebook</string>
+    <string name="rdbAct02Foursquare">Foursquare</string>
+    <string name="rdbAct02Linkedin">Linkedin</string>
+    <string name="rdbAct02Tweeter">Tweeter</string>
+    <string name="btnAct02Select">Select</string>
+    <string name="title_activity_state">StateActivity</string>
+    <string name="title_activity_results">ResultsActivity</string>
+    <string name="lblAct04Name">"Name:  "</string>
+    <string name="txtAct04Name">\@null</string>
+    <string name="spaceAct04"></string>
+    <string name="lblAct04Social">Social Network:</string>
+    <string name="txtAct04Social">\@null</string>
+    <string name="lblAct04State">"State:  "</string>
+    <string name="txtAct04State">\@null</string>
+
+</resources>
