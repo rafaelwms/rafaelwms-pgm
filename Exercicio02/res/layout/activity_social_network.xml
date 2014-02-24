@@ -1,0 +1,83 @@
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/svwAct02"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    tools:context=".SocialNetworkActivity" >
+
+    <RelativeLayout
+        android:layout_width="302dp"
+        android:layout_height="441dp"
+        android:background="@style/AppTheme"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".SocialNetworkActivity" >
+
+        <RadioGroup
+            android:id="@+id/rdgAct2Social"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="30dp" >
+        </RadioGroup>
+
+        <RadioButton
+            android:id="@+id/rdbAct02Badoo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:checked="true"
+            android:text="@string/rdbAct02Badoo" />
+
+        <RadioButton
+            android:id="@+id/rdbAct02Facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rdgAct2Social"
+            android:layout_below="@+id/rdgAct2Social"
+            android:text="@string/rdbAct02Facebook" />
+
+        <RadioButton
+            android:id="@+id/rdbAct02Foursquare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rdbAct02Badoo"
+            android:layout_below="@+id/rdbAct02Facebook"
+            android:text="@string/rdbAct02Foursquare" />
+
+        <RadioButton
+            android:id="@+id/rdbAct02Linkedin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rdbAct02Foursquare"
+            android:layout_below="@+id/rdbAct02Foursquare"
+            android:text="@string/rdbAct02Linkedin" />
+
+        <RadioButton
+            android:id="@+id/rdbAct02Tweeter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rdbAct02Linkedin"
+            android:layout_below="@+id/rdbAct02Linkedin"
+            android:text="@string/rdbAct02Tweeter" />
+
+        <Button
+            android:id="@+id/btnAct02Select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="94dp"
+            android:text="@string/btnAct02Select" />
+
+    </RelativeLayout>
+
+</ScrollView>
