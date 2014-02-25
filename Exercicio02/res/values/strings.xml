@@ -25,5 +25,6 @@
     <string name="txtAct04Social">\@null</string>
     <string name="lblAct04State">"State:  "</string>
     <string name="txtAct04State">\@null</string>
+    <string name="title_activity_social_net">SocialNetActivity</string>
 
 </resources>
