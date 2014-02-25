@@ -8,17 +8,25 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+	public final static int reqSocial = 1;
+	public final static int reqState = 2;
+	
 	Button btnSocial;
 	Button btnState;
 	Button btnNext;
 	EditText edtName;
-	int reqSocial = 0;
+	CheckBox ckbTrueInfo;
+	
 	String socialNet = "";
 	String state = "";
+	String name = "";
+	Boolean trustInfo;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +34,28 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 
 		btnSocial = (Button) findViewById(id.btnAct01Social);
-		btnState = (Button) findViewById(id.btnAct01State);
-		btnNext = (Button) findViewById(id.btnAct01Next);
-		edtName = (EditText) findViewById(id.edtName);
-
 		btnSocial.setOnClickListener(this);
+		
+		btnState = (Button) findViewById(id.btnAct01State);
+		btnState.setOnClickListener(this);
+		
+		btnNext = (Button) findViewById(id.btnAct01Next);
+		btnNext.setOnClickListener(this);
+		
+		edtName = (EditText) findViewById(id.edtName);
+		
+		
+		ckbTrueInfo = (CheckBox)findViewById(id.chkbxAct01True);
+		
 
 		if (savedInstanceState != null) {
-
+			
+			name = (savedInstanceState.getString("nameSave"));
+			socialNet = savedInstanceState.getString("socialSave");
+			state = savedInstanceState.getString("stateSave");
+			trustInfo = savedInstanceState.getBoolean("trustInfoSave");
+			
+			
 		}
 
 	}
@@ -42,6 +64,11 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
+		
+		outState.putString("nameSave", edtName.getText().toString());
+		outState.putString("socialSave", btnSocial.getText().toString());
+		outState.putString("stateSave", btnState.getText().toString());
+		outState.putBoolean("trustInfoSave", ckbTrueInfo.isChecked());
 	}
 
 	@Override
@@ -55,7 +82,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 
 		if (v.getId() == R.id.btnAct01Social) {
-			Intent it = new Intent(this, SocialNetworkActivity.class);
+			Intent it = new Intent(this, SocialNetActivity.class);
 			startActivityForResult(it, reqSocial);
 		}
 

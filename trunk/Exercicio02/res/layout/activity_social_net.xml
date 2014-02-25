@@ -1,0 +1,63 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/svAct02"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:layout_margin="10dp" >
+
+        <RadioGroup
+            android:id="@+id/rdgAct02Social"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="15dp" >
+
+            <RadioButton
+                android:id="@+id/rdbAct02Badoo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/rdbAct02Badoo" />
+
+            <RadioButton
+                android:id="@+id/rdbAct02Face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rdbAct02Facebook" />
+
+            <RadioButton
+                android:id="@+id/rdbAct02Foursquare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rdbAct02Foursquare" />
+
+            <RadioButton
+                android:id="@+id/rdbAct02Linkdein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rdbAct02Linkedin" />
+
+            <RadioButton
+                android:id="@+id/rdbAct02Tweeter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rdbAct02Tweeter" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnAct02Select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rdgAct02Social"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:text="@string/btnAct02Select" />
+
+    </RelativeLayout>
+
+</ScrollView>
