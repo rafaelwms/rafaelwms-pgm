@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="action_settings">Ajustes</string>
+    <string name="app_name">Exercício 02</string>
+    <string name="btnAct01Next">Próximo</string>
+    <string name="btnAct01Social">Redes Sociais</string>
+    <string name="btnAct01State">Selecione  Estado</string>
+    <string name="btnAct02Select">Escolher</string>
+    <string name="chkbxAct01True">Informação Verídica</string>
+    <string name="lblAct01Name">Nome:</string>
+    <string name="lblAct04Name">Nome:</string>
+    <string name="lblAct04Social">Rede Social:</string>
+    <string name="lblAct04State">Estado:</string>
+    <string name="lblAct04TrustInfo">Informação Verídica:</string>
+    <string name="rdbAct02Badoo">Badoo</string>
+    <string name="rdbAct02Facebook">Facebook</string>
+    <string name="rdbAct02Foursquare">Foursquare</string>
+    <string name="rdbAct02Linkedin">Linkedin</string>
+    <string name="rdbAct02Tweeter">Tweeter</string>
+    <string name="title_activity_results">Resultados</string>
+    <string name="title_activity_social_net">Redes Sociais</string>
+    <string name="title_activity_social_network">Redes Sociais</string>
+    <string name="title_activity_state">Estados</string>
+    <string name="trustYes">SIM</string>
+    <string name="trutNo">Não</string>
+    <string name="txtAct04Name">\@null</string>
+    <string name="txtAct04Social">\@null</string>
+    <string name="txtAct04State">\@null</string>
+
+</resources>
