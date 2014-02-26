@@ -8,7 +8,7 @@
     <string name="btnAct01State">Select State</string>
     <string name="btnAct01Next">Next</string>
     <string name="chkbxAct01True">True Information</string>
-    <string name="title_activity_social_network">SocialNetworkActivity</string>
+    <string name="title_activity_social_network">Social Network</string>
     <string name="hello_world">Hello world!</string>
     <string name="rdbAct02Badoo">Badoo</string>
     <string name="rdbAct02Facebook">Facebook</string>
@@ -16,15 +16,46 @@
     <string name="rdbAct02Linkedin">Linkedin</string>
     <string name="rdbAct02Tweeter">Tweeter</string>
     <string name="btnAct02Select">Select</string>
-    <string name="title_activity_state">StateActivity</string>
-    <string name="title_activity_results">ResultsActivity</string>
+    <string name="title_activity_state">States</string>
+    <string name="title_activity_results">Results</string>
     <string name="lblAct04Name">"Name:  "</string>
     <string name="txtAct04Name">\@null</string>
     <string name="spaceAct04"></string>
     <string name="lblAct04Social">Social Network:</string>
     <string name="txtAct04Social">\@null</string>
     <string name="lblAct04State">"State:  "</string>
+    <string name="trustYes">YES</string>
+    <string name="trutNo">NO</string>
     <string name="txtAct04State">\@null</string>
-    <string name="title_activity_social_net">SocialNetActivity</string>
+    <string name="title_activity_social_net">Social Network</string>
+    <string-array name="states">
+        <item>Acre</item>
+        <item>Alagoas</item>
+        <item>Amapá</item>
+        <item>Bahia</item>
+        <item>Ceará</item>
+        <item>Distrito Federal</item>
+        <item>Espírito Santo</item>
+        <item>Goiás</item>
+        <item>Maranhão</item>
+        <item>Mato Grosso</item>
+        <item>Mato Grosso do Sul</item>
+        <item>Minas Gerais</item>
+        <item>Pará</item>
+        <item>Paraiba</item>
+        <item>Paraná</item>
+        <item>Pernambuco</item>
+        <item>Piauí</item>
+        <item>Rio de Janeiro</item>
+        <item>Rio Grande do Norte</item>
+        <item>Rio Grande do Sul</item>
+        <item>Rondonia</item>
+        <item>Roraima</item>
+        <item>Santa Catarina</item>
+        <item>São Paulo</item>
+        <item>Sergipe</item>
+        <item>Tocantins</item>
+    </string-array>
+        <string name="lblAct04TrustInfo">Trusted Info:</string>
 
 </resources>

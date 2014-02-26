@@ -15,6 +15,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	public final static int reqSocial = 1;
 	public final static int reqState = 2;
+
+	
+	public int idRdb = -1;
 	
 	Button btnSocial;
 	Button btnState;
@@ -83,7 +86,22 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		if (v.getId() == R.id.btnAct01Social) {
 			Intent it = new Intent(this, SocialNetActivity.class);
+			it.putExtra("idRdb", idRdb);
 			startActivityForResult(it, reqSocial);
+		}
+		
+		if(v.getId() == R.id.btnAct01State){
+			Intent it = new Intent(this, StateActivity.class);
+			startActivityForResult(it, reqState);
+		}
+		
+		if(v.getId() == R.id.btnAct01Next){
+			Intent it = new Intent(this, ResultsActivity.class);
+			it.putExtra("name", edtName.getText().toString());
+			it.putExtra("state", state);
+			it.putExtra("socialNetwork", socialNet);
+			it.putExtra("trustInfo", ckbTrueInfo.isChecked());
+			startActivity(it);
 		}
 
 	}
@@ -95,8 +113,14 @@ public class MainActivity extends Activity implements OnClickListener {
 		if (requestCode == reqSocial && resultCode == RESULT_OK) {
 			socialNet = data.getStringExtra("socialNetwork");
 			btnSocial.setText(socialNet);
+			idRdb = data.getIntExtra("idRdb", -1);
 		}
-
+		
+		if(requestCode == reqState && resultCode == RESULT_OK){
+			state = data.getStringExtra("stateChosen");
+			btnState.setText(state);			
+		}
+		
 	}
 
 }
