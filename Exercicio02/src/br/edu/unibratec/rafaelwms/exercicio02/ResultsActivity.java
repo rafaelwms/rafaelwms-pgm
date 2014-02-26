@@ -14,6 +14,10 @@ public class ResultsActivity extends Activity {
 	TextView txtState;
 	TextView txtTrustedInfo;
 	
+	String name;
+	String social;
+	String state;
+	String trust;
 	
 
 	@Override
@@ -36,7 +40,18 @@ public class ResultsActivity extends Activity {
 			txtTrustedInfo.setText(R.string.trutNo);
 		}
 		
-		
+		if(savedInstanceState != null){
+			
+			name = savedInstanceState.getString("nameSave");
+			social = savedInstanceState.getString("socialSave");
+			state = savedInstanceState.getString("stateSave");
+			trust = savedInstanceState.getString("trustSave");
+			
+			txtName.setText(name);
+			txtSocialNet.setText(social);
+			txtState.setText(state);
+			txtTrustedInfo.setText(trust);
+		}
 		
 	}
 
@@ -52,8 +67,10 @@ public class ResultsActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
 		
-		
-		
+		outState.putString("nameSave", txtName.getText().toString());
+		outState.putString("socialSave", txtSocialNet.getText().toString());
+		outState.putString("stateSave", txtState.getText().toString());
+		outState.putString("trustSave", txtTrustedInfo.getText().toString());
 		
 	}
 

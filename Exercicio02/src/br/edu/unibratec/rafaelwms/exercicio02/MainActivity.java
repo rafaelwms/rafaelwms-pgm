@@ -53,11 +53,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		if (savedInstanceState != null) {
 			
-			name = (savedInstanceState.getString("nameSave"));
+			name = savedInstanceState.getString("nameSave");
 			socialNet = savedInstanceState.getString("socialSave");
 			state = savedInstanceState.getString("stateSave");
 			trustInfo = savedInstanceState.getBoolean("trustInfoSave");
-			
+			edtName.setText(name);
+			btnSocial.setText(socialNet);
+			btnState.setText(state);
 			
 		}
 
