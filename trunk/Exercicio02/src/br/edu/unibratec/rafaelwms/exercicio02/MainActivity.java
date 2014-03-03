@@ -60,7 +60,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			edtName.setText(name);
 			btnSocial.setText(socialNet);
 			btnState.setText(state);
-			
+			idRdb = savedInstanceState.getInt("idRdb");
 		}
 
 	}
@@ -74,6 +74,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		outState.putString("socialSave", btnSocial.getText().toString());
 		outState.putString("stateSave", btnState.getText().toString());
 		outState.putBoolean("trustInfoSave", ckbTrueInfo.isChecked());
+		outState.putInt("idRdb", idRdb);
 	}
 
 	@Override
