@@ -36,19 +36,19 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		btnSocial = (Button) findViewById(id.btnAct01Social);
+		btnSocial = (Button) findViewById(R.id.btnAct01Social);
 		btnSocial.setOnClickListener(this);
 		
-		btnState = (Button) findViewById(id.btnAct01State);
+		btnState = (Button) findViewById(R.id.btnAct01State);
 		btnState.setOnClickListener(this);
 		
-		btnNext = (Button) findViewById(id.btnAct01Next);
+		btnNext = (Button) findViewById(R.id.btnAct01Next);
 		btnNext.setOnClickListener(this);
 		
-		edtName = (EditText) findViewById(id.edtName);
+		edtName = (EditText) findViewById(R.id.edtName);
 		
 		
-		ckbTrueInfo = (CheckBox)findViewById(id.chkbxAct01True);
+		ckbTrueInfo = (CheckBox)findViewById(R.id.chkbxAct01True);
 		
 
 		if (savedInstanceState != null) {
