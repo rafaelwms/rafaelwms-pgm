@@ -5,5 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="act01_lbl_title">Cars</string>
+    <string name="act01_bt_new">New Model</string>
+    <string name="act01_title">Cars Marketplace</string>
 
 </resources>
