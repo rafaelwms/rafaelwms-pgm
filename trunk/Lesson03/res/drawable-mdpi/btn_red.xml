@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
     
     <item android:drawable="@drawable/red_btn" 
           android:state_pressed="false" />
     <item android:drawable="@drawable/red_btn_press" 
           android:state_pressed="true" />
 
-</animation-list>
+</selector>
