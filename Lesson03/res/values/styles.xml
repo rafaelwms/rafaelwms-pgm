@@ -18,6 +18,10 @@
     </style>
 	<style name="bt_red">
 	    <item name="android:textColor">#FFFFFF</item>
-	    <item name="android:background">@drawable/btn_red</item>r
+	    <item name="android:background">@drawable/btn_red</item>
+	</style>
+		<style name="bt_green">
+	    <item name="android:textColor">#FFFFFF</item>
+	    <item name="android:background">@drawable/btn_green</item>
 	</style>
 </resources>
