@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Lesson 03</string>
+    <string name="app_name">Cars Industry</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="act01_lbl_title">Cars</string>
@@ -11,7 +11,7 @@
     <string name="modelName">\@null</string>
     <string name="fuel">\@null</string>
     <string name="year">\@null</string>
-    <string name="title_activity_data">DataActivity</string>
+    <string name="title_activity_data">Model Data</string>
     <string name="dataAct_title">New Car</string>
     <string name="dataAct_lbl_model">Name:</string>
     <string name="dataAct_lbl_Ind">Industry:</string>
@@ -19,5 +19,7 @@
     <string name="dataAct_ck_gas">Gasoline</string>
     <string name="dataAct_bt_confirm">Save</string>
     <string name="dataAct_lbl_year">Year:</string>
-
+    <string name="fuel_eth">Ethanol</string>
+	<string name="fuel_gas">Gasoline</string>
+	<string name="fuel_flx">Flex Fuel</string>
 </resources>

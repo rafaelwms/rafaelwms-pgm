@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="act01_bt_new">Novo Modelo</string>
+    <string name="act01_title">Mercado Automotivo</string>
+    <string name="app_name">Indústria Automobilístoca</string>
+    <string name="dataAct_bt_confirm">Salvar</string>
+    <string name="dataAct_ck_Eth">Etanol</string>
+    <string name="dataAct_ck_gas">Gasolina</string>
+    <string name="dataAct_lbl_Ind">Marca:</string>
+    <string name="dataAct_lbl_model">Nome:</string>
+    <string name="dataAct_lbl_year">Ano:</string>
+    <string name="dataAct_title">Novo Carro</string>
+    <string name="fuel_eth">Etanol</string>
+    <string name="fuel_flx">Flex</string>
+    <string name="fuel_gas">Gasolina</string>
+    <string name="title_activity_data">Dados do Modelo</string>
+
+</resources>
