@@ -30,7 +30,7 @@
 
     <Button
         android:id="@+id/act01_bt_new"
-        style="@style/bt_red"
+        style="@style/bt_green"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/act01_bt_new" />

@@ -7,5 +7,17 @@
     <string name="act01_lbl_title">Cars</string>
     <string name="act01_bt_new">New Model</string>
     <string name="act01_title">Cars Marketplace</string>
+    <string name="title_activity_model_list">ModelListActivity</string>
+    <string name="modelName">\@null</string>
+    <string name="fuel">\@null</string>
+    <string name="year">\@null</string>
+    <string name="title_activity_data">DataActivity</string>
+    <string name="dataAct_title">New Car</string>
+    <string name="dataAct_lbl_model">Name:</string>
+    <string name="dataAct_lbl_Ind">Industry:</string>
+    <string name="dataAct_ck_Eth">Ethanol</string>
+    <string name="dataAct_ck_gas">Gasoline</string>
+    <string name="dataAct_bt_confirm">Save</string>
+    <string name="dataAct_lbl_year">Year:</string>
 
 </resources>

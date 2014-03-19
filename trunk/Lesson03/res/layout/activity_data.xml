@@ -1,0 +1,118 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grey_btn"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DataActivity" >
+
+    <TextView
+        android:id="@+id/dataAct_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="@string/dataAct_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/dataAct_lbl_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dataAct_lbl_model"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/dataAct_edt_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" >
+
+                <requestFocus />
+            </EditText>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/dataAct_lbl_Ind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dataAct_lbl_Ind"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/dataAct_sp_Ind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/dataAct_lbl_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dataAct_lbl_year"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/dataAct_edt_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/dataAct_ck_Eth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dataAct_ck_Eth" />
+
+            <CheckBox
+                android:id="@+id/dataAct_ck_gas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dataAct_ck_gas" />
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/dataAct_bt_confirm"
+        style="@style/bt_red"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dataAct_bt_confirm" />
+
+</LinearLayout>
