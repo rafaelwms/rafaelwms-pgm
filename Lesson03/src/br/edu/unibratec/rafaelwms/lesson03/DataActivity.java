@@ -103,11 +103,11 @@ public class DataActivity extends Activity implements OnClickListener {
 			
 				fuel = "";
 				if(ckEth.isChecked() && ckGas.isChecked()){
-					fuel = "FLEX";
-				} else if(ckEth.isChecked() && ckEth.isChecked() == false){
-					fuel = "GASOLINE";
-				} else if(ckEth.isChecked() == false && ckEth.isChecked()){
-					fuel = "ETHANOL";
+					fuel = getResources().getString(R.string.fuel_flx);
+				} else if(ckEth.isChecked() && ckGas.isChecked() == false){
+					fuel = getResources().getString(R.string.fuel_eth);
+				} else if(ckEth.isChecked() == false && ckGas.isChecked()){
+					fuel = getResources().getString(R.string.fuel_gas);
 				}
 
 			Car newCar = new Car(spInd.getSelectedItem().toString(), edtModel.getText().toString(), fuel, edtYear.getText().toString());

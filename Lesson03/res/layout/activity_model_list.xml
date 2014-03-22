@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/year"
         android:layout_alignBottom="@+id/year"
+        android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/modelName"
         android:paddingLeft="3dp"
         android:text="@string/fuel"
