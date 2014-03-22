@@ -17,7 +17,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	public static final int REQ_NEW_CAR = 1;	
 	
 	ListView lista;
-	List<Car> cars;
+	ArrayList<Car> cars;
 	Button newCar;
 	
 	String model;
@@ -36,23 +36,30 @@ public class MainActivity extends Activity implements OnClickListener {
 		lista = (ListView)findViewById(R.id.listView1);
 		newCar = (Button)findViewById(R.id.act01_bt_new);
 		newCar.setOnClickListener(this);
-		
-		if(car != null){
-		cars.add(car);
-		}
-		
+
 		cars = new ArrayList<Car>(); 
 		adapter = new CarAdapter(cars);
 		lista.setAdapter(adapter);
 		
+		if (savedInstanceState != null){
+			
+			cars = ((ArrayList<Car>) savedInstanceState.getSerializable("lista"));
+			adapter = new CarAdapter(cars);
+			lista.setAdapter(adapter);
+		}
+		
+		
 		
 	}
 
+
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
+		
+		outState.putSerializable("lista", cars);
+		
 	}
 
 	@Override
