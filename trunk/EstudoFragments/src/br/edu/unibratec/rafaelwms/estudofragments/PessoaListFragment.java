@@ -38,7 +38,12 @@ public class PessoaListFragment extends ListFragment {
 		Activity activity = getActivity();
 		if (activity instanceof AoClicarNaPessoaListener){
 			Pessoa pessoa = (Pessoa)l.getItemAtPosition(position);
-			((AoClicarNaPessoaListener)activity).clicouNaPessoa(pessoa);
+			
+			//assim:
+			AoClicarNaPessoaListener listener = (AoClicarNaPessoaListener)activity;
+			listener.clicouNaPessoa(pessoa);
+			
+			// ou assim: ((AoClicarNaPessoaListener)activity).clicouNaPessoa(pessoa);
 		}
 	}
 	
