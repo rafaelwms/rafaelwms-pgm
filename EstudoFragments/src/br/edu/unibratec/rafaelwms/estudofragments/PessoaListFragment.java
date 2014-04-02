@@ -3,9 +3,12 @@ package br.edu.unibratec.rafaelwms.estudofragments;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class PessoaListFragment extends ListFragment {
 	
@@ -27,6 +30,25 @@ public class PessoaListFragment extends ListFragment {
 		
 	}
 
+	
+	@Override
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		super.onListItemClick(l, v, position, id);
+		
+		Activity activity = getActivity();
+		if (activity instanceof AoClicarNaPessoaListener){
+			Pessoa pessoa = (Pessoa)l.getItemAtPosition(position);
+			((AoClicarNaPessoaListener)activity).clicouNaPessoa(pessoa);
+		}
+	}
+	
+	
+	public interface AoClicarNaPessoaListener{
+		
+		void clicouNaPessoa(Pessoa pessoa);
+		
+	}
+	
 }
 
 
