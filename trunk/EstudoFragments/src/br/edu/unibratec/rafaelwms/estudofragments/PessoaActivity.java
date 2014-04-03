@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 
 public class PessoaActivity extends FragmentActivity implements AoClicarNaPessoaListener{
@@ -18,6 +20,12 @@ public class PessoaActivity extends FragmentActivity implements AoClicarNaPessoa
 	@Override
 	public void clicouNaPessoa(Pessoa pessoa) {
 		if(isTablet()){
+			DetalhePessoaFragment fragment = DetalhePessoaFragment.novaInstancia(pessoa);
+			
+			FragmentManager fm = getSupportFragmentManager();
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.replace(R.id.detalhe, fragment, "tagDetalhe");
+			ft.commit();		
 			
 		}else{
 			Intent it = new Intent(this, DetalhePessoaActivity.class);
@@ -28,5 +36,7 @@ public class PessoaActivity extends FragmentActivity implements AoClicarNaPessoa
 	}
 
 
-   private boolean isTablet(){return false;}
+   private boolean isTablet(){
+	   return findViewById(R.id.detalhe) != null;
+	   }
 }
