@@ -4,10 +4,13 @@
     <string name="app_name">ActionBar</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-	
+
     <string-array name="opcoes_menu">
-        <item >Pager</item>
-        <item >Spinners</item>
-        <item >Tabs</item>
+        <item>Pager</item>
+        <item>Spinners</item>
+        <item>Tabs</item>
     </string-array>
+
+    <string name="title_activity_tabs">TabsActivity</string>
+
 </resources>
