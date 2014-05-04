@@ -54,6 +54,14 @@ public class Nivel1Fragment extends Fragment implements OnClickListener{
 		case TIPO_TABS: 
 			startActivity(new Intent(getActivity(), TabsActivity.class));
 			break;
+			
+		case TIPO_SPINNER: 
+			startActivity(new Intent(getActivity(), SpinnerActivity.class));
+			break;	
+			
+		case TIPO_PAGER: 
+			startActivity(new Intent(getActivity(), PagerActivity.class));
+			break;	
 
 		default:
 			break;

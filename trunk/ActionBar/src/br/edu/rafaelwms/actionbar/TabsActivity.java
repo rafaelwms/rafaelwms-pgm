@@ -8,19 +8,24 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.os.Build;
 
 public class TabsActivity extends ActionBarActivity implements TabListener {
 
 	ViewPager mPager;
+	PagerTabStrip mTabStrip;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,8 @@ public class TabsActivity extends ActionBarActivity implements TabListener {
 		setContentView(R.layout.activity_tabs);
 		
 		final ActionBar actionBar = getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		
 		
 		mPager = (ViewPager)findViewById(R.id.pager);
 		mPager.setAdapter(new MeuPagerAdapter(getSupportFragmentManager()));
@@ -80,6 +87,8 @@ public class TabsActivity extends ActionBarActivity implements TabListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+
 
 	
 	class MeuPagerAdapter extends FragmentPagerAdapter{
@@ -90,7 +99,7 @@ public class TabsActivity extends ActionBarActivity implements TabListener {
 
 		@Override
 		public Fragment getItem(int position) {
-			return Nivel1Fragment.novaInstancia(position);
+			return new ColorFragment();
 		}
 
 		@Override

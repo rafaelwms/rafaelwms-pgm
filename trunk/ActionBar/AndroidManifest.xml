@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="br.edu.rafaelwms.actionbar.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleInstance" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +25,27 @@
         </activity>
         <activity
             android:name="br.edu.rafaelwms.actionbar.TabsActivity"
-            android:label="@string/title_activity_tabs" >
+            android:label="@string/title_activity_tabs"
+            android:parentActivityName="br.edu.rafaelwms.actionbar.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+          <activity
+            android:name="br.edu.rafaelwms.actionbar.PagerActivity"
+            android:label="@string/title_activity_tabs"
+            android:parentActivityName="br.edu.rafaelwms.actionbar.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name="br.edu.rafaelwms.actionbar.SpinnerActivity"
+            android:label="@string/title_activity_spinner" 
+            android:parentActivityName="br.edu.rafaelwms.actionbar.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
         </activity>
     </application>
 
