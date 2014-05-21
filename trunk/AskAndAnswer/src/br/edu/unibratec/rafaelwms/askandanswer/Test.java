@@ -1,8 +1,9 @@
 package br.edu.unibratec.rafaelwms.askandanswer;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Test {
+public class Test implements Serializable{
 
 	private int id_test;
 	private User user;

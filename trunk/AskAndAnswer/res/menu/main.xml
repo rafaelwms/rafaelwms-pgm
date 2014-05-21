@@ -4,9 +4,17 @@
     tools:context="br.edu.unibratec.rafaelwms.askandanswer.MainActivity" >
 
     <item
-        android:id="@+id/new_account"
+        android:id="@+id/logout_action"
+      	android:icon="@android:drawable/ic_lock_power_off"
         android:orderInCategory="100"
-        android:title="@string/new_account"
-        app:showAsAction="never"/>
+        android:title="@string/menuItemLogout"
+        app:showAsAction="always"/>
 
+     <item
+        android:id="@+id/cancel_account_action"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:orderInCategory="100"
+        android:title="@string/menuItemCancelAccount"
+        app:showAsAction="always"/>
+    
 </menu>
