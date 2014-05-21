@@ -138,13 +138,24 @@ public class MainActivity extends ActionBarActivity implements
 	//	FragmentManager fm = getSupportFragmentManager();
 		Intent it;
 		switch (position) {
+
+		
 		case MANAGE_OPTION:
 		//	f = new ManageQuestionFragment();
 		//	fm.beginTransaction().replace(R.id.content_frame, f).commit();
+
 			it = new Intent(this, ManagementActivity.class);
 			startActivity(it);
 			break;
 
+		case TUTORIAL_OPTION:
+		//	f = new ManageQuestionFragment();
+		//	fm.beginTransaction().replace(R.id.content_frame, f).commit();
+
+			it = new Intent(this, TutorialActivity.class);
+			startActivity(it);
+			break;
+			
 		default:
 			break;
 		}

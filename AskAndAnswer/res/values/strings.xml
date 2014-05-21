@@ -8,28 +8,25 @@
 
     <string-array name="drawer_options">
         <item>Tutorial</item>
-        <item>Answer Questions</item>
+        <item>Answer Tests</item>
         <item>Manage Tests</item>
     </string-array>
-    
-   <string-array name="drawer_options2">
+    <string-array name="drawer_options2">
         <item>Tutorial</item>
-        <item>Answer Questions</item>
+        <item>Answer Tests</item>
     </string-array>
 
     <string name="ckbAnswer">Check It if is a true or correct answer.</string>
     <string name="txtQuestion">Question Text</string>
-    
     <string name="txtAnswer1">Answer 1</string>
     <string name="txtAnswer2">Answer 2</string>
     <string name="txtAnswer3">Answer 3</string>
     <string name="txtAnswer4">Answer 4</string>
     <string name="txtAnswer5">Answer 5</string>
-    
+    <string name="lblQuestionNumber"> Questions: </string>
+    <string name="lblTestNote"> Max. Note: </string>
     <string name="menuManageSave">Save</string>
-    
     <string name="txtQuestionNote">If is true or correct the answers, just check the box.</string>
-    
     <string name="title_activity_manage">Manage Tests</string>
     <string name="title_activity_management">ManagementActivity</string>
     <string name="txtCreateTest">Create New Test</string>
@@ -44,20 +41,22 @@
     <string name="btnCreateAccount">Register</string>
     <string name="txtWelcome">"Welcome "</string>
     <string name="txtNewTestTitle">New Test</string>
-    <string name="nullText">\@null</string>
+    <string name="nullText">@null</string>
     <string name="txtNewtestName">Test Name</string>
     <string name="txtNewTestCategory">Test Category</string>
     <string name="txtListTests">Choose on action for the registred Tests below.</string>
-    
-    
-     <string name="accountCreated">Account registered sucessifully.</string>
-   	 <string name="userNotFound">Login or password incorrect.</string>
-     
+    <string name="accountCreated">Account registered sucessifully.</string>
+    <string name="userNotFound">Login or password incorrect.</string>
     <string name="exceptionLoginEmpty">Login field is empty.</string>
     <string name="exceptionPassEmpty">Password field is empty.</string>
-	<string name="exceptionNoMatchPass">Passwords not match.</string>
-	<string name="chkCreateMasterUser">Master User</string>
-	
-	
-	
+    <string name="exceptionNoMatchPass">Passwords not match.</string>
+    <string name="chkCreateMasterUser">Master User</string>
+    <string name="testName">"Test: "</string>
+    <string name="lblTestCategory">"Category: "</string>
+    <string name="btnDeleteTestHint">Delete Test</string>
+    <string name="txtNewtestNote">Test Note</string>
+    <string name="title_activity_tutorial">Tutorial</string>
+    <string name="menuItemLogout">Logout</string>
+    <string name="menuItemCancelAccount">Cancel Account</string>
+
 </resources>

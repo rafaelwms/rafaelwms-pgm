@@ -55,6 +55,20 @@
         android:text="@string/nullText" />
 
     <TextView
+        android:id="@+id/txtNewTestNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtNewtestNote"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/editNewTestNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
         android:id="@+id/txtListTests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
