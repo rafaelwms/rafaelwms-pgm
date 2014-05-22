@@ -8,5 +8,12 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/cancel_account_action"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:orderInCategory="100"
+        android:title="@string/menuItemCancelAccount"
+        app:showAsAction="always"/>
 
 </menu>

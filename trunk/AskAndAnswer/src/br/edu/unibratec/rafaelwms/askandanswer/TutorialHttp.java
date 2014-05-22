@@ -15,7 +15,7 @@ public class TutorialHttp {
 	
 public static HttpURLConnection abrirConexao() throws IOException{
 		
-		URL url = new URL("https://dl.dropboxusercontent.com/1/view/85nmogj0gy88eka/5%C2%BA%20per%C3%ADodo/PGM/tutorial.json");
+		URL url = new URL("https://dl.dropboxusercontent.com/sh/t3gpf1apxiew70b/AABqXgH_Y3Ts_bqoyy3Q40J_a/tutorial.json");
 		HttpURLConnection conexao = (HttpURLConnection)url.openConnection();
 		conexao.setRequestMethod("GET");
 		conexao.setDoInput(true);

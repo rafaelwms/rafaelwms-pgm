@@ -3,10 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="br.edu.unibratec.rafaelwms.askandanswer.TutorialActivity" >
 
+    
+    
+        <item
+        android:id="@+id/logout_action"
+      	android:icon="@android:drawable/ic_lock_power_off"
+        android:orderInCategory="100"
+        android:title="@string/menuItemLogout"
+        app:showAsAction="always"/>
+    
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never"/>
+    
+
 
 </menu>
