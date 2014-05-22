@@ -61,6 +61,13 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener{
 	public void onClick(View v) {
 		if (v.getId() == R.id.btnLoginnn) {
 			
+			try{
+			if(editLogin.getText().toString().trim().equals("")){
+				throw new Exception(getResources().getString(R.string.exceptionLoginEmpty));
+			}
+			if(editPass.getText().toString().trim().equals("")){
+				throw new Exception(getResources().getString(R.string.exceptionPassEmpty));
+			}
 
 			UserDB db = new UserDB(this);
 
@@ -76,6 +83,10 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener{
 			} else {
 				Toast.makeText(this, getResources().getString(R.string.userNotFound), Toast.LENGTH_SHORT)
 						.show();
+			}
+			}catch(Exception ex){
+				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT)
+				.show();
 			}
 		 
 		}

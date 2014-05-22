@@ -37,6 +37,13 @@ public class ManagementActivity extends ActionBarActivity {
 			startActivity(it);
 			return true;
 		}
+		if(item.getItemId() == R.id.logout_action){
+			MainActivity.loggedUser = null;
+			Intent it = new Intent(this, LoginActivity.class);
+			startActivity(it);
+			finish();	
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 	

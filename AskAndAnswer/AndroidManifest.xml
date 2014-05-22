@@ -8,7 +8,7 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
     
-        <uses-permission android:name="android.permission.INTERNET"/>
+         <uses-permission android:name="android.permission.INTERNET"/>
    		 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
@@ -52,7 +52,11 @@
         </activity>
         <activity
             android:name="br.edu.unibratec.rafaelwms.askandanswer.TutorialActivity"
-            android:label="@string/title_activity_tutorial" >
+            android:label="@string/title_activity_tutorial" 
+            android:parentActivityName="br.edu.unibratec.rafaelwms.askandanswer.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />>
         </activity>
     </application>
 
