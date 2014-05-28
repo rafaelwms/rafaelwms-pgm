@@ -30,6 +30,10 @@ public class Test implements Serializable{
 	}
 	
 	
+	public Test() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId_test() {
 		return id_test;
 	}

@@ -44,4 +44,42 @@
         android:text="@string/nullText"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <TextView
+        android:id="@+id/lblModelTestNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtModelTestCategory"
+        android:text="@string/lblModelTestNote"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/txtModelTestNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblModelTestNote"
+        android:layout_alignBottom="@+id/lblModelTestNote"
+        android:layout_toRightOf="@+id/lblModelTestNote"
+        android:text="@string/nullText"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/txtNumberQuestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtTestCateg"
+        android:text="@string/nullText"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/lblModelTestNumberQuestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtNumberQuestions"
+        android:layout_alignBottom="@+id/txtNumberQuestions"
+        android:layout_toLeftOf="@+id/txtNumberQuestions"
+        android:text="@string/lblModelTestNumberQ"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 </RelativeLayout>
