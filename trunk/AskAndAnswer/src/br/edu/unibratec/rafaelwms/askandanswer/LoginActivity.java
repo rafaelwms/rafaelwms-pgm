@@ -69,7 +69,7 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener{
 				throw new Exception(getResources().getString(R.string.exceptionPassEmpty));
 			}
 
-			UserDB db = new UserDB(this);
+			AskAndAnswerDB db = new AskAndAnswerDB(this);
 
 			User logged = db.login(editLogin.getText().toString(), editPass
 				.getText().toString());

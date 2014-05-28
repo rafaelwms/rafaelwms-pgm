@@ -39,11 +39,11 @@ public class AskAndAnswerHelperDB extends SQLiteOpenHelper {
 				"number integer not null, " +
 				"txt_answer text not null, " +
 				"correct integer not null, " +
-				"answuer_value real not null);");
+				"answer_value real not null);");
 		
 		db.execSQL("create table result (" +
-				"user integer not null REFERENCES user(_id) ON DELETE CASCADE, " +
-				"test integer not null REFERENCES test(_id) ON DELETE CASCADE, " +
+				"user integer not null REFERENCES user(_id) ON DELETE NO ACTION, " +
+				"test integer not null REFERENCES test(_id) ON DELETE NO ACTION, " +
 				"result_value real not null);");
 		
 	}

@@ -67,9 +67,9 @@ public class AccountActivity extends ActionBarActivity implements OnClickListene
 					throw new Exception(getResources().getString(R.string.exceptionNoMatchPass));
 				}
 							
-			UserDB db = new UserDB(this);
+			AskAndAnswerDB db = new AskAndAnswerDB(this);
 			user = new User(editLogin.getText().toString(), editPass1.getText().toString(), chkMasterUser.isChecked());
-			db.insert(user);
+			db.insertUser(user);
 			Toast.makeText(this, getResources().getString(R.string.accountCreated), Toast.LENGTH_SHORT).show();
 			finish();
 			}catch(Exception ex){
