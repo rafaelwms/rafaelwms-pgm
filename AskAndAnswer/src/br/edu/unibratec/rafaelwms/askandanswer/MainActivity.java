@@ -173,6 +173,7 @@ public class MainActivity extends ActionBarActivity implements
 			} else {
 
 				Intent it = new Intent(this, ManagementActivity.class);
+				it.putExtra(SESSION, loggedUser);
 				startActivity(it);
 				mDrawer.closeDrawer(mListView);
 			}

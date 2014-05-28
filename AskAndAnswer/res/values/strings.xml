@@ -58,5 +58,7 @@
     <string name="title_activity_tutorial">Tutorial</string>
     <string name="menuItemLogout">Logout</string>
     <string name="menuItemCancelAccount">Cancel Account</string>
+    <string name="lblModelTestNote">Note:</string>
+    <string name="lblModelTestNumberQ">"Questions: "</string>
 
 </resources>

@@ -75,6 +75,28 @@ public class UserDB {
 			cursor.close();
 			db.close();
 			return user;
+			
+		} else {
+			cursor.close();
+			db.close();
+			return null;
+		}
+	}
+	
+	public  User findUserById(int id) {
+		SQLiteDatabase db = helper.getReadableDatabase();
+		User user = new User();
+		Cursor cursor = db.rawQuery(
+				"select * from user where _id = ? ",
+				new String[] { id+""});
+
+		if (cursor.moveToFirst() && cursor.getCount() >= 1) {
+			
+			user = fillUser(cursor);
+			cursor.close();
+			db.close();
+			return user;
+			
 		} else {
 			cursor.close();
 			db.close();
