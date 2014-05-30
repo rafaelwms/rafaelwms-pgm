@@ -50,7 +50,6 @@ public class AskAndAnswerDB {
 		values.put("test", quest.getTest().getId_test());
 		values.put("number", quest.getNumber());
 		values.put("txt_question", quest.getText());
-		values.put("number", quest.getNumber());
 
 		return values;
 	}
@@ -262,6 +261,7 @@ public class AskAndAnswerDB {
 		
 		while (cursor.moveToNext()){
 			Test test = fillUserTest(cursor, user);
+			test.setQuestions(findQuestionsByTest(test));
 			tests.add(test);
 		}
 		cursor.close();
@@ -284,6 +284,22 @@ public class AskAndAnswerDB {
 		cursor.close();
 		db.close();
 		return questions;
+	}
+	
+	public Question findQuestionByTestAndNumber(Test test, int number){
+	Question question = new Question();
+		
+		SQLiteDatabase db = helper.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery(
+				"select * from question where test = ? and number = ?", new String[]{test.getId_test()+"", number+""});
+		
+		while (cursor.moveToNext()){
+			question = fillQuestion(cursor);
+		}
+		cursor.close();
+		db.close();
+		return question;
 	}
 	
 	public List<Answer> findAnswersByQuestion(Question quest){

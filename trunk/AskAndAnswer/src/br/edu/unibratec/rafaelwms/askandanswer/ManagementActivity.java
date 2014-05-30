@@ -88,7 +88,6 @@ public class ManagementActivity extends ActionBarActivity implements
 					db.insertTest(test);
 					refreshTestList();
 					clearEditTexts();
-					testSelected = new Test();
 					return true;
 				} else {
 
@@ -103,7 +102,6 @@ public class ManagementActivity extends ActionBarActivity implements
 					db.alterTest(test);
 					refreshTestList();
 					clearEditTexts();
-					testSelected = new Test();
 					return true;
 				}
 
@@ -151,6 +149,7 @@ public class ManagementActivity extends ActionBarActivity implements
 		edtTestName.setText("");
 		edtTestCategory.setText("");
 		edtTestNote.setText("");
+		testSelected = new Test();
 	}
 
 	@Override
@@ -167,7 +166,10 @@ public class ManagementActivity extends ActionBarActivity implements
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == REQUEST_NEW_QUESTION && resultCode == RESULT_OK){
+			refreshTestList();
+			clearEditTexts();
+		}
 	}
 
 }
