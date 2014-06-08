@@ -79,7 +79,10 @@
     <string name="QuestionSave">New question saved.</string>
     <string name="QuestionAltered">Modified question saved.</string>
     <string name="Question">Question</string>
-    
+    <string name="dialogMsgDelTest">Proceed Test erase?</string>
+    <string name="dialogMsgDelQuest">Proceed Question erase?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
     
 
 </resources>

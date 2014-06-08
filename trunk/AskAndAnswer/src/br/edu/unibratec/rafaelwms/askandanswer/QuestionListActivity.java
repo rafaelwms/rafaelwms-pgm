@@ -10,6 +10,8 @@ import br.edu.unibratec.rafaelwms.askandanswer.R.string;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -101,8 +103,29 @@ public class QuestionListActivity extends ActionBarActivity implements
 				if(selectedQuestion == null || selectedQuestion.getId_question() <= 0){
 					throw new Exception(getResources().getString(string.exceptionMustSelectQuest));
 				}
-				db.deleteQuestion(selectedQuestion);
-				refreshList();
+				
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+				builder.setMessage(R.string.dialogMsgDelQuest)
+					   .setTitle(R.string.menuDelQuest);
+				
+				builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			        	   
+							db.deleteQuestion(selectedQuestion);
+							refreshList();
+			           }
+			       });
+			builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			        	   refreshList();
+			           }
+			       });
+
+			AlertDialog dialog = builder.create();
+				
+			dialog.show();
+				
 				
 			}catch(Exception ex){
 				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT)
@@ -148,6 +171,7 @@ public class QuestionListActivity extends ActionBarActivity implements
 		}
 		adapter = new QuestionMngAdapter(questions);
 		listQuests.setAdapter(adapter);
+		selectedQuestion = new Question();
 	}
 	
 	@Override
