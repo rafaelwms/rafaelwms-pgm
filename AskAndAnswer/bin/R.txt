@@ -433,8 +433,11 @@ int string btnCreateAccount 0x7f0a0027
 int string btnDeleteTestHint 0x7f0a0037
 int string btnLogin 0x7f0a0026
 int string btnMngQuestion 0x7f0a0047
+int string cancel 0x7f0a0053
 int string chkCreateMasterUser 0x7f0a0034
 int string ckbAnswer 0x7f0a0011
+int string dialogMsgDelQuest 0x7f0a0051
+int string dialogMsgDelTest 0x7f0a0050
 int string exceptionAnswerCorrect 0x7f0a0044
 int string exceptionAnswersEmpty 0x7f0a0043
 int string exceptionLoginEmpty 0x7f0a0030
@@ -461,6 +464,7 @@ int string menuSaveQuestion 0x7f0a003d
 int string menuSaveTest 0x7f0a003c
 int string new_account 0x7f0a0010
 int string nullText 0x7f0a002a
+int string ok 0x7f0a0052
 int string selected 0x7f0a004c
 int string testName 0x7f0a0035
 int string title_activity_account 0x7f0a0021

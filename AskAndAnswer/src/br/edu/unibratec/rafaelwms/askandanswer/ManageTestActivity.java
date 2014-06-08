@@ -6,7 +6,9 @@ import java.util.List;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,10 +35,9 @@ public class ManageTestActivity extends ActionBarActivity implements
 	AskAndAnswerDB db;
 	ListView testList;
 	TestAdapter adapter;
-	public static final String SELECTED_TEST = "testSelected"; 
+	public static final String SELECTED_TEST = "testSelected";
 	public static final int REQUEST_NEW_QUESTION = 132;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,7 +59,6 @@ public class ManageTestActivity extends ActionBarActivity implements
 		tests = new ArrayList<>();
 
 		tests = db.findTestByUser(loggedUser);
-		
 
 		if (tests.size() > 0) {
 			refreshTestList();
@@ -72,6 +72,7 @@ public class ManageTestActivity extends ActionBarActivity implements
 		return super.onCreateOptionsMenu(menu);
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -110,31 +111,58 @@ public class ManageTestActivity extends ActionBarActivity implements
 			}
 		}
 		if (item.getItemId() == R.id.add_question_action) {
-			if (testSelected == null || testSelected.getId_test() <= 0){
-				Toast.makeText(this, getResources().getString(R.string.exceptionMustSelectTest), Toast.LENGTH_SHORT)
-				.show();
-			}else{
-			Intent it = new Intent(this,QuestionListActivity.class);
-			it.putExtra(SELECTED_TEST, testSelected);
-			startActivityForResult(it, REQUEST_NEW_QUESTION);
-			return true;
+			if (testSelected == null || testSelected.getId_test() <= 0) {
+				Toast.makeText(
+						this,
+						getResources().getString(
+								R.string.exceptionMustSelectTest),
+						Toast.LENGTH_SHORT).show();
+			} else {
+				Intent it = new Intent(this, QuestionListActivity.class);
+				it.putExtra(SELECTED_TEST, testSelected);
+				startActivityForResult(it, REQUEST_NEW_QUESTION);
+				return true;
 			}
 		}
-		
+
 		if (item.getItemId() == R.id.del_test_action) {
-			
-			if (testSelected == null || testSelected.getId_test() <= 0){
-				Toast.makeText(this, getResources().getString(R.string.exceptionMustSelectTest), Toast.LENGTH_SHORT)
-				.show();
-			}else{	
-				db.deleteTest(testSelected);
-				testSelected = new Test();
-				refreshTestList();
-				clearEditTexts();
+
+			if (testSelected == null || testSelected.getId_test() <= 0) {
+				Toast.makeText(
+						this,
+						getResources().getString(
+								R.string.exceptionMustSelectTest),
+						Toast.LENGTH_SHORT).show();
+			} else {
+
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+				builder.setMessage(R.string.dialogMsgDelTest).setTitle(
+						R.string.menuDelTest);
+
+				builder.setPositiveButton(R.string.ok,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								db.deleteTest(testSelected);
+								testSelected = new Test();
+								refreshTestList();
+								clearEditTexts();
+							}
+						});
+				builder.setNegativeButton(R.string.cancel,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								clearEditTexts();
+							}
+						});
+
+				AlertDialog dialog = builder.create();
+
+				dialog.show();
 			}
 			return true;
 		}
-		
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -159,16 +187,16 @@ public class ManageTestActivity extends ActionBarActivity implements
 		testSelected = (Test) testList.getItemAtPosition(position);
 		edtTestName.setText(testSelected.getText_title());
 		edtTestCategory.setText(testSelected.getCategory());
-		edtTestNote.setText(testSelected.getTest_value()+"");
+		edtTestNote.setText(testSelected.getTest_value() + "");
 
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == REQUEST_NEW_QUESTION && resultCode == RESULT_OK){
+		if (requestCode == REQUEST_NEW_QUESTION && resultCode == RESULT_OK) {
 			refreshTestList();
 			clearEditTexts();
-			
+
 		}
 
 	}
