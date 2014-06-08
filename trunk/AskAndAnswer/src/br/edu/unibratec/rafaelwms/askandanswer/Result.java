@@ -1,6 +1,8 @@
 package br.edu.unibratec.rafaelwms.askandanswer;
 
-public class Result {
+import java.io.Serializable;
+
+public class Result implements Serializable{
 	
 	private User user;
 	private Test test;

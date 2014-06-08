@@ -50,7 +50,7 @@
     <string name="exceptionLoginEmpty">Login field is empty.</string>
     <string name="exceptionPassEmpty">Password field is empty.</string>
     <string name="exceptionNoMatchPass">Passwords not match.</string>
-     <string name="exceptionMustSelectTest">Must select a Test first.</string>
+    <string name="exceptionMustSelectTest">Must select a Test first.</string>
     <string name="chkCreateMasterUser">Master User</string>
     <string name="testName">"Test: "</string>
     <string name="lblTestCategory">"Category: "</string>
@@ -68,5 +68,18 @@
     <string name="exceptionQuestionEmpty">Must type the Question field.</string>
     <string name="exceptionAnswersEmpty">Must type the Question field.</string>
     <string name="exceptionAnswerCorrect">Must type the Question field.</string>
+    <string name="exceptionMustSelectQuest">Must select a Question first.</string>
+    <string name="title_activity_question_list">Manage Questions</string>
+    <string name="btnMngQuestion">Manage Questions</string>
+    <string name="btnAddQuestion">Add Question</string>
+    <string name="menuEditQuest">Edit Question</string>
+    <string name="menuDelQuest">Delete Question</string>
+    <string name="menuClose">Close</string>
+    <string name="selected"> is selected.</string>
+    <string name="QuestionSave">New question saved.</string>
+    <string name="QuestionAltered">Modified question saved.</string>
+    <string name="Question">Question</string>
+    
+    
 
 </resources>

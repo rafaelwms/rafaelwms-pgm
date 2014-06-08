@@ -47,7 +47,7 @@ public class AskAndAnswerDB {
 
 		ContentValues values = new ContentValues();
 
-		values.put("test", quest.getTest().getId_test());
+		values.put("test", quest.getTest());
 		values.put("number", quest.getNumber());
 		values.put("txt_question", quest.getText());
 
@@ -58,14 +58,13 @@ public class AskAndAnswerDB {
 
 		ContentValues values = new ContentValues();
 
-		values.put("question", answer.getQuestion().getId_question());
+		values.put("question", answer.getQuestion());
 		values.put("number", answer.getNumber());
 		values.put("txt_answer", answer.getText());
-		values.put("number", answer.getNumber());
-		if(answer.isCorrect()){
-			values.put("correct", 1);
-		}else{
+		if(!answer.isCorrect()){
 			values.put("correct", 0);
+		}else if(answer.isCorrect()){
+			values.put("correct", 1);
 		}
 		values.put("answer_value", answer.getValue());
 		return values;
@@ -177,20 +176,16 @@ public class AskAndAnswerDB {
 		int quest_id = cursor.getInt(cursor.getColumnIndex("question"));
 		int number = cursor.getInt(cursor.getColumnIndex("number"));
 		String txt_answer = cursor.getString(cursor.getColumnIndex("txt_answer"));
-		int correct = cursor.getInt(cursor.getColumnIndex("correct"));
-		double answer_value = cursor.getDouble(cursor.getColumnIndex("answer_value"));
-		
-		boolean isCorrect = false;
-		if(correct == 1){
-			isCorrect = true;
-		}
-		
-		Question question = findQuestionsById(quest_id);
-		
+		double answer_value = cursor.getDouble(cursor.getColumnIndex("answer_value"));	
+		boolean correct = false;
+		if(cursor.getInt(cursor.getColumnIndex("correct")) == 1){
+			correct = true;
+		}		
 
-		Answer answer = new Answer(id, question, number, txt_answer, isCorrect, answer_value);
+		Answer answer = new Answer(id, quest_id, number, txt_answer, correct, answer_value);
 		return answer;
 	}
+	
 
 	private Test fillTest(Cursor cursor) {
 
@@ -209,6 +204,20 @@ public class AskAndAnswerDB {
 	}
 	
 	private Question fillQuestion(Cursor cursor) {
+
+		int id = cursor.getInt(cursor.getColumnIndex("_id"));
+		int test_id = cursor.getInt(cursor.getColumnIndex("test"));
+		int number = cursor.getInt(cursor.getColumnIndex("number"));
+		String txt_question = cursor.getString(cursor.getColumnIndex("txt_question"));
+		
+		Test test = findTestById(test_id);
+		
+	
+		Question quest = new Question(id, test, number, txt_question, null);
+		return quest;
+	}
+	
+	private Question fillQuestionById(Cursor cursor) {
 
 		int id = cursor.getInt(cursor.getColumnIndex("_id"));
 		int test_id = cursor.getInt(cursor.getColumnIndex("test"));
@@ -312,7 +321,22 @@ public class AskAndAnswerDB {
 		
 		while (cursor.moveToNext()){
 			Answer answer = fillAnswer(cursor);
-			answer.setQuestion(findQuestionsById(answer.getQuestion().getId_question()));
+			answers.add(answer);
+		}
+		cursor.close();
+		db.close();
+		return answers;
+	}
+	
+	public List<Answer> findAnswersByQuestionId(int id){
+		List<Answer> answers = new ArrayList<Answer>();
+		SQLiteDatabase db = helper.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery(
+				"select * from answer where question = ?", new String[]{id+""});
+		
+		while (cursor.moveToNext()){
+			Answer answer = fillAnswer(cursor);
 			answers.add(answer);
 		}
 		cursor.close();
@@ -380,15 +404,15 @@ public class AskAndAnswerDB {
 	
 		public Question findQuestionsById(int id){
 			Question question = new Question();
-			
+			List<Answer> answers = findAnswersByQuestionId(id);
 			SQLiteDatabase db = helper.getReadableDatabase();
 			
 			Cursor cursor = db.rawQuery(
 					"select * from question where _id = ?", new String[]{id+""});
 			
-			while (cursor.moveToFirst() && cursor.getCount() >= 1){
-				question = fillQuestion(cursor);
-				question.setTest(findTestById(question.getTest().getId_test()));
+			while (cursor.moveToFirst() && cursor.getCount() >= 1){		
+				question = fillQuestionById(cursor);
+				question.setAnswers(answers);
 			}
 			cursor.close();
 			db.close();
@@ -406,7 +430,6 @@ public class AskAndAnswerDB {
 			
 			while (cursor.moveToFirst() && cursor.getCount() >= 1){
 				answer = fillAnswer(cursor);
-				answer.setQuestion(findQuestionsById(id));
 			}
 			cursor.close();
 			db.close();

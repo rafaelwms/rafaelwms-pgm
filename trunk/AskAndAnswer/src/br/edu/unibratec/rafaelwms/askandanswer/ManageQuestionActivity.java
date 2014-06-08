@@ -43,9 +43,11 @@ public class ManageQuestionActivity extends ActionBarActivity {
 	Answer ans4;
 	Answer ans5;
 	Question newQuestion;
-	Question oldQuestion;
+	Question selectedQuestion;
 	int questionNumber;
-
+	public static final String SAVED_QUESTION = "savedQuest";
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,11 +68,44 @@ public class ManageQuestionActivity extends ActionBarActivity {
 		chkAnswer5 = (CheckBox) findViewById(R.id.ckbManageAnswer5);
 		editAnswer5 = (EditText) findViewById(R.id.editAnswer5);
 		
-		selectedTest = (Test) getIntent().getSerializableExtra(ManagementActivity.SELECTED_TEST);
+		selectedTest = (Test) getIntent().getSerializableExtra(QuestionListActivity.SELECTED_TEST);
+		selectedQuestion = (Question) getIntent().getSerializableExtra(QuestionListActivity.SELECTED_QUESTION);
+				
 		
+		if(selectedQuestion != null && selectedQuestion.getId_question() >=1){
+			
+			
+			editQuest.setText(selectedQuestion.getText().toString());
+			
+			selectedQuestion.setAnswers(db.findAnswersByQuestion(selectedQuestion));
+			ans1 = selectedQuestion.getAnswers().get(0);
+			ans2 = selectedQuestion.getAnswers().get(1);
+			ans3 = selectedQuestion.getAnswers().get(2);
+			ans4 = selectedQuestion.getAnswers().get(3);
+			ans5 = selectedQuestion.getAnswers().get(4);
+			
+			
+			editAnswer1.setText(ans1.getText());
+			chkAnswer1.setChecked(ans1.isCorrect());
+			editAnswer2.setText(ans2.getText());
+			chkAnswer2.setChecked(ans2.isCorrect());
+			editAnswer3.setText(ans3.getText());
+			chkAnswer3.setChecked(ans3.isCorrect());
+			editAnswer4.setText(ans4.getText());
+			chkAnswer4.setChecked(ans4.isCorrect());
+			editAnswer5.setText(ans5.getText());
+			chkAnswer5.setChecked(ans5.isCorrect());
+		}
+		
+				
 		if (selectedTest.getQuestions() != null) {
 			questions = selectedTest.getQuestions();
-			questionNumber = (questions.size() + 1);
+			questionNumber = 0;
+			for(Question qst : questions){	
+				if(questionNumber <= qst.getNumber()){
+					questionNumber = (qst.getNumber() + 1);
+				}
+			}
 		} else {
 			questionNumber = 1;
 		}
@@ -109,42 +144,72 @@ public class ManageQuestionActivity extends ActionBarActivity {
 					throw new Exception(getResources().getString(
 							R.string.exceptionAnswerCorrect));
 				}
-
+				if(selectedQuestion == null || selectedQuestion.getId_question() <=0 ){
 				newQuestion = new Question(selectedTest, questionNumber,
 						editQuest.getText().toString(), null);
 				db.insertQuestion(newQuestion);
 				newQuestion = db.findQuestionByTestAndNumber(selectedTest,
 						questionNumber);
 
-				ans1 = new Answer(newQuestion, 1, editAnswer1.getText()
-						.toString(), chkAnswer1.isChecked(), 0);
-				ans2 = new Answer(newQuestion, 2, editAnswer2.getText()
-						.toString(), chkAnswer2.isChecked(), 0);
-				ans3 = new Answer(newQuestion, 3, editAnswer3.getText()
-						.toString(), chkAnswer3.isChecked(), 0);
-				ans4 = new Answer(newQuestion, 4, editAnswer4.getText()
-						.toString(), chkAnswer4.isChecked(), 0);
-				ans5 = new Answer(newQuestion, 5, editAnswer5.getText()
-						.toString(), chkAnswer5.isChecked(), 0);
-
+				ans1 = new Answer(1, editAnswer1.getText().toString(), chkAnswer1.isChecked(), 0, newQuestion.getId_question());
+				ans2 = new Answer(2, editAnswer2.getText().toString(), chkAnswer2.isChecked(), 0, newQuestion.getId_question());
+				ans3 = new Answer(3, editAnswer3.getText().toString(), chkAnswer3.isChecked(), 0, newQuestion.getId_question());
+				ans4 = new Answer(4, editAnswer4.getText().toString(), chkAnswer4.isChecked(), 0, newQuestion.getId_question());
+				ans5 = new Answer(5, editAnswer5.getText().toString(), chkAnswer5.isChecked(), 0, newQuestion.getId_question());
+				
 				db.insertAnswer(ans1);
 				db.insertAnswer(ans2);
 				db.insertAnswer(ans3);
 				db.insertAnswer(ans4);
 				db.insertAnswer(ans5);
-
+				
+				Toast.makeText(this, getResources().getString(R.string.QuestionSave), Toast.LENGTH_SHORT).show();
+				
+				}else{
+					
+					selectedQuestion.setText(editQuest.getText().toString());
+					
+					db.alterQuestion(selectedQuestion);
+					
+					ans1.setText(editAnswer1.getText().toString());
+					ans1.setCorrect(chkAnswer1.isChecked());
+					ans2.setText(editAnswer2.getText().toString());
+					ans2.setCorrect(chkAnswer2.isChecked());
+					ans3.setText(editAnswer3.getText().toString());
+					ans3.setCorrect(chkAnswer3.isChecked());
+					ans4.setText(editAnswer4.getText().toString());
+					ans4.setCorrect(chkAnswer4.isChecked());
+					ans5.setText(editAnswer5.getText().toString());
+					ans5.setCorrect(chkAnswer5.isChecked());
+					
+					db.alterAnswer(ans1);
+					db.alterAnswer(ans2);
+					db.alterAnswer(ans3);
+					db.alterAnswer(ans4);
+					db.alterAnswer(ans5);
+					
+					Toast.makeText(this, getResources().getString(R.string.QuestionAltered), Toast.LENGTH_SHORT).show();
+				}
 				Intent it = new Intent();
 				setResult(ManageQuestionActivity.RESULT_OK, it);
 				finish();
 			} catch (Exception ex) {
-				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT)
-						.show();
+				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
 			}
 
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	@Override
+	public void onBackPressed() {
+		Intent it = new Intent();
+		setResult(ManageQuestionActivity.RESULT_OK, it);
+		finish();
+		super.onBackPressed();
+	}
+	
 	
 }
 	
