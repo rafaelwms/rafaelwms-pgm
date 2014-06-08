@@ -67,7 +67,7 @@
     <string name="lblModelTestNumberQ">"Questions: "</string>
     <string name="exceptionQuestionEmpty">Must type the Question field.</string>
     <string name="exceptionAnswersEmpty">Must type the Question field.</string>
-    <string name="exceptionAnswerCorrect">Must type the Question field.</string>
+    <string name="exceptionAnswerCorrect">Must select one correct answer at least.</string>
     <string name="exceptionMustSelectQuest">Must select a Question first.</string>
     <string name="title_activity_question_list">Manage Questions</string>
     <string name="btnMngQuestion">Manage Questions</string>
