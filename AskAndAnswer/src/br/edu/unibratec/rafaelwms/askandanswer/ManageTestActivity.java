@@ -21,7 +21,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.os.Build;
 
-public class ManagementActivity extends ActionBarActivity implements
+public class ManageTestActivity extends ActionBarActivity implements
 		OnItemClickListener {
 
 	User loggedUser;
@@ -114,7 +114,7 @@ public class ManagementActivity extends ActionBarActivity implements
 				Toast.makeText(this, getResources().getString(R.string.exceptionMustSelectTest), Toast.LENGTH_SHORT)
 				.show();
 			}else{
-			Intent it = new Intent(this, ManageQuestionActivity.class);
+			Intent it = new Intent(this,QuestionListActivity.class);
 			it.putExtra(SELECTED_TEST, testSelected);
 			startActivityForResult(it, REQUEST_NEW_QUESTION);
 			return true;
@@ -165,11 +165,12 @@ public class ManagementActivity extends ActionBarActivity implements
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		if(requestCode == REQUEST_NEW_QUESTION && resultCode == RESULT_OK){
 			refreshTestList();
 			clearEditTexts();
+			
 		}
+
 	}
 
 }

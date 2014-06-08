@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="br.edu.unibratec.rafaelwms.askandanswer.ManagementActivity"
+    tools:context="br.edu.unibratec.rafaelwms.askandanswer.ManageTestActivity"
     tools:ignore="MergeRootFrame" >
 
     <TextView

@@ -11,9 +11,9 @@
         app:showAsAction="always"/>
     <item
         android:id="@+id/add_question_action"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@android:drawable/ic_menu_agenda"
         android:orderInCategory="100"
-        android:title="@string/menuAddQuestion"
+        android:title="@string/btnMngQuestion"
         app:showAsAction="always"/>
     <item
         android:id="@+id/del_test_action"

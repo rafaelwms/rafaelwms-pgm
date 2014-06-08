@@ -1,11 +1,12 @@
 package br.edu.unibratec.rafaelwms.askandanswer;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Question {
+public class Question implements Serializable{
 	
 	private int id_question;
-	private Test test;
+	private int test;
 	private int number;
 	private String text;
 	private List<Answer> answers;
@@ -15,24 +16,24 @@ public class Question {
 	
 	public Question(int id_question, Test test, int number, String text, List<Answer> answers) {
 		this.setId_question(id_question);
-		this.setTest(test);
+		this.setTest(test.getId_test());
 		this.setNumber(number);
 		this.setText(text);
 		this.setAnswers(answers);
 	}
 	
 	public Question(Test test, int number, String text, List<Answer> answers) {
-		this.setTest(test);
+		this.setTest(test.getId_test());
 		this.setNumber(number);
 		this.setText(text);
 		this.setAnswers(answers);
 	}
 	
 	
-	public Test getTest() {
+	public int getTest() {
 		return test;
 	}
-	public void setTest(Test test) {
+	public void setTest(int test) {
 		this.test = test;
 	}
 	public int getNumber() {
