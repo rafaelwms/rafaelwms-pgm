@@ -42,7 +42,7 @@ public class QuestionListActivity extends ActionBarActivity implements
 	Button btnAddQuest;
 	List<Question> questions;
 	QuestionMngAdapter adapter;
-	Test selectedTest;
+	Test selectedTest2Manage;
 	Question selectedQuestion;
 	
 	
@@ -60,8 +60,9 @@ public class QuestionListActivity extends ActionBarActivity implements
 		btnAddQuest.setOnClickListener(this);
 
 		Intent it = getIntent();
-		selectedTest = (Test) it.getSerializableExtra(ManageTestActivity.SELECTED_TEST);
-		txtTestName.setText(selectedTest.getText_title());
+		selectedTest2Manage = (Test) it.getSerializableExtra(ManageTestActivity.SELECTED_TEST);
+		selectedTest2Manage.setQuestions(db.findQuestionsByTest(selectedTest2Manage));
+		txtTestName.setText(selectedTest2Manage.getText_title());
 		questions = new ArrayList<>();
 		selectedQuestion = new Question();
 			
@@ -86,7 +87,7 @@ public class QuestionListActivity extends ActionBarActivity implements
 				}		
 				
 				Intent it = new Intent(this, ManageQuestionActivity.class);
-				it.putExtra(SELECTED_TEST, selectedTest);
+				it.putExtra(SELECTED_TEST, selectedTest2Manage);
 				it.putExtra(SELECTED_QUESTION, selectedQuestion);
 				startActivityForResult(it, EDIT_QUESTION);	
 				return true;
@@ -148,7 +149,7 @@ public class QuestionListActivity extends ActionBarActivity implements
 		if(v.getId() == R.id.btnAddQuestion){			
 			selectedQuestion = new Question();
 			Intent it = new Intent(this, ManageQuestionActivity.class);
-			it.putExtra(SELECTED_TEST, selectedTest);
+			it.putExtra(SELECTED_TEST, selectedTest2Manage);
 			it.putExtra(SELECTED_QUESTION, selectedQuestion);
 			startActivityForResult(it, NEW_QUESTION);			
 		}
@@ -158,7 +159,7 @@ public class QuestionListActivity extends ActionBarActivity implements
 	protected void onActivityResult(int requestcode, int resultcode, Intent data) {
 		super.onActivityResult(requestcode, resultcode, data);
 		if(requestcode == NEW_QUESTION && resultcode == RESULT_OK){
-			selectedTest.setQuestions(db.findQuestionsByTest(selectedTest));
+			selectedTest2Manage.setQuestions(db.findQuestionsByTest(selectedTest2Manage));
 			refreshList();
 		}
 		
@@ -166,8 +167,8 @@ public class QuestionListActivity extends ActionBarActivity implements
 
 	private void refreshList() {
 		questions = new ArrayList<>();
-		if (selectedTest.getQuestions() != null && selectedTest.getQuestions().size() > 0) {
-			questions = db.findQuestionsByTest(selectedTest);
+		if (selectedTest2Manage.getQuestions() != null && selectedTest2Manage.getQuestions().size() > 0) {
+			questions = selectedTest2Manage.getQuestions();
 		}
 		adapter = new QuestionMngAdapter(questions);
 		listQuests.setAdapter(adapter);

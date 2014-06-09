@@ -75,14 +75,20 @@
     <string name="menuEditQuest">Edit Question</string>
     <string name="menuDelQuest">Delete Question</string>
     <string name="menuClose">Close</string>
+    <string name="menuAnswerTest">Answer Test</string>
     <string name="selected"> is selected.</string>
     <string name="QuestionSave">New question saved.</string>
     <string name="QuestionAltered">Modified question saved.</string>
     <string name="Question">Question</string>
     <string name="dialogMsgDelTest">Proceed Test erase?</string>
     <string name="dialogMsgDelQuest">Proceed Question erase?</string>
+    <string name="dialogTestSelected">Proceed answering this test?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    
+    <string name="lblTestAuthor">Author:</string>
+    <string name="test">Test</string>
+    <string name="title_activity_answer_tests_list">AnswerTestsListActivity</string>
+    <string name="lblTestList">Choose one of tests below to answer it questions.</string>
+    <string name="title_activity_answer_questions_test">AnswerQuestionsTestActivity</string>
 
 </resources>
