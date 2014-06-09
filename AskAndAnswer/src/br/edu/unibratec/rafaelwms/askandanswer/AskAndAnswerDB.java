@@ -198,7 +198,6 @@ public class AskAndAnswerDB {
 		User user = new User();
 		user = findUserById(user_id);
 		
-
 		Test test = new Test(id, user, title, category, null, value_test);
 		return test;
 	}
@@ -211,9 +210,22 @@ public class AskAndAnswerDB {
 		String txt_question = cursor.getString(cursor.getColumnIndex("txt_question"));
 		
 		Test test = findTestById(test_id);
-		
 	
 		Question quest = new Question(id, test, number, txt_question, null);
+		return quest;
+	}
+	
+	private Question fillQuestionByTest(Cursor cursor) {
+
+		int id = cursor.getInt(cursor.getColumnIndex("_id"));
+		int test_id = cursor.getInt(cursor.getColumnIndex("test"));
+		int number = cursor.getInt(cursor.getColumnIndex("number"));
+		String txt_question = cursor.getString(cursor.getColumnIndex("txt_question"));
+		
+		Test test = findTestById(test_id);
+		List<Answer> answers = findAnswersByQuestionId(id);
+	
+		Question quest = new Question(id, test, number, txt_question, answers);
 		return quest;
 	}
 	
@@ -253,6 +265,7 @@ public class AskAndAnswerDB {
 		
 		while (cursor.moveToNext()){
 			Test test = fillTest(cursor);
+			test.setQuestions(findQuestionsByTest(test));
 			tests.add(test);
 		}
 		cursor.close();
@@ -287,7 +300,24 @@ public class AskAndAnswerDB {
 				"select * from question where test = ?", new String[]{test.getId_test()+""});
 		
 		while (cursor.moveToNext()){
-			Question quest = fillQuestion(cursor);
+			Question quest = fillQuestionByTest(cursor);
+			questions.add(quest);
+		}
+		cursor.close();
+		db.close();
+		return questions;
+	}
+	
+	public List<Question> findQuestionsByTestId(int id){
+		List<Question> questions = new ArrayList<Question>();
+		
+		SQLiteDatabase db = helper.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery(
+				"select * from question where test = ?", new String[]{id+""});
+		
+		while (cursor.moveToNext()){
+			Question quest = fillQuestionByTest(cursor);
 			questions.add(quest);
 		}
 		cursor.close();

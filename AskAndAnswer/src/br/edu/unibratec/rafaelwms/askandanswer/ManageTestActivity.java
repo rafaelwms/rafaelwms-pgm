@@ -30,7 +30,7 @@ public class ManageTestActivity extends ActionBarActivity implements
 	EditText edtTestName;
 	EditText edtTestCategory;
 	EditText edtTestNote;
-	Test testSelected;
+	Test selectedMngTest;
 	List<Test> tests;
 	AskAndAnswerDB db;
 	ListView testList;
@@ -49,7 +49,7 @@ public class ManageTestActivity extends ActionBarActivity implements
 
 		loggedUser = (User) it.getSerializableExtra(MainActivity.SESSION);
 
-		testSelected = null;
+		selectedMngTest = null;
 		edtTestName = (EditText) findViewById(R.id.editTestName);
 		edtTestCategory = (EditText) findViewById(R.id.editNewTestCategory);
 		edtTestNote = (EditText) findViewById(R.id.editNewTestNote);
@@ -79,7 +79,7 @@ public class ManageTestActivity extends ActionBarActivity implements
 		if (item.getItemId() == R.id.save_test_action) {
 			try {
 
-				if (testSelected == null || testSelected.getId_test() <= 0) {
+				if (selectedMngTest == null || selectedMngTest.getId_test() <= 0) {
 
 					Test test = new Test(MainActivity.loggedUser, edtTestName
 							.getText().toString(), edtTestCategory.getText()
@@ -93,11 +93,11 @@ public class ManageTestActivity extends ActionBarActivity implements
 				} else {
 
 					Test test = new Test(
-							testSelected.getId_test(),
+							selectedMngTest.getId_test(),
 							MainActivity.loggedUser,
 							edtTestName.getText().toString(),
 							edtTestCategory.getText().toString(),
-							testSelected.getQuestions(),
+							selectedMngTest.getQuestions(),
 							Double.parseDouble(edtTestNote.getText().toString()));
 
 					db.alterTest(test);
@@ -111,7 +111,7 @@ public class ManageTestActivity extends ActionBarActivity implements
 			}
 		}
 		if (item.getItemId() == R.id.add_question_action) {
-			if (testSelected == null || testSelected.getId_test() <= 0) {
+			if (selectedMngTest == null || selectedMngTest.getId_test() <= 0) {
 				Toast.makeText(
 						this,
 						getResources().getString(
@@ -119,7 +119,7 @@ public class ManageTestActivity extends ActionBarActivity implements
 						Toast.LENGTH_SHORT).show();
 			} else {
 				Intent it = new Intent(this, QuestionListActivity.class);
-				it.putExtra(SELECTED_TEST, testSelected);
+				it.putExtra(SELECTED_TEST, selectedMngTest);
 				startActivityForResult(it, REQUEST_NEW_QUESTION);
 				return true;
 			}
@@ -127,7 +127,7 @@ public class ManageTestActivity extends ActionBarActivity implements
 
 		if (item.getItemId() == R.id.del_test_action) {
 
-			if (testSelected == null || testSelected.getId_test() <= 0) {
+			if (selectedMngTest == null || selectedMngTest.getId_test() <= 0) {
 				Toast.makeText(
 						this,
 						getResources().getString(
@@ -143,8 +143,8 @@ public class ManageTestActivity extends ActionBarActivity implements
 				builder.setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								db.deleteTest(testSelected);
-								testSelected = new Test();
+								db.deleteTest(selectedMngTest);
+								selectedMngTest = new Test();
 								refreshTestList();
 								clearEditTexts();
 							}
@@ -177,17 +177,18 @@ public class ManageTestActivity extends ActionBarActivity implements
 		edtTestName.setText("");
 		edtTestCategory.setText("");
 		edtTestNote.setText("");
-		testSelected = new Test();
+		selectedMngTest = new Test();
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 
-		testSelected = (Test) testList.getItemAtPosition(position);
-		edtTestName.setText(testSelected.getText_title());
-		edtTestCategory.setText(testSelected.getCategory());
-		edtTestNote.setText(testSelected.getTest_value() + "");
+		selectedMngTest = (Test) testList.getItemAtPosition(position);
+		selectedMngTest.setQuestions(db.findQuestionsByTest(selectedMngTest));
+		edtTestName.setText(selectedMngTest.getText_title());
+		edtTestCategory.setText(selectedMngTest.getCategory());
+		edtTestNote.setText(selectedMngTest.getTest_value() + "");
 
 	}
 

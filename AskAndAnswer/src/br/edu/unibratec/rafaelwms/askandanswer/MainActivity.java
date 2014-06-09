@@ -208,7 +208,7 @@ public class MainActivity extends ActionBarActivity implements
 
 			} else {
 
-				Intent it = new Intent(this, TutorialActivity.class);
+				Intent it = new Intent(this, AnswerTestsListActivity.class);
 				startActivity(it);
 				mDrawer.closeDrawer(mListView);
 			}

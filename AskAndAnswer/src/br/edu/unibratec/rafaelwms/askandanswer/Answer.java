@@ -1,6 +1,8 @@
 package br.edu.unibratec.rafaelwms.askandanswer;
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer implements Serializable{
 	
 	private int id_answer;
 	private int question;

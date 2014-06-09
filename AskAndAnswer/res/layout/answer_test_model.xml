@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/txtQuestionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nullText"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/txtSpc01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nullText"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <CheckBox
+        android:id="@+id/chkAns01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nullText" />
+
+    <CheckBox
+        android:id="@+id/chkAns02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nullText" />
+
+    <CheckBox
+        android:id="@+id/chkAns03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nullText" />
+
+    <CheckBox
+        android:id="@+id/chkAns04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nullText" />
+
+    <CheckBox
+        android:id="@+id/chkAns05"
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nullText" />
+
+    <TextView
+        android:id="@+id/txtSpc02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nullText"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</LinearLayout>
