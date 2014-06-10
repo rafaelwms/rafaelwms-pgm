@@ -35,7 +35,7 @@ public class QuestionListActivity extends ActionBarActivity implements
 	public static final int EDIT_QUESTION = 11;
 	public static final String SELECTED_TEST = "selectedTest";
 	public static final String SELECTED_QUESTION = "selectedQuestion";
-	
+
 	AskAndAnswerDB db;
 	TextView txtTestName;
 	ListView listQuests;
@@ -44,14 +44,13 @@ public class QuestionListActivity extends ActionBarActivity implements
 	QuestionMngAdapter adapter;
 	Test selectedTest2Manage;
 	Question selectedQuestion;
-	
-	
+	int index = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_question_list);
-		
+
 		db = new AskAndAnswerDB(this);
 		txtTestName = (TextView) findViewById(R.id.txtTestName2);
 		listQuests = (ListView) findViewById(R.id.listViewQuestions);
@@ -60,12 +59,14 @@ public class QuestionListActivity extends ActionBarActivity implements
 		btnAddQuest.setOnClickListener(this);
 
 		Intent it = getIntent();
-		selectedTest2Manage = (Test) it.getSerializableExtra(ManageTestActivity.SELECTED_TEST);
-		selectedTest2Manage.setQuestions(db.findQuestionsByTest(selectedTest2Manage));
+		selectedTest2Manage = (Test) it
+				.getSerializableExtra(ManageTestActivity.SELECTED_TEST);
+		selectedTest2Manage.setQuestions(db
+				.findQuestionsByTest(selectedTest2Manage));
 		txtTestName.setText(selectedTest2Manage.getText_title());
 		questions = new ArrayList<>();
 		selectedQuestion = new Question();
-			
+
 		refreshList();
 	}
 
@@ -79,102 +80,119 @@ public class QuestionListActivity extends ActionBarActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 		if (id == R.id.edit_question_action) {
-			
-			try{
-				
-				if(selectedQuestion == null || selectedQuestion.getId_question() <= 0){
-					throw new Exception(getResources().getString(string.exceptionMustSelectQuest));
-				}		
-				
+
+			try {
+
+				if (selectedQuestion == null
+						|| selectedQuestion.getId_question() <= 0) {
+					throw new Exception(getResources().getString(
+							string.exceptionMustSelectQuest));
+				}
+
 				Intent it = new Intent(this, ManageQuestionActivity.class);
 				it.putExtra(SELECTED_TEST, selectedTest2Manage);
 				it.putExtra(SELECTED_QUESTION, selectedQuestion);
-				startActivityForResult(it, EDIT_QUESTION);	
+				startActivityForResult(it, EDIT_QUESTION);
 				return true;
-			}catch(Exception ex){
+			} catch (Exception ex) {
 				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT)
-				.show();
+						.show();
 				return true;
-			}			
+			}
 
 		}
-		
-		if(id == R.id.del_question_action){
-			try{
-				if(selectedQuestion == null || selectedQuestion.getId_question() <= 0){
-					throw new Exception(getResources().getString(string.exceptionMustSelectQuest));
+
+		if (id == R.id.del_question_action) {
+			try {
+				if (selectedQuestion == null
+						|| selectedQuestion.getId_question() <= 0) {
+					throw new Exception(getResources().getString(
+							string.exceptionMustSelectQuest));
 				}
-				
+
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-				builder.setMessage(R.string.dialogMsgDelQuest)
-					   .setTitle(R.string.menuDelQuest);
-				
-				builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-			           public void onClick(DialogInterface dialog, int id) {
-			        	   
-							db.deleteQuestion(selectedQuestion);
-							refreshList();
-			           }
-			       });
-			builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-			           public void onClick(DialogInterface dialog, int id) {
-			        	   refreshList();
-			           }
-			       });
+				builder.setMessage(R.string.dialogMsgDelQuest).setTitle(
+						R.string.menuDelQuest);
 
-			AlertDialog dialog = builder.create();
-				
-			dialog.show();
-				
-				
-			}catch(Exception ex){
+				builder.setPositiveButton(R.string.ok,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+							
+								if(index > 1 && questions.size() > index){
+									for(int i = index; i < questions.size(); i++){	
+										Question q = questions.get(i);
+										q.setNumber(q.getNumber() - 1);
+										db.alterQuestion(q);
+									}
+								}
+								db.deleteQuestion(selectedQuestion);
+								refreshList();
+							}
+						});
+				builder.setNegativeButton(R.string.cancel,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								refreshList();
+							}
+						});
+
+				AlertDialog dialog = builder.create();
+
+				dialog.show();
+
+			} catch (Exception ex) {
 				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT)
-				.show();
-			}			
+						.show();
+			}
 			return true;
 		}
-		
+
 		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		index = (position + 1);
 		selectedQuestion = (Question) listQuests.getItemAtPosition(position);
-		Toast.makeText(this, getResources().getString(string.Question)+" " +(position + 1)+") " + getResources().getString(string.selected), Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, getResources().getString(string.Question) + " "+ selectedQuestion.getNumber() + ") "+ getResources().getString(string.selected), Toast.LENGTH_SHORT).show();
+		
 	}
 
 	@Override
-	public void onClick(View v) {	
-		if(v.getId() == R.id.btnAddQuestion){			
+	public void onClick(View v) {
+		if (v.getId() == R.id.btnAddQuestion) {
 			selectedQuestion = new Question();
 			Intent it = new Intent(this, ManageQuestionActivity.class);
 			it.putExtra(SELECTED_TEST, selectedTest2Manage);
 			it.putExtra(SELECTED_QUESTION, selectedQuestion);
-			startActivityForResult(it, NEW_QUESTION);			
+			startActivityForResult(it, NEW_QUESTION);
 		}
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestcode, int resultcode, Intent data) {
 		super.onActivityResult(requestcode, resultcode, data);
-		if(requestcode == NEW_QUESTION && resultcode == RESULT_OK){
-			selectedTest2Manage.setQuestions(db.findQuestionsByTest(selectedTest2Manage));
+		if (requestcode == NEW_QUESTION && resultcode == RESULT_OK) {
+			selectedTest2Manage.setQuestions(db
+					.findQuestionsByTest(selectedTest2Manage));
 			refreshList();
 		}
-		
+
 	}
 
 	private void refreshList() {
 		questions = new ArrayList<>();
 		if (selectedTest2Manage.getQuestions() != null && selectedTest2Manage.getQuestions().size() > 0) {
-			questions = selectedTest2Manage.getQuestions();
+			questions = db.findQuestionsByTest(selectedTest2Manage);
 		}
 		adapter = new QuestionMngAdapter(questions);
 		listQuests.setAdapter(adapter);
 		selectedQuestion = new Question();
+		index = -1;
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 		Intent it = new Intent();

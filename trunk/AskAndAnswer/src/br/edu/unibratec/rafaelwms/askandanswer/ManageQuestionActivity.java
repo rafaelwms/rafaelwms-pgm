@@ -98,7 +98,7 @@ public class ManageQuestionActivity extends ActionBarActivity {
 		}
 		
 				
-		if (selectedTest.getQuestions() != null) {
+		if (selectedTest.getQuestions() != null && selectedTest.getQuestions().size() >= 1) {
 			questions = selectedTest.getQuestions();
 			questionNumber = 0;
 			for(Question qst : questions){	
