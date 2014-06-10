@@ -43,7 +43,7 @@ public class QuestionMngAdapter extends BaseAdapter {
 		TextView txtNumQuest = (TextView)convertView.findViewById(R.id.lblQuestionListTestNumber);
 		TextView txtNameQuest = (TextView)convertView.findViewById(R.id.txtQuestionListTitle);
 		
-		txtNumQuest.setText((position+1)+") ");
+		txtNumQuest.setText(quest.getNumber()+") ");
 		txtNameQuest.setText(quest.getText().toString());
 		
 		
