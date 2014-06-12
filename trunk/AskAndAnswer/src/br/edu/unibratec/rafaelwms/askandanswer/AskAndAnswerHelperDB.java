@@ -2,7 +2,6 @@ package br.edu.unibratec.rafaelwms.askandanswer;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class AskAndAnswerHelperDB extends SQLiteOpenHelper {
@@ -40,6 +39,17 @@ public class AskAndAnswerHelperDB extends SQLiteOpenHelper {
 				"txt_answer text not null, " +
 				"correct integer not null, " +
 				"answer_value real not null);");
+		
+		db.execSQL("create table aquestion (" +
+				"user integer not null REFERENCES user(_id) ON DELETE CASCADE, " +
+				"quest integer not null REFERENCES question(_id) ON DELETE CASCADE, " +
+				"answer1 integer not null, " +
+				"answer2 integer not null, " +
+				"answer3 integer not null, " +
+				"answer4 integer not null, " +
+				"answer5 integer not null, " +
+				"amount real not null);");
+		
 		
 		db.execSQL("create table result (" +
 				"user integer not null REFERENCES user(_id) ON DELETE NO ACTION, " +
