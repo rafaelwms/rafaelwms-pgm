@@ -456,6 +456,7 @@ int string accountCreated 0x7f0a002e
 int string action_settings 0x7f0a000f
 int string app_name 0x7f0a000d
 int string btnAddQuestion 0x7f0a0048
+int string btnConfirmAnswer 0x7f0a005b
 int string btnCreateAccount 0x7f0a0027
 int string btnDeleteTestHint 0x7f0a0037
 int string btnLogin 0x7f0a0026

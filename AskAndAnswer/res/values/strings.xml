@@ -90,5 +90,6 @@
     <string name="title_activity_answer_tests_list">AnswerTestsListActivity</string>
     <string name="lblTestList">Choose one of tests below to answer it questions.</string>
     <string name="title_activity_answer_questions_test">AnswerQuestionsTestActivity</string>
+    <string name="btnConfirmAnswer">Confirm</string>
 
 </resources>

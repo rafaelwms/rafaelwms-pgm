@@ -28,7 +28,8 @@ public class AnswerTestsListActivity extends ActionBarActivity implements OnItem
 	
 	AskAndAnswerDB db;
 	ListView testList;
-	List<Test> tests;
+	List<Test> allTests;
+	List<Test> testsToAnswer;
 	AnswerTestListAdapter adapter;
 	Test selectedTest;
 	public static final int CALL_QUESTIONS_TEST = 1212;
@@ -41,7 +42,8 @@ public class AnswerTestsListActivity extends ActionBarActivity implements OnItem
 		setContentView(R.layout.activity_answer_tests_list);
 		
 		db = new AskAndAnswerDB(this);
-		tests = new ArrayList<>();
+		allTests = new ArrayList<>();
+		testsToAnswer = new ArrayList<>();
 		testList = (ListView)findViewById(R.id.listViewAnswerTestsList);
 		testList.setOnItemClickListener(this);
 		selectedTest = new Test();
@@ -115,9 +117,17 @@ public class AnswerTestsListActivity extends ActionBarActivity implements OnItem
 	}
 	
 	private void refreshlist(){
-		tests = new ArrayList<>();
-		tests = db.allTests();
-		adapter = new AnswerTestListAdapter(tests);
+		allTests = new ArrayList<>();
+		allTests = db.allTests();
+		testsToAnswer = new ArrayList<>();
+		for(Test tst : allTests){
+			
+			if(tst.getUser().getId_user() != MainActivity.loggedUser.getId_user()){
+				testsToAnswer.add(tst);
+			}
+			
+		}
+		adapter = new AnswerTestListAdapter(testsToAnswer);
 		testList.setAdapter(adapter);
 		selectedTest = new Test();
 	}
@@ -133,4 +143,7 @@ public class AnswerTestsListActivity extends ActionBarActivity implements OnItem
 		it.putExtra(TEST_TO_ANSWER, selectedTest);
 		startActivityForResult(it, CALL_QUESTIONS_TEST);
 	}
+	
+
+	
 }

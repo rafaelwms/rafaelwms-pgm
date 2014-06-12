@@ -6,6 +6,11 @@
     android:orientation="vertical"
     tools:context="br.edu.unibratec.rafaelwms.askandanswer.ManageTestActivity"
     tools:ignore="MergeRootFrame" >
+    
+    <LinearLayout android:focusable="true"
+  		android:focusableInTouchMode="true" 
+  		android:layout_width="0px"
+  		android:layout_height="0px" />
 
     <TextView
         android:id="@+id/textNewTestTite"
@@ -31,8 +36,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text" >
-
-        <requestFocus />
     </EditText>
 
     <TextView

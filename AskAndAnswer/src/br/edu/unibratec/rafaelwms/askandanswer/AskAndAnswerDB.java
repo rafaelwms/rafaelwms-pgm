@@ -69,6 +69,42 @@ public class AskAndAnswerDB {
 		values.put("answer_value", answer.getValue());
 		return values;
 	}
+	
+	private ContentValues answeredQuestionValues(AnsweredQuestion aq) {
+
+		ContentValues values = new ContentValues();
+
+		values.put("user", aq.getUser().getId_user());
+		values.put("question", aq.getQuestion().getId_question());
+		if(!aq.isCheckedAnswer1()){
+			values.put("answer1", 0);
+		} else if(aq.isCheckedAnswer1()){
+			values.put("answer1", 1);
+		}
+		if(!aq.isCheckedAnswer2()){
+			values.put("answer2", 0);
+		} else if(aq.isCheckedAnswer2()){
+			values.put("answer2", 1);
+		}
+		if(!aq.isCheckedAnswer3()){
+			values.put("answer3", 0);
+		} else if(aq.isCheckedAnswer3()){
+			values.put("answer3", 1);
+		}
+		if(!aq.isCheckedAnswer4()){
+			values.put("answer4", 0);
+		} else if(aq.isCheckedAnswer4()){
+			values.put("answer4", 1);
+		}
+		if(!aq.isCheckedAnswer5()){
+			values.put("answer5", 0);
+		} else if(aq.isCheckedAnswer1()){
+			values.put("answer5", 1);
+		}
+		values.put("amount", aq.getAmount());
+		
+		return values;
+	}
 
 	public void insertUser(User user) {
 		SQLiteDatabase db = helper.getWritableDatabase();
@@ -98,6 +134,13 @@ public class AskAndAnswerDB {
 		db.close();
 	}
 	
+	
+	public void insertAnsweredQuestion(AnsweredQuestion aq) {
+		SQLiteDatabase db = helper.getWritableDatabase();
+		ContentValues values = answeredQuestionValues(aq);
+		db.insert("aquestion", null, values);
+		db.close();
+	}
 	
 	public void alterUser(User user) {
 		SQLiteDatabase db = helper.getWritableDatabase();
@@ -132,6 +175,14 @@ public class AskAndAnswerDB {
 		db.close();
 	}
 	
+	public void alterAnsweredQuestion(AnsweredQuestion aq) {
+		SQLiteDatabase db = helper.getWritableDatabase();
+		ContentValues values = answeredQuestionValues(aq);
+		db.update("answer", values, "user = ? and question = ?", new String[] { aq.getUser().getId_user()
+				+ "", aq.getQuestion().getId_question()+"" });
+		db.close();
+	}
+	
 	public void deleteUser(User user) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		db.delete("user", "_id = ?", new String[] { user.getId_user() + "" });
@@ -153,6 +204,12 @@ public class AskAndAnswerDB {
 	public void deleteAnswer(Answer answer) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		db.delete("answer", "_id = ?", new String[] { answer.getId_answer() + "" });
+		db.close();
+	}
+	
+	public void deleteAnsweredQuestion(AnsweredQuestion aq) {
+		SQLiteDatabase db = helper.getWritableDatabase();
+		db.delete("answer", "user = ? and question = ?", new String[] { aq.getUser().getId_user() + "", aq.getQuestion().getId_question()+"" });
 		db.close();
 	}
 	
@@ -252,6 +309,37 @@ public class AskAndAnswerDB {
 
 		Test test = new Test(id, user, title, category, null, value_test);
 		return test;
+	}
+	
+	private AnsweredQuestion fillAnsweredQuestion(Cursor cursor){
+		
+		User user = findUserById(cursor.getInt(cursor.getColumnIndex("user")));
+		Question question = findQuestionsById(cursor.getInt(cursor.getColumnIndex("question")));
+		boolean ans1 = false;
+		if(cursor.getInt(cursor.getColumnIndex("answer1")) == 1){
+			ans1 = true;
+		}
+		boolean ans2 = false;
+		if(cursor.getInt(cursor.getColumnIndex("answer2")) == 1){
+			ans2 = true;
+		}
+		boolean ans3 = false;
+		if(cursor.getInt(cursor.getColumnIndex("answer3")) == 1){
+			ans3 = true;
+		}
+		boolean ans4 = false;
+		if(cursor.getInt(cursor.getColumnIndex("answer4")) == 1){
+			ans4 = true;
+		}
+		boolean ans5 = false;
+		if(cursor.getInt(cursor.getColumnIndex("answer5")) == 1){
+			ans5 = true;
+		}
+		double amount = cursor.getDouble(cursor.getColumnIndex("amount"));
+		
+		AnsweredQuestion aq = new AnsweredQuestion(user, question, ans1, ans2, ans3, ans4, ans5, amount);
+		
+		return aq;
 	}
 	
 
@@ -486,4 +574,24 @@ public class AskAndAnswerDB {
 				return null;
 			}
 		}
+		
+		
+		public List<AnsweredQuestion> findAnsweredQuestionsByUser(User user) {
+			List<AnsweredQuestion> aqs = new ArrayList<>();
+			SQLiteDatabase db = helper.getReadableDatabase();
+			Cursor cursor = db.rawQuery(
+					"select * from aquestion where user = ?",
+					new String[] { user.getId_user()+"" });
+
+			while (cursor.moveToNext()) {
+				AnsweredQuestion aq = fillAnsweredQuestion(cursor);
+				aqs.add(aq);
+			}
+				cursor.close();
+				db.close();
+				return aqs;
+
+		}
+
+		
 }
