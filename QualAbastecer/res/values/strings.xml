@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<!-- ouououo -->
+    
     <string name="app_name">Which Fuel?</string>
     <string name="action_settings">About</string>
     <string name="about">Developed by: Rafael WMS</string>
@@ -27,6 +29,49 @@
     <string name="lblAct2ResultValueEth">"The price of Ethanol Fuel is lower then 70% th Gasoline price. Use Ethanol Fuel. "</string>
     <string name="lblAct2ResultGas">The price of Ethanol is upper than 70% of the Gasoline tax. Use Gasoline.</string>
     <string name="errorField">"Must enter a value."</string>
-    <string name="title_activity_entrada">Wich Fuel</string>
+    <string name="title_activity_calculadora">Calculator</string>
 
+    <!-- Drawer --> 
+    <string-array name="drawer_options">
+        <item>Calculate</item>
+        <item>My Cars</item>
+        <item>Gas Stations</item>
+        <item>Feeding</item>
+        <item>Contact</item>
+    </string-array>
+
+    <string name="title_activity_carro">My Cars</string>
+    <string name="lblDadosCarro">Car Info</string>
+    <string name="hintCarroNome">Car Name or ID</string>
+    <string name="lblCarroCor">Color\n Set</string>    
+    
+    <!-- Menu --> 
+    <string name="menuSalvarCarro">Save Car</string>
+    <string name="menuDeletarCarro">Delete Car</string>
+    <string name="null_text">@null</string>
+    
+    <!-- Dialogs -->    
+    <string name="corRed">RED color.</string>
+    <string name="corGreen">GREEN color.</string>
+    <string name="corBlue">BLUE color.</string>
+    <string name="corRedValue">RED color value:</string>
+    <string name="corGreenValue">GREEN color value:</string>
+    <string name="corBlueValue">BLUE color value:</string>
+    
+    <!-- Dialogs -->    
+    <string name="dialogTitleDeleteCar">DELETE CAR</string>
+    <string name="dialogMsgDeleteCar">Proceed car delete?</string>    
+    <string name="dialogBtnOK">OK</string>
+    <string name="dialogBtnCanclear">Cancel</string>
+    
+    <!-- Toasts -->    
+    <string name="exceptionCombustivelVazio">Must select a fuel type at once.</string>
+    <string name="exceptionNomeUtilizadoCarro">Car name is used by another car.</string>
+    
+    <string name="toastSalvarCarro">Car saved sucessifully.</string>
+    <string name="toastAtualizarCarro">Car updated sucessifully.</string>
+	<string name="toastDeletarCarro">Car deleted sucessifully.</string>
+	<string name="toastSelecionarCarro">Must select a car first.</string>
+	<string name="lblCarrosLista">My Car List</string>
+	
 </resources>

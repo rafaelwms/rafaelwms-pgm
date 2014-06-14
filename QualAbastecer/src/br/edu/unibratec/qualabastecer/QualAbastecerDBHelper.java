@@ -15,12 +15,16 @@ public class QualAbastecerDBHelper extends SQLiteOpenHelper{
 		
 		db.execSQL("CREATE TABLE carro (" +
 				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-				"nome TEXT NOT NULL UNIQUE);");
+				"nome TEXT NOT NULL UNIQUE, " +
+				"tipo INTEGER NOT NULL, " +
+				"cor INTEGER NOT NULL, " +
+				"combustivel INTEGER NOT NULL);");
 		
 		db.execSQL("CREATE TABLE posto (" +
 				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"nome TEXT NOT NULL UNIQUE, " +
 				"alcool REAL NOT NULL, " +
+				"diesel REAL NOT NULL, " +
 				"gasolina REAL NOT NULL);");
 		
 		db.execSQL("CREATE TABLE abastecimento (" +

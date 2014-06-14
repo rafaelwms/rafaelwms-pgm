@@ -22,11 +22,13 @@ public class QualAbastecerDB {
 	 */
 	
 	
-	private ContentValues carroValues(Carro carro){
+	private ContentValues carroValues(Veiculo carro){
 		
 		ContentValues values = new ContentValues();
 		
 		values.put("nome", carro.getNome());
+		values.put("cor", carro.getCor());
+		values.put("combustivel", carro.getCombustivel());
 		
 		return values;
 	}
@@ -61,7 +63,7 @@ public class QualAbastecerDB {
 	 * INSERÇÃO DOS OBJETOS; 
 	 */
 	
-	public void insertCarro(Carro carro) {
+	public void insertCarro(Veiculo carro) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		ContentValues values = carroValues(carro);
 		db.insert("carro", null, values);
@@ -83,7 +85,7 @@ public class QualAbastecerDB {
 		db.close();
 	}
 	
-	public void alterarCarro(Carro carro) {
+	public void alterarCarro(Veiculo carro) {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		ContentValues values = carroValues(carro);
 		db.update("carro", values, "_id = ?", new String[] { carro.getId()+""});
@@ -104,7 +106,7 @@ public class QualAbastecerDB {
 		db.close();
 	}
 	
-	public void deleteCarro(Carro carro){
+	public void deleteCarro(Veiculo carro){
 		SQLiteDatabase db = helper.getWritableDatabase();
 		db.delete("carro", "_id = ?", new String[] { carro.getId()+""});
 		db.close();
@@ -128,12 +130,15 @@ public class QualAbastecerDB {
 	 */
 	
 	
-	private Carro preencheCarro(Cursor cursor){
+	private Veiculo preencheCarro(Cursor cursor){
 		
 		int id = cursor.getInt(cursor.getColumnIndex("_id"));
 		String nome = cursor.getString(cursor.getColumnIndex("nome"));
+		int tipo = cursor.getInt(cursor.getColumnIndex("tipo"));
+		int cor = cursor.getInt(cursor.getColumnIndex("cor"));
+		int combustivel = cursor.getInt(cursor.getColumnIndex("combustivel"));
 		
-		Carro carro = new Carro(id, nome);
+		Veiculo carro = new Veiculo(id, nome, tipo,cor, combustivel);
 		
 		return carro;
 	}
@@ -154,7 +159,7 @@ public class QualAbastecerDB {
 		
 		int id = cursor.getInt(cursor.getColumnIndex("_id"));
 		String data = cursor.getString(cursor.getColumnIndex("data"));
-		Carro carro = buscarCarroPorId(cursor.getInt(cursor.getColumnIndex("carro")));
+		Veiculo carro = buscarCarroPorId(cursor.getInt(cursor.getColumnIndex("carro")));
 		Posto posto = buscarPostoPorId(cursor.getInt(cursor.getColumnIndex("posto")));
 		int combustivel = cursor.getInt(cursor.getColumnIndex("combustivel"));
 		double valorpago = cursor.getDouble(cursor.getColumnIndex("valorpago"));
@@ -168,13 +173,35 @@ public class QualAbastecerDB {
 	
 	
 	
-	public Carro buscarCarroPorId(int id){
-		Carro carro = new Carro();
+	public Veiculo buscarCarroPorId(int id){
+		Veiculo carro = new Veiculo();
 		SQLiteDatabase db = helper.getReadableDatabase();
 		
 		Cursor cursor = db.rawQuery(
 				"select * from carro where _id = ? ",
 				new String[] { id+""});
+		
+		if (cursor.moveToFirst() && cursor.getCount() >= 1) {
+			
+			carro = preencheCarro(cursor);
+			cursor.close();
+			db.close();
+			return carro;
+			
+		}else{
+			cursor.close();
+			db.close();
+			return null;
+		}
+	}
+	
+	public Veiculo buscarCarroPorNome(String nome){
+		Veiculo carro = new Veiculo();
+		SQLiteDatabase db = helper.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery(
+				"select * from carro where nome = ? ",
+				new String[] { nome });
 		
 		if (cursor.moveToFirst() && cursor.getCount() >= 1) {
 			
@@ -211,8 +238,8 @@ public class QualAbastecerDB {
 		}
 	}
 		
-		public List<Carro> listarCarros(){
-			List<Carro> carros = new ArrayList<Carro>();
+		public List<Veiculo> listarCarros(){
+			List<Veiculo> carros = new ArrayList<Veiculo>();
 			SQLiteDatabase db = helper.getReadableDatabase();
 			
 			Cursor cursor = db.rawQuery(
@@ -220,7 +247,7 @@ public class QualAbastecerDB {
 			
 			while (cursor.moveToNext()) {
 				
-				Carro carro = preencheCarro(cursor);
+				Veiculo carro = preencheCarro(cursor);
 				carros.add(carro);
 			}
 				cursor.close();
@@ -262,7 +289,7 @@ public class QualAbastecerDB {
 				return abss;
 			}
 	
-		public List<Abastecimento> listarAbastecimentosPorCarro(Carro carro){
+		public List<Abastecimento> listarAbastecimentosPorCarro(Veiculo carro){
 			List<Abastecimento> abss = new ArrayList<Abastecimento>();
 			SQLiteDatabase db = helper.getReadableDatabase();
 			

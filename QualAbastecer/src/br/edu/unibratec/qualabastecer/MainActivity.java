@@ -1,63 +1,85 @@
 package br.edu.unibratec.qualabastecer;
 
-import java.nio.channels.ByteChannel;
 
-import br.edu.unibratec.qualabastecer.R.id;
-import android.os.Bundle;
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-;
 
-public class MainActivity extends Activity implements OnClickListener {
 
-	TextView lblResult;
-	TextView txtResult;
-	EditText fieldGas;
-	EditText fieldEth;
-	Button btnAct;
-	Button btnAct2;
-	boolean gas = false;
+
+
+public class MainActivity extends ActionBarActivity implements OnItemClickListener  {
+	
+	public static final int CALCULADORA = 0;
+	public static final int MEUS_CARROS = 1;
+	public static final int POSTOS = 2;
+	public static final int ABASTECIMENTOS = 3;
+	public static final int CONTATO = 4;
+	
+	
+	DrawerLayout mDrawer;
+	ListView mListView;
+	ActionBarDrawerToggle mDrawerToggle;
+	String mTitle;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 
-		lblResult = (TextView) findViewById(id.textViewLblResult);
-		txtResult = (TextView) findViewById(id.textViewResult);
-		fieldGas = (EditText) findViewById(id.editTextGas);
-		fieldEth = (EditText) findViewById(id.editTextEthanol);
-		btnAct = (Button) findViewById(id.buttonAct);
-		btnAct2 = (Button) findViewById(id.buttonAct2);
+		
+		// mTitle = getResources().getString(R.string.app_name);
+				mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+				mListView = (ListView) findViewById(R.id.left_drawer);
 
-		btnAct2.setEnabled(false);
+				mDrawerToggle = new ActionBarDrawerToggle(this, mDrawer,
+						R.drawable.ic_navigation_drawer, R.string.app_name,
+						R.string.app_name) {
 
-		btnAct.setOnClickListener(this);
-		btnAct2.setOnClickListener(this);
+					/** Called when a drawer has settled in a completely closed state. */
+					public void onDrawerClosed(View view) {
+						super.onDrawerClosed(view);
+						getSupportActionBar().setTitle(R.string.app_name);
+						supportInvalidateOptionsMenu(); // creates call to
+														// onPrepareOptionsMenu()
+					}
 
-		String res = "";
-		boolean btn2 = false;
+					/** Called when a drawer has settled in a completely open state. */
+					public void onDrawerOpened(View drawerView) {
+						super.onDrawerOpened(drawerView);
+						getSupportActionBar().setTitle(mTitle);
+						supportInvalidateOptionsMenu(); // creates call to
+														// onPrepareOptionsMenu()
+					}
+				};
+				
+				getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+				getSupportActionBar().setHomeButtonEnabled(true);
 
-		if (savedInstanceState != null) {
-			res = savedInstanceState.getString("resultado");
-			btn2 = savedInstanceState.getBoolean("btn2");
-		}
-
-		if (btn2 == true) {
-			btnAct2.setEnabled(true);
-		}
-
-		txtResult.setText(res);
+				mDrawer.setDrawerListener(mDrawerToggle);
+				String[] mOpcoes = getResources().getStringArray(
+						R.array.drawer_options);
+				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+						android.R.layout.simple_list_item_1, mOpcoes);
+				mListView.setAdapter(adapter);
+				
+				mListView.setOnItemClickListener(this);
 	}
 
 	@Override
@@ -70,6 +92,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		
 		if(item.getItemId() == R.id.action_settings){
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -95,68 +121,57 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putString("resultado", txtResult.getText().toString());
-
-		if (btnAct2.isEnabled() == true) {
-			outState.putBoolean("btn2", true);
-		} else {
-			outState.putBoolean("btn2", false);
-		}
 
 	}
 
 	@Override
-	public void onClick(View v) {
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
 		// TODO Auto-generated method stub
-		if (v.getId() == R.id.buttonAct) {
+		mTitle = mListView.getItemAtPosition(position).toString();
+		switch (position){
+		
+		case CALCULADORA:
+		
+			Intent it0 = new Intent(this, CalculadoraActivity.class);
+			startActivity(it0);
+			mDrawer.closeDrawer(mListView);
+			
+		break;
 
-			try {
-
-				if (fieldGas.getText().toString().trim().equals("")) {
-
-					fieldGas.setError(getResources().getString(
-							R.string.errorField));
-					return;
-				}
-
-				if (fieldEth.getText().toString().trim().equals("")) {
-
-					fieldEth.setError(getResources().getString(
-							R.string.errorField));
-					return;
-				}
-
-				double gasCost = Double.parseDouble(fieldGas.getText()
-						.toString());
-				double ethCost = Double.parseDouble(fieldEth.getText()
-						.toString());
-
-				if (ethCost < (gasCost * 0.7)) {
-					txtResult.setText(R.string.ethResult);
-				} else {
-					txtResult.setText(R.string.gasResult);
-					gas = true;
-				}
-				btnAct2.setEnabled(true);
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+		case MEUS_CARROS:
+			
+			Intent it1 = new Intent(this, CarroActivity.class);
+			startActivity(it1);
+			mDrawer.closeDrawer(mListView);
+			
+		break;
+		
+		default:
+		mDrawer.closeDrawer(mListView);
+		
 		}
-
-		if (v.getId() == R.id.buttonAct2) {
-			Intent inn = new Intent(this, DetailsActivity.class);
-			inn.putExtra("lblAct2GasPrice", fieldGas.getText().toString());
-			inn.putExtra("lblAct2EthPrice", fieldEth.getText().toString());
-			inn.putExtra("text", gas);
-			startActivity(inn);
-		}
-
+		
+		
 	}
+
+
 
 }
