@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.edu.unibratec.qualabastecer"
-    android:versionCode="1"
-    android:versionName="1.1" >
+    android:versionCode="2"
+    android:versionName="2.0" >
 
     <uses-sdk
-        android:minSdkVersion="10"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,9 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="br.edu.unibratec.qualabastecer.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,11 +26,30 @@
         </activity>
         <activity
             android:name="br.edu.unibratec.qualabastecer.DetailsActivity"
-            android:label="@string/title_activity_details" >
+            android:label="@string/title_activity_details"
+            android:parentActivityName="br.edu.unibratec.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
         </activity>
         <activity
-            android:name="br.edu.unibratec.qualabastecer.EntradaActivity"
-            android:label="@string/title_activity_entrada" >
+            android:name="br.edu.unibratec.qualabastecer.CalculadoraActivity"
+            android:label="@string/title_activity_calculadora"
+            android:parentActivityName="br.edu.unibratec.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name="br.edu.unibratec.qualabastecer.CarroActivity"
+            android:label="@string/title_activity_carro" 
+            android:parentActivityName="br.edu.unibratec.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
         </activity>
     </application>
 

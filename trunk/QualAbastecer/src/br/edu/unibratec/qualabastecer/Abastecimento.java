@@ -7,7 +7,7 @@ public class Abastecimento implements Serializable{
 	
 	private int id;
 	private String data;
-	private Carro carro;
+	private Veiculo carro;
 	private Posto posto;
 	private int combustivel;
 	private double valorPago;
@@ -16,7 +16,7 @@ public class Abastecimento implements Serializable{
 	
 	public Abastecimento(){}
 	
-	public Abastecimento(String data, Carro carro, Posto posto, int combustivel, double valorPago, double litros){
+	public Abastecimento(String data, Veiculo carro, Posto posto, int combustivel, double valorPago, double litros){
 		this.setData(data);
 		this.setCarro(carro);
 		this.setPosto(posto);
@@ -25,7 +25,7 @@ public class Abastecimento implements Serializable{
 		this.setLitros(litros);
 	}
 	
-	public Abastecimento(String data, Carro carro, Posto posto, int combustivel, double valorPago, double litros, double km){
+	public Abastecimento(String data, Veiculo carro, Posto posto, int combustivel, double valorPago, double litros, double km){
 		this.setData(data);
 		this.setCarro(carro);
 		this.setPosto(posto);
@@ -35,7 +35,7 @@ public class Abastecimento implements Serializable{
 		this.setKilometragem(km);
 	}
 	
-	public Abastecimento(int id, String data, Carro carro, Posto posto, int combustivel, double valorPago, double litros, double km){
+	public Abastecimento(int id, String data, Veiculo carro, Posto posto, int combustivel, double valorPago, double litros, double km){
 		this.setId(id);
 		this.setData(data);
 		this.setCarro(carro);
@@ -58,10 +58,10 @@ public class Abastecimento implements Serializable{
 	public void setData(String data) {
 		this.data = data;
 	}
-	public Carro getCarro() {
+	public Veiculo getCarro() {
 		return carro;
 	}
-	public void setCarro(Carro carro) {
+	public void setCarro(Veiculo carro) {
 		this.carro = carro;
 	}
 	public Posto getPosto() {
