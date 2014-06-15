@@ -27,6 +27,7 @@ public class QualAbastecerDB {
 		ContentValues values = new ContentValues();
 		
 		values.put("nome", carro.getNome());
+		values.put("tipo", carro.getTipo());
 		values.put("cor", carro.getCor());
 		values.put("combustivel", carro.getCombustivel());
 		

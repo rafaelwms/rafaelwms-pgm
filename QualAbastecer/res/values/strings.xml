@@ -14,9 +14,14 @@
     <string name="fieldEthanol"></string>
     <string name="btnActLbl">Calculate</string>
     <string name="lblBestFuel">The better choose to Fuel is:</string>
+    
+    
     <string name="lblREsult">@null</string>
     <string name="ethResult">ETHANOL</string>
     <string name="gasResult">GASOLINE</string>
+    <string name="flexResult">FLEX POWER</string>
+    <string name="dieselResult">DIESEL</string>
+    
     <string name="btnAct2lbl">Details</string>
     <string name="title_activity_details">DetailsActivity</string>
     <string name="lblAct2Tilte">Details Info</string>
@@ -65,8 +70,10 @@
     <string name="dialogBtnCanclear">Cancel</string>
     
     <!-- Toasts -->    
+    <string name="exceptionNomeVazio">Name or ID car is Empty.</string>
     <string name="exceptionCombustivelVazio">Must select a fuel type at once.</string>
-    <string name="exceptionNomeUtilizadoCarro">Car name is used by another car.</string>
+    <string name="exceptionNomeUtilizadoCarro">Vehicle name is used by another car.</string>
+    <string name="exceptionTipo">Must select a vehicle type at once.</string>
     
     <string name="toastSalvarCarro">Car saved sucessifully.</string>
     <string name="toastAtualizarCarro">Car updated sucessifully.</string>
