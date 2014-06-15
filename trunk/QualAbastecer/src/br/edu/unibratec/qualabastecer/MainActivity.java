@@ -158,7 +158,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 
 		case MEUS_CARROS:
 			
-			Intent it1 = new Intent(this, CarroActivity.class);
+			Intent it1 = new Intent(this, VeiculoActivity.class);
 			startActivity(it1);
 			mDrawer.closeDrawer(mListView);
 			

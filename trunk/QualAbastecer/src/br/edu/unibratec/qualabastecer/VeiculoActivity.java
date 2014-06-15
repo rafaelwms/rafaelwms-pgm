@@ -14,10 +14,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -27,7 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Build;
 
-public class CarroActivity extends ActionBarActivity implements OnItemClickListener {
+public class VeiculoActivity extends ActionBarActivity implements OnItemClickListener, OnClickListener, OnCheckedChangeListener {
 	
 	QualAbastecerDB db;
 	SeekBar seekR, seekG, seekB;
@@ -35,8 +38,8 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 	Veiculo veiculo;
 	List<Veiculo> veiculoss;
 	EditText ediNomeCarro;
-	ImageView imgVeiculo;
-	CarroAdapter adapter;
+	ImageView imgVeiculo, imgCarro, imgMoto, imgCaminhao, imgOnibus;
+	VeiculoAdapter adapter;
 	ListView listaCarros;
 	TextView txtCor;
 	int r;
@@ -44,11 +47,12 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 	int b;
 	int corAtual;
 	int tipoVeiculo;
+	int fav;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_carro);
+		setContentView(R.layout.activity_veiculo);
 		
 		db = new QualAbastecerDB(this);
 		veiculo = new Veiculo();
@@ -57,14 +61,20 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 		r = 0;
 		g = 0;
 		b = 0;
-		corAtual = 0; 
-		tipoVeiculo = 0;
+		corAtual = 0;
+		fav = 0;
+		tipoVeiculo = -1;
 		
 		
 		txtCor = (TextView)findViewById(R.id.txtColor);
 		ediNomeCarro = (EditText)findViewById(R.id.edtCarroNome);
 		ckbEtanol = (CheckBox)findViewById(R.id.chkbCarroEth);
 		ckbGasolina = (CheckBox)findViewById(R.id.chkbCarroGas);
+		ckbDiesel = (CheckBox)findViewById(R.id.chkbCarroDiesel);
+		ckbGasolina.setOnCheckedChangeListener(this);
+		ckbEtanol.setOnCheckedChangeListener(this);
+		ckbDiesel.setOnCheckedChangeListener(this);
+		
 		seekR = (SeekBar)findViewById(R.id.seekBarR);
 		seekG = (SeekBar)findViewById(R.id.seekBarG);
 		seekB = (SeekBar)findViewById(R.id.seekBarB);
@@ -74,7 +84,16 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 		seekR.setOnSeekBarChangeListener(seekBarChangeListener);
 		seekG.setOnSeekBarChangeListener(seekBarChangeListener);
 		seekB.setOnSeekBarChangeListener(seekBarChangeListener);
-		imgVeiculo = (ImageView)findViewById(R.id.imgCarro);
+		imgVeiculo = (ImageView)findViewById(R.id.imgVeiculo);
+		imgCarro = (ImageView)findViewById(R.id.imgCarro);
+		imgCaminhao = (ImageView)findViewById(R.id.imgCaminhao);
+		imgMoto = (ImageView)findViewById(R.id.imgMoto);
+		imgOnibus = (ImageView)findViewById(R.id.imgOnibus);
+		
+		imgCarro.setOnClickListener(this);
+		imgCaminhao.setOnClickListener(this);
+		imgMoto.setOnClickListener(this);
+		imgOnibus.setOnClickListener(this);
 		
 		atualizarLista();
 
@@ -100,14 +119,22 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 			try{
 			if(veiculo.getId() <= 0){
 				
-				if(db.buscarCarroPorNome(ediNomeCarro.getText().toString()) != null){
-					throw new Exception(getResources().getString(R.string.exceptionCombustivelVazio));
-				}
+
 				
 				int combustivel = 0;
-				if(ckbEtanol.isChecked() == false && ckbGasolina.isChecked() == false){
+				
+				if(ediNomeCarro.getText().toString().trim().equals("")){
+					throw new Exception(getResources().getString(R.string.exceptionNomeVazio));
+				}
+				
+				if(db.buscarCarroPorNome(ediNomeCarro.getText().toString()) != null){
+					throw new Exception(getResources().getString(R.string.exceptionNomeUtilizadoCarro));
+				}
+				
+				if(ckbEtanol.isChecked() == false && ckbGasolina.isChecked() == false && ckbDiesel.isChecked() == false){
 					throw new Exception(getResources().getString(R.string.exceptionCombustivelVazio));
 				}
+
 				if(ckbEtanol.isChecked() == false && ckbGasolina.isChecked() == true){
 					combustivel = 0;
 				}
@@ -117,7 +144,13 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 				if(ckbEtanol.isChecked() == true && ckbGasolina.isChecked() == true){
 					combustivel = 2;
 				}
+				if(ckbDiesel.isChecked() == true){
+					combustivel = 3;
+				}
 				
+				if(tipoVeiculo < 0){
+					throw new Exception(getResources().getString(R.string.exceptionTipo));
+				}
 				
 				
 				veiculo = new Veiculo(ediNomeCarro.getText().toString(), tipoVeiculo, veiculo.getCor(), combustivel);
@@ -128,7 +161,17 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 			}else{
 				int combustivel = -1;
 				
-				if(ckbEtanol.isChecked() == false && ckbGasolina.isChecked() == false){
+				if(ediNomeCarro.getText().toString().trim().equals("")){
+					throw new Exception(getResources().getString(R.string.exceptionNomeVazio));
+				}
+				
+				Veiculo vehicle = db.buscarCarroPorNome(ediNomeCarro.getText().toString());
+				
+				if(vehicle != null && vehicle.getId() != veiculo.getId()){
+					throw new Exception(getResources().getString(R.string.exceptionNomeUtilizadoCarro));
+				}
+				
+				if(ckbEtanol.isChecked() == false && ckbGasolina.isChecked() == false && ckbDiesel.isChecked() == false){
 					throw new Exception(getResources().getString(R.string.exceptionCombustivelVazio));
 				}
 				if(ckbEtanol.isChecked() == false && ckbGasolina.isChecked() == true){
@@ -140,10 +183,14 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 				if(ckbEtanol.isChecked() == true && ckbGasolina.isChecked() == true){
 					combustivel = 2;
 				}
+				if(ckbDiesel.isChecked() == true){
+					combustivel = 3;
+				}
 				
 				veiculo.setNome(ediNomeCarro.getText().toString());
 				veiculo.setCor(corAtual);
 				veiculo.setCombustivel(combustivel);
+				veiculo.setTipo(tipoVeiculo);
 				db.alterarCarro(veiculo);
 				Toast.makeText(this, getResources().getString(R.string.toastAtualizarCarro), Toast.LENGTH_SHORT).show();
 				atualizarLista();
@@ -242,7 +289,7 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 		
 		veiculoss = new ArrayList<Veiculo>();
 		veiculoss = db.listarCarros();
-		adapter = new CarroAdapter(veiculoss);
+		adapter = new VeiculoAdapter(veiculoss);
 		listaCarros.setAdapter(adapter);
 		veiculo = new Veiculo();
 		ediNomeCarro.setText("");
@@ -252,6 +299,106 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 		ckbGasolina.setChecked(false);
 		ckbEtanol.setChecked(false);
 		mudarCordoCarro();
+		desligarSelecaoTipoVeiculos();
+		imgVeiculo.setImageResource(R.drawable.ic_interrog);
+		tipoVeiculo = -1;
+	}
+	
+	private void desligarSelecaoTipoVeiculos(){
+		imgCarro.setBackgroundColor(Color.rgb(0, 0, 0));
+		imgCaminhao.setBackgroundColor(Color.rgb(0, 0, 0));
+		imgOnibus.setBackgroundColor(Color.rgb(0, 0, 0));
+		imgMoto.setBackgroundColor(Color.rgb(0, 0, 0));
+		tipoVeiculo = 0;
+	}
+	
+	private void atualizarSelecaoTipoVeiculos(int tipo){
+		
+		desligarSelecaoTipoVeiculos();
+		
+		if(tipo == 1 && tipoVeiculo != 1){
+			imgCarro.setBackgroundColor(Color.rgb(255, 255, 255));
+			imgVeiculo.setImageResource(R.drawable.ic_carro);
+			tipoVeiculo = 1;
+			fav = 0;
+			return;
+		}else
+		if(tipo == 1 && tipoVeiculo == 1 && fav == 0){
+			imgVeiculo.setImageResource(R.drawable.ic_fav_carro);
+			imgCarro.setImageResource(R.drawable.ic_fav_carro);
+			fav = 1;
+			return;
+		}else
+		if (tipo == 1 && tipoVeiculo == 1 && fav == 1){
+			imgVeiculo.setImageResource(R.drawable.ic_carro);
+			imgCarro.setImageResource(R.drawable.ic_carro);
+			fav = 0;
+			return;
+		}else
+		
+		if(tipo == 2 && tipoVeiculo != 2){
+			imgMoto.setBackgroundColor(Color.rgb(255, 255, 255));
+			imgVeiculo.setImageResource(R.drawable.ic_moto);
+			tipoVeiculo = 2;
+			fav = 0;
+			return;
+		}else
+		
+		if(tipo == 2 && tipoVeiculo == 2 && fav == 0){
+			imgVeiculo.setImageResource(R.drawable.ic_fav_moto);
+			imgMoto.setImageResource(R.drawable.ic_fav_moto);
+			fav = 1;
+			return;
+		}else
+		if (tipo == 2 && tipoVeiculo == 2 && fav == 1){
+			imgVeiculo.setImageResource(R.drawable.ic_moto);
+			imgMoto.setImageResource(R.drawable.ic_moto);
+			fav = 0;
+			return;
+		}else
+		
+
+		if(tipo == 3 && tipoVeiculo != 3){
+			imgCaminhao.setBackgroundColor(Color.rgb(255, 255, 255));
+			imgVeiculo.setImageResource(R.drawable.ic_caminhao);
+			tipoVeiculo = 3;
+			fav = 0;
+			return;
+		}else
+		if(tipo == 3 && tipoVeiculo == 3 && fav == 0){
+			imgVeiculo.setImageResource(R.drawable.ic_fav_caminhao);
+			imgCaminhao.setImageResource(R.drawable.ic_fav_caminhao);
+			fav = 1;
+			return;
+		}else
+		
+		if (tipo == 3 && tipoVeiculo == 3 && fav == 1){
+			imgVeiculo.setImageResource(R.drawable.ic_caminhao);
+			imgCaminhao.setImageResource(R.drawable.ic_caminhao);
+			fav = 0;
+			return;
+		}else
+		
+		if(tipo == 4 && tipoVeiculo != 4){
+			imgOnibus.setBackgroundColor(Color.rgb(255, 255, 255));
+			imgVeiculo.setImageResource(R.drawable.ic_onibus);
+			tipoVeiculo = 4;
+			fav = 0;
+			return;
+		}else
+		if(tipo == 4 && tipoVeiculo == 4 && fav == 0){
+			imgVeiculo.setImageResource(R.drawable.ic_fav_onibus);
+			imgOnibus.setImageResource(R.drawable.ic_fav_onibus);
+			fav = 1;
+			return;
+		}else
+		if (tipo == 4 && tipoVeiculo == 4 && fav == 1){
+			imgVeiculo.setImageResource(R.drawable.ic_onibus);
+			imgOnibus.setImageResource(R.drawable.ic_onibus);
+			fav = 0;
+			return;
+			}		
+
 	}
 	
 
@@ -287,12 +434,13 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 		ediNomeCarro.setText(veiculo.getNome());
 		imgVeiculo.setBackgroundColor(veiculo.getCor());	
 		corAtual = veiculo.getCor();
-		
+		atualizarSelecaoTipoVeiculos(veiculo.getTipo());
 		switch (veiculo.getCombustivel()) {
 		case 0:
 			
 			ckbGasolina.setChecked(true);
 			ckbEtanol.setChecked(false);
+			ckbDiesel.setChecked(false);
 			
 			break;
 			
@@ -300,6 +448,7 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 			
 			ckbGasolina.setChecked(false);
 			ckbEtanol.setChecked(true);
+			ckbDiesel.setChecked(false);
 			
 			break;
 			
@@ -307,6 +456,15 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 			
 			ckbGasolina.setChecked(true);
 			ckbEtanol.setChecked(true);
+			ckbDiesel.setChecked(false);
+			
+			break;
+			
+		case 3:
+			
+			ckbGasolina.setChecked(false);
+			ckbEtanol.setChecked(false);
+			ckbDiesel.setChecked(true);
 			
 			break;
 
@@ -315,8 +473,63 @@ public class CarroActivity extends ActionBarActivity implements OnItemClickListe
 		}		
 		
 	}
-		
 
+
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+		if(v.getId() == R.id.imgCarro){
+			
+			atualizarSelecaoTipoVeiculos(1);
+			
+		} else if(v.getId() == R.id.imgMoto){
+			
+			atualizarSelecaoTipoVeiculos(2);
+			
+		}else if(v.getId() == R.id.imgCaminhao){
+			
+			atualizarSelecaoTipoVeiculos(3);
+			
+		}else if(v.getId() == R.id.imgOnibus){
+			
+			atualizarSelecaoTipoVeiculos(4);
+		
+	}
+		
+	}
+
+
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		// TODO Auto-generated method stub
+		if(buttonView.getId() == R.id.chkbCarroDiesel && isChecked){
+			ckbEtanol.setChecked(false);
+			ckbGasolina.setChecked(false);
+			ckbDiesel.setChecked(true);
+		}
+		else if(buttonView.getId() == R.id.chkbCarroDiesel && isChecked == false){
+			ckbEtanol.setChecked(false);
+			ckbGasolina.setChecked(false);
+			ckbDiesel.setChecked(false);
+		}else
+		
+		if(buttonView.getId() == R.id.chkbCarroGas && isChecked){
+			ckbDiesel.setChecked(false);
+			ckbGasolina.setChecked(true);
+		}else
+		if(buttonView.getId() == R.id.chkbCarroEth && isChecked){
+			ckbDiesel.setChecked(false);
+			ckbEtanol.setChecked(true);
+		}
+		
+		
+		
+	}
+	
+	
 
 }
 

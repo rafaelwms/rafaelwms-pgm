@@ -9,11 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CarroAdapter extends BaseAdapter {
+public class VeiculoAdapter extends BaseAdapter {
 
 	private List<Veiculo> carros;
 
-	public CarroAdapter(List<Veiculo> cars) {
+	public VeiculoAdapter(List<Veiculo> cars) {
 		carros = cars;
 	}
 
@@ -46,13 +46,36 @@ public class CarroAdapter extends BaseAdapter {
 		TextView txtCombCarro = (TextView) convertView.findViewById(R.id.txtCarroComb);
 
 		imgCarro.setBackgroundColor(carro.getCor());
+		
+		switch (carro.getTipo()) {
+		case 1:
+			imgCarro.setImageResource(R.drawable.ic_carro);
+			break;
+		case 2:
+			imgCarro.setImageResource(R.drawable.ic_moto);
+			break;	
+		case 3:
+			imgCarro.setImageResource(R.drawable.ic_caminhao);
+			break;
+		case 4:
+			imgCarro.setImageResource(R.drawable.ic_onibus);
+			break;
+		default:
+			break;
+		}
+		
+		
+		
+		
 		txtNomeCarro.setText(carro.getNome().toString());
 		if (carro.getCombustivel() == 0) {
 			txtCombCarro.setText(parent.getResources().getString(R.string.gasResult));
 		} else if (carro.getCombustivel() == 1) {
 			txtCombCarro.setText(parent.getResources().getString(R.string.ethResult));
 		} else if (carro.getCombustivel() == 2) {
-			txtCombCarro.setText("FLEX POWER");
+			txtCombCarro.setText(parent.getResources().getString(R.string.flexResult));
+		}else if (carro.getCombustivel() == 3) {
+			txtCombCarro.setText(parent.getResources().getString(R.string.dieselResult));
 		}
 		return convertView;
 	}
