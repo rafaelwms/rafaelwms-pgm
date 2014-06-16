@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<!-- ouououo -->
-    
+    <!-- ouououo -->
+
     <string name="app_name">Which Fuel?</string>
     <string name="action_settings">About</string>
     <string name="about">Developed by: Rafael WMS</string>
@@ -14,14 +14,11 @@
     <string name="fieldEthanol"></string>
     <string name="btnActLbl">Calculate</string>
     <string name="lblBestFuel">The better choose to Fuel is:</string>
-    
-    
     <string name="lblREsult">@null</string>
     <string name="ethResult">ETHANOL</string>
     <string name="gasResult">GASOLINE</string>
     <string name="flexResult">FLEX POWER</string>
     <string name="dieselResult">DIESEL</string>
-    
     <string name="btnAct2lbl">Details</string>
     <string name="title_activity_details">DetailsActivity</string>
     <string name="lblAct2Tilte">Details Info</string>
@@ -36,7 +33,7 @@
     <string name="errorField">"Must enter a value."</string>
     <string name="title_activity_calculadora">Calculator</string>
 
-    <!-- Drawer --> 
+    <!-- Drawer -->
     <string-array name="drawer_options">
         <item>Calculate</item>
         <item>My Cars</item>
@@ -48,37 +45,65 @@
     <string name="title_activity_carro">My Cars</string>
     <string name="lblDadosCarro">Car Info</string>
     <string name="hintCarroNome">Car Name or ID</string>
-    <string name="lblCarroCor">Color\n Set</string>    
-    
-    <!-- Menu --> 
+    <string name="lblCarroCor">Color\n Set</string>
+
+    <!-- Menu -->
     <string name="menuSalvarCarro">Save Car</string>
     <string name="menuDeletarCarro">Delete Car</string>
     <string name="null_text">@null</string>
-    
-    <!-- Dialogs -->    
+
+    <!-- Dialogs -->
     <string name="corRed">RED color.</string>
     <string name="corGreen">GREEN color.</string>
     <string name="corBlue">BLUE color.</string>
     <string name="corRedValue">RED color value:</string>
     <string name="corGreenValue">GREEN color value:</string>
     <string name="corBlueValue">BLUE color value:</string>
+
+    <!-- Dialogs -->
+    <string name="dialogTitleDeleteCar">DELETE VEHICLE</string>
+    <string name="dialogMsgDeleteCar">Proceed vehicle delete?\n All related feedings with this vehicle \n will automatically be deleted. </string>
     
-    <!-- Dialogs -->    
-    <string name="dialogTitleDeleteCar">DELETE CAR</string>
-    <string name="dialogMsgDeleteCar">Proceed car delete?</string>    
+     <string name="dialogTitleDeletePosto">DELETE GAS STATION</string>
+    <string name="dialogMsgDeletePosto">Proceed gas station delete?\n All related feedings with this gas station \n will automatically be deleted. </string>
+    
     <string name="dialogBtnOK">OK</string>
     <string name="dialogBtnCanclear">Cancel</string>
-    
-    <!-- Toasts -->    
+
+    <!-- Toasts -->
     <string name="exceptionNomeVazio">Name or ID car is Empty.</string>
     <string name="exceptionCombustivelVazio">Must select a fuel type at once.</string>
     <string name="exceptionNomeUtilizadoCarro">Vehicle name is used by another car.</string>
     <string name="exceptionTipo">Must select a vehicle type at once.</string>
+    <string name="toastSalvarCarro">Vehicle saved sucessifully.</string>
+    <string name="toastAtualizarCarro">Vehicle updated sucessifully.</string>
+    <string name="toastDeletarCarro">Vehicle deleted sucessifully.</string>
+    <string name="toastSelecionarCarro">Must select a vehicle first.</string>
+    <string name="lblCarrosLista">My Vehicle List</string>
     
-    <string name="toastSalvarCarro">Car saved sucessifully.</string>
-    <string name="toastAtualizarCarro">Car updated sucessifully.</string>
-	<string name="toastDeletarCarro">Car deleted sucessifully.</string>
-	<string name="toastSelecionarCarro">Must select a car first.</string>
-	<string name="lblCarrosLista">My Car List</string>
-	
+    <!-- Posto -->
+    <string name="title_activity_posto">PostoActivity</string>
+    <string name="lblTelaPosto">Gas Station</string>
+    <string name="hintPostoNome">Gas Station Company and Name</string>
+    <string name="lblPostoAtendimento">Rate Service:</string>
+    <string name="hintPostoGasolina">Gasoline Price</string>
+    <string name="hintPostoEtanol">Ethanol Price</string>
+    <string name="hintPostoDiesel">Diesel Price</string>
+    <string name="lblPostoList">Gas Station\'s List</string>
+    <string name="lblPostoListPrecoGasolina">Gasoline Price U$:</string>
+    <string name="lblPostoListPrecoEtanol">Ethanol Price U$:</string>
+    <string name="lblPostoListPrecoDiesel">Diesel Price U$:</string>
+    <string name="lblPostoListRating">Rating:</string>
+    
+    <string name="toastSalvarPosto">Gas Station saved sucessifully.</string>
+    <string name="toastAtualizarPosto">Gas Station updated sucessifully.</string>
+    <string name="toastDeletarPosto">Gas Station deleted sucessifully.</string>
+    <string name="toastSelecionarPosto">Gas Station a vehicle first.</string>
+    
+    <string name="exceptionNomePostoVazio">Name or Companhy field is Empty.</string>
+    <string name="exceptionPostoCombustivelVazio">All kind of fuel must be filled.</string>
+    <string name="exceptionNomeUtilizadoPosto">Gas station\'s name is used by another gas station.</string>
+    
+    
+
 </resources>
