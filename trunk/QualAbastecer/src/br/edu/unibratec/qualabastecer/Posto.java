@@ -6,8 +6,10 @@ public class Posto implements Serializable{
 	
 	private int id;
 	private String nome;
+	private int atendimento;
 	private double litroGasolina;
 	private double litroEtanol;
+	private double litroDiesel;
 	
 	public Posto(){}
 	
@@ -26,11 +28,21 @@ public class Posto implements Serializable{
 		this.setLitroEtanol(etanol);
 	}
 	
-	public Posto(int id, String nome, double gasolina, double etanol){
-		this.setId(id);
+	public Posto(String nome, int atendimento, double gasolina, double etanol, double diesel){
 		this.setNome(nome);
+		this.setAtendimento(atendimento);
 		this.setLitroGasolina(gasolina);
 		this.setLitroEtanol(etanol);
+		this.setLitroDiesel(diesel);
+	}
+	
+	public Posto(int id, String nome, int atendimento, double gasolina, double etanol, double diesel){
+		this.setId(id);
+		this.setNome(nome);
+		this.setAtendimento(atendimento);
+		this.setLitroGasolina(gasolina);
+		this.setLitroEtanol(etanol);
+		this.setLitroDiesel(diesel);
 	}
 	
 	public int getId() {
@@ -60,6 +72,22 @@ public class Posto implements Serializable{
 
 	public void setLitroEtanol(double litroEtanol) {
 		this.litroEtanol = litroEtanol;
+	}
+
+	public int getAtendimento() {
+		return atendimento;
+	}
+
+	public void setAtendimento(int atendimento) {
+		this.atendimento = atendimento;
+	}
+
+	public double getLitroDiesel() {
+		return litroDiesel;
+	}
+
+	public void setLitroDiesel(double litroDiesel) {
+		this.litroDiesel = litroDiesel;
 	}
 
 }

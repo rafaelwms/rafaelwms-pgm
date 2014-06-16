@@ -2,6 +2,10 @@ package br.edu.unibratec.qualabastecer;
 
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
@@ -32,6 +35,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 	
 	
 	DrawerLayout mDrawer;
+	DrawerAdapter adapter;
 	ListView mListView;
 	ActionBarDrawerToggle mDrawerToggle;
 	String mTitle;
@@ -75,8 +79,11 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 				mDrawer.setDrawerListener(mDrawerToggle);
 				String[] mOpcoes = getResources().getStringArray(
 						R.array.drawer_options);
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-						android.R.layout.simple_list_item_1, mOpcoes);
+				
+				List<String> opcoes = new ArrayList<String>();
+				//Transformando um Array em List abaixo:				
+				opcoes = Arrays.asList(mOpcoes);
+				adapter = new DrawerAdapter(opcoes);
 				mListView.setAdapter(adapter);
 				
 				mListView.setOnItemClickListener(this);
@@ -109,9 +116,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 						
 				
 						}
-					});
-		
-					
+					});		
 
 			AlertDialog dialog = builder.create();
 
@@ -144,7 +149,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		// TODO Auto-generated method stub
+
 		mTitle = mListView.getItemAtPosition(position).toString();
 		switch (position){
 		
@@ -164,8 +169,18 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 			
 		break;
 		
+		case POSTOS:
+			
+			Intent it2 = new Intent(this, PostoActivity.class);
+			startActivity(it2);
+			mDrawer.closeDrawer(mListView);
+			
+		break;
+		
 		default:
 		mDrawer.closeDrawer(mListView);
+		
+		
 		
 		}
 		

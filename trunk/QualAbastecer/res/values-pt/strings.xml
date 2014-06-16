@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Qual Combustível?</string>
+    <string name="app_name">Qual Abastecer?</string>
     <string name="action_settings">Sobre</string>
     <string name="about">Desenvolvido por: Rafael WMS</string>
     <string name="hello_world">Hello world!</string>

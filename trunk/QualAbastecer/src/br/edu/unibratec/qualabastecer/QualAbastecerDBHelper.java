@@ -23,6 +23,7 @@ public class QualAbastecerDBHelper extends SQLiteOpenHelper{
 		db.execSQL("CREATE TABLE posto (" +
 				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"nome TEXT NOT NULL UNIQUE, " +
+				"atendimento INTEGER NOT NULL, " +
 				"alcool REAL NOT NULL, " +
 				"diesel REAL NOT NULL, " +
 				"gasolina REAL NOT NULL);");

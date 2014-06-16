@@ -39,8 +39,10 @@ public class QualAbastecerDB {
 		ContentValues values = new ContentValues();
 		
 		values.put("nome", posto.getNome());
+		values.put("atendimento", posto.getAtendimento());
 		values.put("alcool", posto.getLitroEtanol());
 		values.put("gasolina", posto.getLitroGasolina());
+		values.put("diesel", posto.getLitroGasolina());
 		
 		return values;
 	}
@@ -148,10 +150,12 @@ public class QualAbastecerDB {
 		
 		int id = cursor.getInt(cursor.getColumnIndex("_id"));
 		String nome = cursor.getString(cursor.getColumnIndex("nome"));
+		int atendimento = cursor.getInt(cursor.getColumnIndex("atendimento"));
 		double alcool = cursor.getDouble(cursor.getColumnIndex("alcool"));
 		double gasolina = cursor.getDouble(cursor.getColumnIndex("gasolina"));
+		double diesel = cursor.getDouble(cursor.getColumnIndex("diesel"));
 		
-		Posto posto = new Posto(id, nome, gasolina, alcool);
+		Posto posto = new Posto(id, nome, atendimento, gasolina, alcool, diesel);
 		
 		return posto;
 	}
@@ -225,6 +229,27 @@ public class QualAbastecerDB {
 		Cursor cursor = db.rawQuery(
 				"select * from posto where _id = ? ",
 				new String[] { id+""});
+		
+		if (cursor.moveToFirst() && cursor.getCount() >= 1) {		
+			posto = preenchePosto(cursor);
+			cursor.close();
+			db.close();
+			return posto;
+			
+		}else{
+			cursor.close();
+			db.close();
+			return null;
+		}
+	}
+	
+	public Posto buscarPostoPorNome(String nome){
+		Posto posto = new Posto();
+		SQLiteDatabase db = helper.getReadableDatabase();
+		
+		Cursor cursor = db.rawQuery(
+				"select * from posto where nome = ? ",
+				new String[] { nome});
 		
 		if (cursor.moveToFirst() && cursor.getCount() >= 1) {		
 			posto = preenchePosto(cursor);
