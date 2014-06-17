@@ -105,5 +105,6 @@
     <string name="radioAjusteDataHora">Set Time</string>
     <string name="lblCombustivelUsado">Fuel:</string>
     <string name="lblTipoSolicitacao">Method Input</string>
+    <string name="lblListaAbastecimento">Feeding List</string>
 
 </resources>
