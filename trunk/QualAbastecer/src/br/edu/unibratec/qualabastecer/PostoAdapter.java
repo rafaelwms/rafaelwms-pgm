@@ -51,6 +51,11 @@ public class PostoAdapter extends BaseAdapter {
 		TextView txtPostoRating = (TextView)convertView.findViewById(R.id.txtPostoRatingList);
 		
 		imgPosto.setBackgroundColor(Color.rgb(0, 0, 0));
+		
+		if(posto.getAtendimento() == 5){
+			imgPosto.setImageResource(R.drawable.ic_fav_posto);
+		}
+				
 		txtPostoNome.setText(posto.getNome().toString());
 		txtPostoPrecos.setText(parent.getResources().getString(R.string.lblPostoListPrecoGasolina)+ " "+ posto.getLitroGasolina()
 				+"\n"+parent.getResources().getString(R.string.lblPostoListPrecoEtanol)+ " "+ posto.getLitroEtanol()
@@ -59,7 +64,7 @@ public class PostoAdapter extends BaseAdapter {
 		
 		
 		
-		return null;
+		return convertView;
 	}
 
 }
