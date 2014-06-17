@@ -53,12 +53,16 @@
         </activity>
         <activity
             android:name="br.edu.unibratec.qualabastecer.PostoActivity"
-            android:label="@string/title_activity_posto" 
-			android:parentActivityName="br.edu.unibratec.qualabastecer.MainActivity"
+            android:label="@string/title_activity_posto"
+            android:parentActivityName="br.edu.unibratec.qualabastecer.MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name="br.edu.unibratec.qualabastecer.AbastecimentoActivity"
+            android:label="@string/title_activity_abastecimento" >
         </activity>
     </application>
 

@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -181,7 +182,12 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 						etanol = Double.parseDouble(precoEtanol.getText().toString());
 						diesel = Double.parseDouble(precoDiesel.getText().toString());
 						
-						posto = new Posto(nomePosto.getText().toString(), ratingAtendimento.getProgress(), gasolina, etanol, diesel);
+						posto.setAtendimento(ratingAtendimento.getProgress());
+						posto.setNome(nomePosto.getText().toString());
+						posto.setLitroGasolina(gasolina);
+						posto.setLitroEtanol(etanol);
+						posto.setLitroDiesel(diesel);
+						
 						db.alterarPosto(posto);
 						Toast.makeText(getApplication(), getResources().getString(R.string.toastAtualizarPosto), Toast.LENGTH_LONG).show();
 						atualizarlista();
@@ -205,20 +211,17 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 				}else{
 					
 					AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
 					builder.setMessage(R.string.dialogMsgDeletePosto).setTitle(
 							R.string.dialogTitleDeletePosto);
-
 					builder.setPositiveButton(R.string.dialogBtnOK,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int id) {
-								
+									posto = db.buscarPostoPorId(posto.getId());
 									db.deletePosto(posto);
-									Toast.makeText(getApplication(), getResources().getString(R.string.toastDeletarCarro), Toast.LENGTH_SHORT).show();
+									Toast.makeText(getApplication(), getResources().getString(R.string.toastDeletarPosto), Toast.LENGTH_SHORT).show();
 									atualizarlista();
 								}
-							});
-					
+							});					
 					builder.setNegativeButton(R.string.dialogBtnCanclear,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int id) {
@@ -226,24 +229,12 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 									atualizarlista();
 								}
 							});
-							
-
 					AlertDialog dialog = builder.create();
-
-					dialog.show();
-					
+					dialog.show();					
 				}
-				
-				
 				return true;
-				
-				
-				
 			}
-			
-			
-			
-		
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -252,7 +243,9 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 	public void onRatingChanged(RatingBar ratingBar, float rating,
 			boolean fromUser) {
 		// TODO Auto-generated method stub
-		posto.setAtendimento(ratingBar.getProgress());
+		
+		
+		
 	}
 
 	@Override

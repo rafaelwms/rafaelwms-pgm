@@ -117,13 +117,13 @@ public class QualAbastecerDB {
 	
 	public void deletePosto(Posto posto){
 		SQLiteDatabase db = helper.getWritableDatabase();
-		db.delete("carro", "_id = ?", new String[] { posto.getId()+""});
+		db.delete("posto", "_id = ?", new String[] { posto.getId()+""});
 		db.close();
 	}
 	
 	public void deleteabastecimento(Abastecimento abs){
 		SQLiteDatabase db = helper.getWritableDatabase();
-		db.delete("carro", "_id = ?", new String[] { abs.getId()+""});
+		db.delete("abastecimento", "_id = ?", new String[] { abs.getId()+""});
 		db.close();
 	}
 	
@@ -183,7 +183,7 @@ public class QualAbastecerDB {
 		SQLiteDatabase db = helper.getReadableDatabase();
 		
 		Cursor cursor = db.rawQuery(
-				"select * from carro where _id = ? ",
+				"SELECT * FROM carro WHERE _id = ? ",
 				new String[] { id+""});
 		
 		if (cursor.moveToFirst() && cursor.getCount() >= 1) {
@@ -205,7 +205,7 @@ public class QualAbastecerDB {
 		SQLiteDatabase db = helper.getReadableDatabase();
 		
 		Cursor cursor = db.rawQuery(
-				"select * from carro where nome = ? ",
+				"SELECT * FROM carro WHERE nome = ? ",
 				new String[] { nome });
 		
 		if (cursor.moveToFirst() && cursor.getCount() >= 1) {
@@ -227,7 +227,7 @@ public class QualAbastecerDB {
 		SQLiteDatabase db = helper.getReadableDatabase();
 		
 		Cursor cursor = db.rawQuery(
-				"select * from posto where _id = ? ",
+				"SELECT * FROM posto WHERE _id = ? ",
 				new String[] { id+""});
 		
 		if (cursor.moveToFirst() && cursor.getCount() >= 1) {		
@@ -248,7 +248,7 @@ public class QualAbastecerDB {
 		SQLiteDatabase db = helper.getReadableDatabase();
 		
 		Cursor cursor = db.rawQuery(
-				"select * from posto where nome = ? ",
+				"SELECT * FROM posto WHERE nome = ? ",
 				new String[] { nome});
 		
 		if (cursor.moveToFirst() && cursor.getCount() >= 1) {		
@@ -269,7 +269,7 @@ public class QualAbastecerDB {
 			SQLiteDatabase db = helper.getReadableDatabase();
 			
 			Cursor cursor = db.rawQuery(
-					"select * from carro", null);
+					"SELECT * FROM carro ORDER BY nome", null);
 			
 			while (cursor.moveToNext()) {
 				
@@ -287,7 +287,7 @@ public class QualAbastecerDB {
 			SQLiteDatabase db = helper.getReadableDatabase();
 			
 			Cursor cursor = db.rawQuery(
-					"select * from posto", null);
+					"SELECT * FROM posto ORDER BY nome", null);
 			
 			while (cursor.moveToNext()) {
 				
@@ -304,7 +304,7 @@ public class QualAbastecerDB {
 			SQLiteDatabase db = helper.getReadableDatabase();
 			
 			Cursor cursor = db.rawQuery(
-					"select * from abastecimento", null);
+					"SELECT * FROM abastecimento", null);
 			
 			while (cursor.moveToNext()) {	
 				Abastecimento abs = preencherAbastecimento(cursor);
