@@ -1,4 +1,4 @@
-package br.edu.unibratec.qualabastecer;
+package br.com.rafaelwms.qualabastecer;
 
 import java.io.Serializable;
 

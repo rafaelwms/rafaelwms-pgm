@@ -1,4 +1,4 @@
-package br.edu.unibratec.qualabastecer;
+package br.com.rafaelwms.qualabastecer;
 
 import java.io.Serializable;
 
@@ -88,6 +88,10 @@ public class Posto implements Serializable{
 
 	public void setLitroDiesel(double litroDiesel) {
 		this.litroDiesel = litroDiesel;
+	}
+	
+	public String toString(){
+		return this.getNome();
 	}
 
 }

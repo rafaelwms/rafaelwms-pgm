@@ -1,4 +1,4 @@
-package br.edu.unibratec.qualabastecer;
+package br.com.rafaelwms.qualabastecer;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import br.edu.unibratec.qualabastecer.R;
 import br.edu.unibratec.qualabastecer.R.id;
 
 

@@ -1,5 +1,6 @@
-package br.edu.unibratec.qualabastecer;
+package br.com.rafaelwms.qualabastecer;
 
+import br.edu.unibratec.qualabastecer.R;
 import br.edu.unibratec.qualabastecer.R.id;
 import android.os.Bundle;
 import android.app.Activity;

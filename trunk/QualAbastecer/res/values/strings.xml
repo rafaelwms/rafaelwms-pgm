@@ -106,5 +106,12 @@
     <string name="lblCombustivelUsado">Fuel:</string>
     <string name="lblTipoSolicitacao">Method Input</string>
     <string name="lblListaAbastecimento">Feeding List</string>
+    <string name="hitnValorPago"></string>
+    <string name="hintValorPago">Paid Value U$</string>
+    <string name="hintLitres">Fuel Litres</string>
+    <string name="hintKm">Vehicle Km or Miles</string>
+    
+    <string name="veiculo">Vehicle</string>
+    <string name="Posto">Gas Station</string>
 
 </resources>

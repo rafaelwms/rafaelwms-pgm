@@ -1,4 +1,4 @@
-package br.edu.unibratec.qualabastecer;
+package br.com.rafaelwms.qualabastecer;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

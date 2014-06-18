@@ -1,4 +1,4 @@
-package br.edu.unibratec.qualabastecer;
+package br.com.rafaelwms.qualabastecer;
 import java.io.Serializable;
 
 
@@ -67,6 +67,8 @@ public class Veiculo implements Serializable{
 		this.tipo = tipo;
 	}
 
-	
+	public String toString(){
+		return this.getNome();
+	}
 
 }

@@ -9,11 +9,13 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:orientation="vertical"
-        tools:context="br.edu.unibratec.qualabastecer.AbastecimentoActivity"
+        tools:context="br.com.rafaelwms.qualabastecer.AbastecimentoActivity"
         tools:ignore="MergeRootFrame" >
 
         <TextView
@@ -24,23 +26,15 @@
             android:text="@string/lblAbastecimentoTitulo"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp" >
-
             <Spinner
                 android:id="@+id/spinnerVeiculo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <Spinner
                 android:id="@+id/spinnerPosto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/lblTipoCombustivel"
@@ -97,7 +91,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="@string/hintValorPago"
                 android:inputType="numberDecimal" >
+
             </EditText>
         </LinearLayout>
 
@@ -118,7 +114,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="@string/hintLitres"
                 android:inputType="numberDecimal" />
+
         </LinearLayout>
 
         <EditText
@@ -126,9 +124,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/hintKm"
             android:inputType="numberDecimal" >
-
-            <requestFocus />
         </EditText>
 
         <TextView
