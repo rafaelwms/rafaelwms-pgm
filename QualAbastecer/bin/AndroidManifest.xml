@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="br.edu.unibratec.qualabastecer.MainActivity"
+            android:name="br.com.rafaelwms.qualabastecer.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
@@ -25,43 +25,43 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.edu.unibratec.qualabastecer.DetailsActivity"
+            android:name="br.com.rafaelwms.qualabastecer.DetailsActivity"
             android:label="@string/title_activity_details"
-            android:parentActivityName="br.edu.unibratec.qualabastecer.MainActivity"
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="br.edu.unibratec.qualabastecer.CalculadoraActivity"
+            android:name="br.com.rafaelwms.qualabastecer.CalculadoraActivity"
             android:label="@string/title_activity_calculadora"
-            android:parentActivityName="br.edu.unibratec.qualabastecer.MainActivity"
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="br.edu.unibratec.qualabastecer.VeiculoActivity"
+            android:name="br.com.rafaelwms.qualabastecer.VeiculoActivity"
             android:label="@string/title_activity_carro"
-            android:parentActivityName="br.edu.unibratec.qualabastecer.MainActivity"
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="br.edu.unibratec.qualabastecer.PostoActivity"
+            android:name="br.com.rafaelwms.qualabastecer.PostoActivity"
             android:label="@string/title_activity_posto"
-            android:parentActivityName="br.edu.unibratec.qualabastecer.MainActivity"
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="br.edu.unibratec.qualabastecer.AbastecimentoActivity"
+            android:name="br.com.rafaelwms.qualabastecer.AbastecimentoActivity"
             android:label="@string/title_activity_abastecimento" >
         </activity>
     </application>

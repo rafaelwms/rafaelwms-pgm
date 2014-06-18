@@ -2,6 +2,7 @@
 <lint>
     <issue id="ContentDescription">
         <ignore path="res/layout/activity_carro.xml" />
+        <ignore path="res/layout/activity_veiculo.xml" />
     </issue>
     <issue id="UselessLeaf">
         <ignore path="res/layout/activity_calculadora.xml" />

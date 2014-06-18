@@ -1,10 +1,12 @@
-package br.edu.unibratec.qualabastecer;
+package br.com.rafaelwms.qualabastecer;
 
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import br.edu.unibratec.qualabastecer.R;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -173,6 +175,14 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 			
 			Intent it2 = new Intent(this, PostoActivity.class);
 			startActivity(it2);
+			mDrawer.closeDrawer(mListView);
+			
+		break;
+		
+		case ABASTECIMENTOS:
+			
+			Intent it3 = new Intent(this, AbastecimentoActivity.class);
+			startActivity(it3);
 			mDrawer.closeDrawer(mListView);
 			
 		break;

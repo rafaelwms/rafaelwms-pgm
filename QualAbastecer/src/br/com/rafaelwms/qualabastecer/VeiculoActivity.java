@@ -1,7 +1,9 @@
-package br.edu.unibratec.qualabastecer;
+package br.com.rafaelwms.qualabastecer;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.edu.unibratec.qualabastecer.R;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
