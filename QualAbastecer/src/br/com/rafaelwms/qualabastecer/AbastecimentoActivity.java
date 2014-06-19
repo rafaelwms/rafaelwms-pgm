@@ -101,7 +101,10 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 		
 
 		veiculos = new ArrayList<Veiculo>();
-		veiculos = db.listarCarros();
+		veiculos.add(new Veiculo(-1, getResources().getString(R.string.veiculo), -1, -1, 1));
+		for(Veiculo ve : db.listarCarros()){
+			veiculos.add(ve);
+		}
 
 		ArrayAdapter<Veiculo> adapterVeiculos = new ArrayAdapter<Veiculo>(this, android.R.layout.simple_spinner_item, veiculos);
 		adapterVeiculos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -109,12 +112,42 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 		
 		
 		postos = new ArrayList<Posto>();
-		postos = db.listarPostos();
-		
+		postos.add(new Posto(-1, getResources().getString(R.string.Posto), 0,0,0,0));
+		for(Posto po : db.listarPostos()){
+			postos.add(po);
+		}
 
 		ArrayAdapter<Posto> adapterPostos = new ArrayAdapter<Posto>(this, android.R.layout.simple_spinner_item, postos);
 		adapterPostos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinPostos.setAdapter(adapterPostos);
+
+		
+		
+	}
+	
+	private void calcularCampos(){
+		if(rbValoPago.isChecked() && !edtValorPago.getText().toString().trim().equals("")){
+			
+			double valorPago = Double.parseDouble(edtValorPago.getText().toString());
+			
+			
+			
+			if(rbGasolina.isChecked() && posto.getId() > 0){				
+				String litros = String.valueOf(valorPago / posto.getLitroGasolina());
+				edtLitros.setEnabled(true);
+				edtLitros.setText(litros);
+				edtLitros.setEnabled(false);
+			} else if(rbEtanol.isChecked() && posto.getId() > 0){				
+				String litros = String.valueOf(valorPago / posto.getLitroEtanol());			
+				edtLitros.setText(litros);
+			}else if(rbDiesel.isChecked() && posto.getId() > 0){				
+				String litros = String.valueOf(valorPago / posto.getLitroDiesel());			
+				edtLitros.setText(litros);
+			}
+			
+			
+			
+		}
 		
 	}
 	
@@ -134,6 +167,8 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			calcularCampos();
+			carregarSpinners();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -143,6 +178,12 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
 		// TODO Auto-generated method stub
+		
+		if(parent == spinVeiculos)
+		veiculo = (Veiculo) parent.getSelectedItem();
+		
+		if(parent == spinPostos)
+			posto = (Posto) parent.getSelectedItem();
 			
 		/*if(parent.){
 			
@@ -173,8 +214,14 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 			rbEtanol.setChecked(false);
 		}else if(buttonView.getId() == R.id.radioLitros && rbLitros.isChecked()){
 			rbValoPago.setChecked(false);
+			edtValorPago.setText("");
+			edtValorPago.setEnabled(false);			
+			edtLitros.setEnabled(true);
 		}else if(buttonView.getId() == R.id.radioValorPago && rbValoPago.isChecked()){
 			rbLitros.setChecked(false);
+			edtLitros.setText("");
+			edtLitros.setEnabled(false);
+			edtValorPago.setEnabled(true);
 		}
 		
 		
