@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -25,7 +27,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.os.Build;
 
-public class AbastecimentoActivity extends ActionBarActivity implements OnItemSelectedListener {
+public class AbastecimentoActivity extends ActionBarActivity implements OnItemSelectedListener, OnCheckedChangeListener {
 	
 	
 	QualAbastecerDB db;
@@ -82,6 +84,13 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 		spinVeiculos.setOnItemSelectedListener(this);
 		spinPostos.setOnItemSelectedListener(this);
 		
+		rbDiesel.setOnCheckedChangeListener(this);
+		rbEtanol.setOnCheckedChangeListener(this);
+		rbGasolina.setOnCheckedChangeListener(this);
+		rbLitros.setOnCheckedChangeListener(this);
+		rbValoPago.setOnCheckedChangeListener(this);
+	
+		
 		carregarSpinners();
 		
 		
@@ -135,11 +144,11 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 			long id) {
 		// TODO Auto-generated method stub
 			
-		if(parent.getId() == R.id.spinnerVeiculo){
+		/*if(parent.){
 			
 			veiculo = (Veiculo) parent.getSelectedItem();
-			Toast.makeText(getApplication(), "id = "+veiculo.getId()+ " nome: "+veiculo.getNome(), Toast.LENGTH_SHORT).show();
-		}
+			edtKm.setText("id = "+veiculo.getId()+ " nome: "+veiculo.getNome());
+		}*/
 		
 	}
 
@@ -147,6 +156,28 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 	public void onNothingSelected(AdapterView<?> parent) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		// TODO Auto-generated method stub
+		
+		if(buttonView.getId() == R.id.radioDiesel && rbDiesel.isChecked()){
+			rbEtanol.setChecked(false);
+			rbGasolina.setChecked(false);
+		} else if(buttonView.getId() == R.id.radioEtanol && rbEtanol.isChecked()){
+			rbDiesel.setChecked(false);
+			rbGasolina.setChecked(false);
+		}else if(buttonView.getId() == R.id.radioGasolina && rbGasolina.isChecked()){
+			rbDiesel.setChecked(false);
+			rbEtanol.setChecked(false);
+		}else if(buttonView.getId() == R.id.radioLitros && rbLitros.isChecked()){
+			rbValoPago.setChecked(false);
+		}else if(buttonView.getId() == R.id.radioValorPago && rbValoPago.isChecked()){
+			rbLitros.setChecked(false);
+		}
+		
+		
 	}
 
 
