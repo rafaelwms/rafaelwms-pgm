@@ -62,7 +62,12 @@
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.AbastecimentoActivity"
-            android:label="@string/title_activity_abastecimento" >
+            android:label="@string/title_activity_abastecimento"
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
         </activity>
     </application>
 

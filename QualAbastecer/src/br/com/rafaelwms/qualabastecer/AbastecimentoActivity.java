@@ -133,7 +133,7 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 			
 			
 			if(rbGasolina.isChecked() && posto.getId() > 0){				
-				String litros = String.valueOf(valorPago / posto.getLitroGasolina());
+				String litros = String.format("%.2f",valorPago / posto.getLitroGasolina());
 				edtLitros.setEnabled(true);
 				edtLitros.setText(litros);
 				edtLitros.setEnabled(false);
@@ -179,17 +179,47 @@ public class AbastecimentoActivity extends ActionBarActivity implements OnItemSe
 			long id) {
 		// TODO Auto-generated method stub
 		
-		if(parent == spinVeiculos)
+		if(parent == spinVeiculos){
 		veiculo = (Veiculo) parent.getSelectedItem();
+		switch (veiculo.getCombustivel()) {
+		case 0:
+			rbGasolina.setChecked(true);
+			rbGasolina.setEnabled(true);
+			rbGasolina.setClickable(false);
+			rbEtanol.setEnabled(false);
+			rbDiesel.setEnabled(false);		
+			break;
+		case 1:
+			rbEtanol.setChecked(true);
+			rbEtanol.setClickable(false);
+			rbGasolina.setEnabled(false);
+			rbEtanol.setEnabled(true);
+			rbDiesel.setEnabled(false);		
+			break;
+		case 3:
+			rbDiesel.setChecked(true);
+			rbDiesel.setClickable(false);
+			rbGasolina.setEnabled(false);
+			rbEtanol.setEnabled(false);
+			rbDiesel.setEnabled(true);		
+			break;
+		case 2:
+			rbGasolina.setChecked(false);
+			rbEtanol.setChecked(false);
+			rbDiesel.setChecked(false);
+			rbGasolina.setEnabled(true);
+			rbEtanol.setEnabled(true);
+			rbDiesel.setEnabled(false);		
+			break;
+
+		default:
+			break;
+		}
 		
+		}
 		if(parent == spinPostos)
 			posto = (Posto) parent.getSelectedItem();
 			
-		/*if(parent.){
-			
-			veiculo = (Veiculo) parent.getSelectedItem();
-			edtKm.setText("id = "+veiculo.getId()+ " nome: "+veiculo.getNome());
-		}*/
 		
 	}
 
