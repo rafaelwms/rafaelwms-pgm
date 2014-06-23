@@ -51,10 +51,10 @@ public class QualAbastecerDB {
 	private ContentValues abastecimentoValues(Abastecimento abs){
 		
 		ContentValues values = new ContentValues();
-		
+		values.put("data", abs.getData());
 		values.put("carro", abs.getCarro().getId());
 		values.put("posto", abs.getPosto().getId());
-		values.put("combistivel", abs.getCombustivel());
+		values.put("combustivel", abs.getCombustivel());
 		values.put("valorpago", abs.getValorPago());
 		values.put("litros", abs.getLitros());
 		values.put("kilometragem", abs.getKilometragem());

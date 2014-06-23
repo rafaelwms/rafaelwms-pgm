@@ -30,6 +30,7 @@ public class QualAbastecerDBHelper extends SQLiteOpenHelper{
 		
 		db.execSQL("CREATE TABLE abastecimento (" +
 				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+				"data TEXT NOT NULL, "+
 				"carro INTEGER NOT NULL REFERENCES carro(_id) ON DELETE CASCADE, " +
 				"posto INTEGER NOT NULL REFERENCES posto(_id) ON DELETE CASCADE, " +
 				"combustivel INTEGER NOT NULL, " +

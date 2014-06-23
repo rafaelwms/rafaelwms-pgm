@@ -157,5 +157,11 @@ public class CalculadoraActivity extends ActionBarActivity implements OnClickLis
 		}
 
 	}
+	
+	@Override
+	public void onBackPressed() {
+		finish();
+		super.onBackPressed();
+	}
 
 }

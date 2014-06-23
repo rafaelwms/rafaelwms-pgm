@@ -12,7 +12,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.Qual_abastecer" >
         <activity
             android:name="br.com.rafaelwms.qualabastecer.MainActivity"
             android:label="@string/app_name"
@@ -27,8 +27,8 @@
         <activity
             android:name="br.com.rafaelwms.qualabastecer.DetailsActivity"
             android:label="@string/title_activity_details"
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" 
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -36,8 +36,9 @@
         <activity
             android:name="br.com.rafaelwms.qualabastecer.CalculadoraActivity"
             android:label="@string/title_activity_calculadora"
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:screenOrientation="portrait" >
+            android:icon="@drawable/ic_drawer_calculadora"
+            android:screenOrientation="portrait" 
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -45,8 +46,9 @@
         <activity
             android:name="br.com.rafaelwms.qualabastecer.VeiculoActivity"
             android:label="@string/title_activity_carro"
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:screenOrientation="portrait" >
+            android:icon="@drawable/ic_drawer_veiculo"
+            android:screenOrientation="portrait" 
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -54,8 +56,9 @@
         <activity
             android:name="br.com.rafaelwms.qualabastecer.PostoActivity"
             android:label="@string/title_activity_posto"
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:screenOrientation="portrait" >
+            android:icon="@drawable/ic_drawer_posto"
+            android:screenOrientation="portrait" 
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -63,8 +66,9 @@
         <activity
             android:name="br.com.rafaelwms.qualabastecer.AbastecimentoActivity"
             android:label="@string/title_activity_abastecimento"
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:screenOrientation="portrait" >
+            android:icon="@drawable/ic_drawer_pingo"
+            android:screenOrientation="portrait" 
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />

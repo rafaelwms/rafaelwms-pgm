@@ -257,5 +257,11 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 		posto = (Posto) postosListView.getItemAtPosition(position);
 		preencherCampos();
 	}
+	
+	@Override
+	public void onBackPressed() {
+		finish();
+		super.onBackPressed();
+	}
 
 }

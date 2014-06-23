@@ -35,21 +35,21 @@
 
     <!-- Drawer -->
     <string-array name="drawer_options">
-        <item>Calculate</item>
-        <item>My Cars</item>
+        <item>Calculator</item>
+        <item>My Vehicles</item>
         <item>Gas Stations</item>
         <item>Feeding</item>
-        <item>Contact</item>
+        <item>Statistcs</item>
     </string-array>
 
-    <string name="title_activity_carro">My Cars</string>
-    <string name="lblDadosCarro">Car Info</string>
-    <string name="hintCarroNome">Car Name or ID</string>
+    <string name="title_activity_carro">My Vehicles</string>
+    <string name="lblDadosCarro">Vehicle Info</string>
+    <string name="hintCarroNome">Vehicle Name or ID</string>
     <string name="lblCarroCor">Color\n Set</string>
 
     <!-- Menu -->
-    <string name="menuSalvarCarro">Save Car</string>
-    <string name="menuDeletarCarro">Delete Car</string>
+    <string name="menuSalvarCarro">Save Vehicle</string>
+    <string name="menuDeletarCarro">Delete Vehicle</string>
     <string name="null_text">@null</string>
 
     <!-- Dialogs -->
@@ -71,7 +71,7 @@
     <!-- Toasts -->
     <string name="exceptionNomeVazio">Name or ID car is Empty.</string>
     <string name="exceptionCombustivelVazio">Must select a fuel type at once.</string>
-    <string name="exceptionNomeUtilizadoCarro">Vehicle name is used by another car.</string>
+    <string name="exceptionNomeUtilizadoCarro">Vehicle name is used by another vehicle.</string>
     <string name="exceptionTipo">Must select a vehicle type at once.</string>
     <string name="toastSalvarCarro">Vehicle saved sucessifully.</string>
     <string name="toastAtualizarCarro">Vehicle updated sucessifully.</string>
@@ -113,5 +113,12 @@
     
     <string name="veiculo">Vehicle</string>
     <string name="Posto">Gas Station</string>
+    
+    <!-- Abastecimento -->
+    <string name="exceptionVeiculoSelecionado">Must select a vehicle.</string>
+    <string name="exceptionPostoSelecionado">Must select a gas station.</string>
+    <string name="exceptionCamposAPreencher">Must type a paid value or litres filled.</string>
+    <string name="exceptionCombPreencher">The selected vehicle is FLEX fuelling, \n please select your Fuel Type.</string>
+    <string name="exceptionCampoKm">Must type the mileage of your veichle.</string>
 
 </resources>

@@ -33,7 +33,8 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 	public static final int MEUS_CARROS = 1;
 	public static final int POSTOS = 2;
 	public static final int ABASTECIMENTOS = 3;
-	public static final int CONTATO = 4;
+	public static final int ESTATISTICAS = 4;
+	public static final int INFO = 5;
 	
 	
 	DrawerLayout mDrawer;

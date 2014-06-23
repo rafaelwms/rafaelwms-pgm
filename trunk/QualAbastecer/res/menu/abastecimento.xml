@@ -3,10 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="br.edu.unibratec.qualabastecer.AbastecimentoActivity" >
 
-    <item
-        android:id="@+id/action_settings"
+     <item
+        android:id="@+id/salvar_abastecimento"
+        android:icon="@android:drawable/ic_menu_save"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        android:title="@string/menuSalvarCarro"
+        app:showAsAction="always"/>
+    
+   <item
+        android:id="@+id/deletar_abastecimento"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:orderInCategory="100"
+        android:title="@string/menuDeletarCarro"
+        app:showAsAction="always"/>
+   
+   <item
+        android:id="@+id/visualizar_abastecimentos"
+        android:icon="@android:drawable/ic_menu_view"
+        android:orderInCategory="100"  
+        app:showAsAction="always"
+        android:title="@string/action_settings"/>
 
 </menu>

@@ -58,7 +58,7 @@ public class AbastecimentoAdapter extends BaseAdapter {
 		}else if(abs.getCombustivel() == 1){
 			imgComb.setBackgroundColor(Color.rgb(0, 160, 0));
 		}else if(abs.getCombustivel() == 3){
-			imgComb.setBackgroundColor(Color.rgb(128, 75, 0));
+			imgComb.setBackgroundColor(Color.rgb(108, 55, 0));
 		}
 		
 		txtAbsVeiculo.setTextColor(abs.getCarro().getCor());
