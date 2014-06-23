@@ -58,10 +58,10 @@ public class DrawerAdapter extends BaseAdapter {
 			imgDrawer.setImageResource(R.drawable.ic_drawer_posto);
 			break;			
 		case 3:
-			imgDrawer.setImageResource(R.drawable.ic_drawer_abastecimento);
+			imgDrawer.setImageResource(R.drawable.ic_drawer_pingo);
 			break;			
 		case 4:
-			imgDrawer.setImageResource(R.drawable.ic_drawer_info);
+			imgDrawer.setImageResource(R.drawable.ic_drawer_abastecimento);
 			break;
 		default:
 			break;

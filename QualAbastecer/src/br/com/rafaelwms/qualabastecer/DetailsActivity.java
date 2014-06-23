@@ -85,5 +85,11 @@ public class DetailsActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	public void onBackPressed() {
+		finish();
+		super.onBackPressed();
+	}
 
 }

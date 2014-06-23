@@ -532,6 +532,12 @@ public class VeiculoActivity extends ActionBarActivity implements OnItemClickLis
 	}
 	
 	
+	@Override
+	public void onBackPressed() {
+		finish();
+		super.onBackPressed();
+	}
+	
 
 }
 
