@@ -35,7 +35,6 @@
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.CalculadoraActivity"
-            android:icon="@drawable/ic_drawer_calculadora"
             android:label="@string/title_activity_calculadora"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
             android:screenOrientation="portrait" >
@@ -45,7 +44,6 @@
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.VeiculoActivity"
-            android:icon="@drawable/ic_drawer_veiculo"
             android:label="@string/title_activity_carro"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
             android:screenOrientation="portrait" >
@@ -55,7 +53,6 @@
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.PostoActivity"
-            android:icon="@drawable/ic_drawer_posto"
             android:label="@string/title_activity_posto"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
             android:screenOrientation="portrait" >
@@ -65,7 +62,6 @@
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.AbastecimentoActivity"
-            android:icon="@drawable/ic_drawer_pingo"
             android:label="@string/title_activity_abastecimento"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
             android:screenOrientation="portrait" >
@@ -75,7 +71,12 @@
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.EstatisticasActivity"
-            android:label="@string/title_activity_estatisticas" >
+            android:label="@string/title_activity_estatisticas" 
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
         </activity>
     </application>
 

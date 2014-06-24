@@ -188,6 +188,14 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 			
 		break;
 		
+		case ESTATISTICAS:
+			
+			Intent it4 = new Intent(this, EstatisticasActivity.class);
+			startActivity(it4);
+			mDrawer.closeDrawer(mListView);
+			
+		break;
+		
 		default:
 		mDrawer.closeDrawer(mListView);
 		

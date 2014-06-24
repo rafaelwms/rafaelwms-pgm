@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -95,7 +96,12 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 
 		carregarSpinners();
 		atualizarlista();
-
+		
+		abs = new Abastecimento();
+		abs = (Abastecimento)getIntent().getSerializableExtra(EstatisticasActivity.ABASTECIMENTO_UPGRADE);
+		if(abs != null && abs.getId() > 0){
+			selecionarAbastecimento(abs);
+		}
 	}
 
 	private void carregarSpinners() {
@@ -425,11 +431,20 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 			}
 							
 			}catch(Exception ex){
-				
+				Toast.makeText(getApplication(), ex.getMessage(), Toast.LENGTH_SHORT).show();
 			}
 			
 			
+			return true;
+		}
+		
+		if(item.getItemId() == R.id.visualizar_estatisticas){
 			
+			Intent it = new Intent(this, EstatisticasActivity.class);
+			startActivity(it);
+			this.finish();
+			
+			return true;
 		}
 		
 		
@@ -528,43 +543,52 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 		finish();
 		super.onBackPressed();
 	}
+	
+	private void selecionarAbastecimento(Abastecimento aba){
+		
+		for(int i = 0; i <= veiculos.size(); i++){
+			 if(spinVeiculos.getItemIdAtPosition(i) == abs.getCarro().getId()){
+				 spinVeiculos.setSelection(i);
+			 }
+			}
+			
+			for(int i = 0; i <= postos.size(); i++){
+				 if(spinPostos.getItemIdAtPosition(i) == abs.getPosto().getId()){
+					 spinPostos.setSelection(i);
+				 }
+				}
+			edtValorPago.setEnabled(true);
+			edtValorPago.setText(String.valueOf(abs.getValorPago()));
+			edtLitros.setEnabled(true);
+			edtLitros.setText(String.valueOf(abs.getLitros()));
+			edtKm.setText(String.valueOf(abs.getKilometragem()));
+			edtValorPago.setEnabled(false);
+			edtLitros.setEnabled(false);
+			rbValoPago.setChecked(false);
+			rbLitros.setChecked(false);			
+				
+			if(abs.getCombustivel() == 0){
+				rbGasolina.setEnabled(true);
+				rbEtanol.setEnabled(true);
+				rbGasolina.setChecked(true);
+				return;
+			}
+			if(abs.getCombustivel() == 1){
+				rbGasolina.setEnabled(true);
+				rbEtanol.setEnabled(true);
+				rbEtanol.setChecked(true);
+				return;
+			}
+			
+	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		// TODO Auto-generated method stub
 		abs = (Abastecimento) listAbss.getItemAtPosition(position);
-		
-		for(int i = 0; i <= veiculos.size(); i++){
-		 if(spinVeiculos.getItemIdAtPosition(i) == abs.getCarro().getId()){
-			 spinVeiculos.setSelection(i);
-		 }
-		}
-		
-		for(int i = 0; i <= postos.size(); i++){
-			 if(spinPostos.getItemIdAtPosition(i) == abs.getPosto().getId()){
-				 spinPostos.setSelection(i);
-			 }
-			}
-		edtValorPago.setEnabled(true);
-		edtValorPago.setText(String.valueOf(abs.getValorPago()));
-		edtLitros.setEnabled(true);
-		edtLitros.setText(String.valueOf(abs.getLitros()));
-		edtKm.setText(String.valueOf(abs.getKilometragem()));
-		edtValorPago.setEnabled(false);
-		edtLitros.setEnabled(false);
-		rbValoPago.setChecked(false);
-		rbLitros.setChecked(false);
-		
-			
-		if(abs.getCombustivel() == 0){
-			rbGasolina.setChecked(true);
-			return;
-		}
-		if(abs.getCombustivel() == 1){
-			rbEtanol.setChecked(true);
-			return;
-		}
+		selecionarAbastecimento(abs);
+	
 		
 	}
 
