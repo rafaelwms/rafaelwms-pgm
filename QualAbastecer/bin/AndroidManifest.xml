@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.edu.unibratec.qualabastecer"
+    package="br.com.rafaelwms.qualabastecer"
     android:versionCode="2"
     android:versionName="2.0" >
 
@@ -27,51 +27,55 @@
         <activity
             android:name="br.com.rafaelwms.qualabastecer.DetailsActivity"
             android:label="@string/title_activity_details"
-            android:screenOrientation="portrait" 
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.CalculadoraActivity"
-            android:label="@string/title_activity_calculadora"
             android:icon="@drawable/ic_drawer_calculadora"
-            android:screenOrientation="portrait" 
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
+            android:label="@string/title_activity_calculadora"
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.VeiculoActivity"
-            android:label="@string/title_activity_carro"
             android:icon="@drawable/ic_drawer_veiculo"
-            android:screenOrientation="portrait" 
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
+            android:label="@string/title_activity_carro"
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.PostoActivity"
-            android:label="@string/title_activity_posto"
             android:icon="@drawable/ic_drawer_posto"
-            android:screenOrientation="portrait" 
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
+            android:label="@string/title_activity_posto"
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.AbastecimentoActivity"
-            android:label="@string/title_activity_abastecimento"
             android:icon="@drawable/ic_drawer_pingo"
-            android:screenOrientation="portrait" 
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
+            android:label="@string/title_activity_abastecimento"
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name="br.com.rafaelwms.qualabastecer.EstatisticasActivity"
+            android:label="@string/title_activity_estatisticas" >
         </activity>
     </application>
 

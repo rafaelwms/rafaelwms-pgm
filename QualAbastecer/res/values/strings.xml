@@ -80,7 +80,6 @@
     <string name="toastDeletarCarro">Vehicle deleted sucessifully.</string>
     <string name="toastSelecionarCarro">Must select a vehicle first.</string>
     <string name="lblCarrosLista">My Vehicle List</string>
-    
 
     <!-- Posto -->
     <string name="title_activity_posto">PostoActivity</string>
@@ -113,10 +112,9 @@
     <string name="hintValorPago">Paid Value U$</string>
     <string name="hintLitres">Fuel Litres</string>
     <string name="hintKm">Vehicle Km or Miles</string>
-    
     <string name="veiculo">Vehicle</string>
     <string name="Posto">Gas Station</string>
-    
+
     <!-- Abastecimento -->
     <string name="abastecimentoSaved">Feed saved sucessifully.</string>
     <string name="abastecimentoUpdate">Feed updated sucessifully.</string>
@@ -135,6 +133,6 @@
     <string name="kilometragemDP">Mileage:</string>
     <string name="cifra">US$:</string>
     <string name="litros">Litres:</string>
-    
+    <string name="title_activity_estatisticas">EstatisticasActivity</string>
 
 </resources>
