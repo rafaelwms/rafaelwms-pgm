@@ -61,6 +61,8 @@
     <string name="corBlueValue">BLUE color value:</string>
 
     <!-- Dialogs -->
+    <string name="dialogTitleDeleteFeed">DELETE FEED</string>
+    <string name="dialogMsgDeleteFeed">Are you sure with the feed deletion?</string>
     <string name="dialogTitleDeleteCar">DELETE VEHICLE</string>
     <string name="dialogMsgDeleteCar">Proceed vehicle delete?\n All related feedings with this vehicle \n will automatically be deleted. </string>
     <string name="dialogTitleDeletePosto">DELETE GAS STATION</string>
@@ -78,6 +80,7 @@
     <string name="toastDeletarCarro">Vehicle deleted sucessifully.</string>
     <string name="toastSelecionarCarro">Must select a vehicle first.</string>
     <string name="lblCarrosLista">My Vehicle List</string>
+    
 
     <!-- Posto -->
     <string name="title_activity_posto">PostoActivity</string>
@@ -115,10 +118,23 @@
     <string name="Posto">Gas Station</string>
     
     <!-- Abastecimento -->
+    <string name="abastecimentoSaved">Feed saved sucessifully.</string>
+    <string name="abastecimentoUpdate">Feed updated sucessifully.</string>
+    <string name="abastecimentoDeleted">Feed deleted sucessifully.</string>
+    <string name="exceptionAbastecimentoSelecionado">Must select a feed first.</string>
     <string name="exceptionVeiculoSelecionado">Must select a vehicle.</string>
     <string name="exceptionPostoSelecionado">Must select a gas station.</string>
     <string name="exceptionCamposAPreencher">Must type a paid value or litres filled.</string>
     <string name="exceptionCombPreencher">The selected vehicle is FLEX fuelling, \n please select your Fuel Type.</string>
     <string name="exceptionCampoKm">Must type the mileage of your veichle.</string>
+    <string name="exceptionCampoKm2">Mileage inserted is less than last register.</string>
+    <string name="data">Date:</string>
+    <string name="veiculoDP">Vehicle:</string>
+    <string name="combustivelDP">Fuel Type:</string>
+    <string name="postoDP">G. Station:</string>
+    <string name="kilometragemDP">Mileage:</string>
+    <string name="cifra">US$:</string>
+    <string name="litros">Litres:</string>
+    
 
 </resources>

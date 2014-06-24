@@ -38,9 +38,13 @@ public class AbastecimentoAdapter extends BaseAdapter {
 		return abastecimentos.get(position).getId();
 	}
 
+	
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
+		
+	
 		
 		Abastecimento abs = abastecimentos.get(position);
 		
@@ -61,11 +65,9 @@ public class AbastecimentoAdapter extends BaseAdapter {
 			imgComb.setBackgroundColor(Color.rgb(108, 55, 0));
 		}
 		
-		txtAbsVeiculo.setTextColor(abs.getCarro().getCor());
-		
-		txtAbsData.setText(abs.getData()+" - "+abs.getValorPago());
-		txtAbsVeiculo.setText(abs.getCarro().getNome()+" - "+abs.getKilometragem());
-		txtAbsPosto.setText(abs.getPosto().getNome()+" - "+abs.getLitros());
+		txtAbsData.setText(parent.getResources().getString(R.string.data)+" "+abs.getData()+" - "+parent.getResources().getString(R.string.cifra)+" "+abs.getValorPago());
+		txtAbsVeiculo.setText(parent.getResources().getString(R.string.veiculoDP)+" "+abs.getCarro().getNome()+" - "+parent.getResources().getString(R.string.kilometragemDP)+" "+abs.getKilometragem());
+		txtAbsPosto.setText(parent.getResources().getString(R.string.postoDP)+" "+abs.getPosto().getNome()+" - "+parent.getResources().getString(R.string.litros)+" "+abs.getLitros());
 		
 		
 		return convertView;
