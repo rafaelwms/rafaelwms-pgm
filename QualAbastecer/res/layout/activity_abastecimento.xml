@@ -2,8 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/containerDocontainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/qual_abastecer_backg_abastcimentos" >
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:background="@drawable/bcgd_abastecimento" 
+    tools:context="br.com.rafaelwms.qualabastecer.AbastecimentoActivity" >
 
     <LinearLayout
         android:id="@+id/container"
@@ -94,12 +98,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:focusableInTouchMode="true"
                 android:hint="@string/hintValorPago"
                 android:inputType="numberDecimal" 
-                android:imeOptions="actionNext"
->
+                android:imeOptions="actionDone" />
 
-            </EditText>
         </LinearLayout>
 
         <LinearLayout
@@ -119,8 +122,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:focusableInTouchMode="true"
                 android:hint="@string/hintLitres"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal" 
+                android:imeOptions="actionDone"/>
 
         </LinearLayout>
 
@@ -129,9 +134,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:focusableInTouchMode="true"
             android:hint="@string/hintKm"
-            android:inputType="numberDecimal" >
-        </EditText>
+            android:inputType="numberDecimal" 
+            android:imeOptions="actionDone" />
 
         <TextView
             android:id="@+id/lblListaAbastecimentos"

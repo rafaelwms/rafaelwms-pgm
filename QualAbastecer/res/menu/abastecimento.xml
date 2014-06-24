@@ -18,10 +18,10 @@
         app:showAsAction="always"/>
    
    <item
-        android:id="@+id/visualizar_abastecimentos"
-        android:icon="@android:drawable/ic_menu_view"
+        android:id="@+id/visualizar_estatisticas"
+        android:icon="@drawable/ic_drawer_abastecimento"
         android:orderInCategory="100"  
         app:showAsAction="always"
-        android:title="@string/action_settings"/>
+        android:title="@string/visualizarEstatisticas"/>
 
 </menu>

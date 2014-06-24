@@ -3,7 +3,7 @@
     android:id="@+id/containerPosto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/qual_abastecer_backg_postos"
+    android:background="@drawable/bcgd_posto"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
