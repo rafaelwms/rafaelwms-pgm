@@ -1,7 +1,7 @@
 package br.com.rafaelwms.qualabastecer;
 
-import br.edu.unibratec.qualabastecer.R;
-import br.edu.unibratec.qualabastecer.R.id;
+import br.com.rafaelwms.qualabastecer.R;
+import br.com.rafaelwms.qualabastecer.R.id;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;

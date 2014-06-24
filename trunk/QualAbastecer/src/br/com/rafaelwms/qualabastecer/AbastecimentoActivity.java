@@ -4,19 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.edu.unibratec.qualabastecer.R;
-
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -29,7 +23,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.os.Build;
+import br.com.rafaelwms.qualabastecer.R;
 
 public class AbastecimentoActivity extends ActionBarActivity implements
 		OnItemSelectedListener, OnCheckedChangeListener, OnItemClickListener {

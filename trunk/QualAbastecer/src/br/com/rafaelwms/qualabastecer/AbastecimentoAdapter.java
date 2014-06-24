@@ -2,7 +2,7 @@ package br.com.rafaelwms.qualabastecer;
 
 import java.util.List;
 
-import br.edu.unibratec.qualabastecer.R;
+import br.com.rafaelwms.qualabastecer.R;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
