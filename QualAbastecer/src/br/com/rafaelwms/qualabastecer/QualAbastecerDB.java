@@ -320,7 +320,7 @@ public class QualAbastecerDB {
 			SQLiteDatabase db = helper.getReadableDatabase();
 			
 			Cursor cursor = db.rawQuery(
-					"SELECT * FROM abastecimento WHERE carro = ?", new String[]{carro.getId()+""});
+					"SELECT * FROM abastecimento WHERE carro = ?", new String[]{String.valueOf(carro.getId())});
 			
 			while (cursor.moveToNext()) {	
 				Abastecimento abs = preencherAbastecimento(cursor);
@@ -336,7 +336,7 @@ public class QualAbastecerDB {
 			SQLiteDatabase db = helper.getReadableDatabase();
 			
 			Cursor cursor = db.rawQuery(
-					"SELECT * FROM abastecimento WHERE posto = ?", new String[]{posto.getId()+""});
+					"SELECT * FROM abastecimento WHERE posto = ?", new String[]{String.valueOf(posto.getId())});
 			
 			while (cursor.moveToNext()) {	
 				Abastecimento abs = preencherAbastecimento(cursor);
@@ -352,7 +352,7 @@ public class QualAbastecerDB {
 			SQLiteDatabase db = helper.getReadableDatabase();
 			
 			Cursor cursor = db.rawQuery(
-					"SELECT * FROM abastecimento WHERE combustivel = ?", new String[]{combustivel+""});
+					"SELECT * FROM abastecimento WHERE combustivel = ?", new String[]{String.valueOf(combustivel)});
 			
 			while (cursor.moveToNext()) {	
 				Abastecimento abs = preencherAbastecimento(cursor);
@@ -367,7 +367,22 @@ public class QualAbastecerDB {
 			List<Abastecimento> abss = new ArrayList<Abastecimento>();
 			SQLiteDatabase db = helper.getReadableDatabase();
 
-				Cursor cursor = db.rawQuery("SELECT * FROM abastecimento WHERE valorpago >= ?", new String[]{valor+""});	
+				Cursor cursor = db.rawQuery("SELECT * FROM abastecimento WHERE valorpago >= ?", new String[]{String.valueOf(valor)});	
+			
+			while (cursor.moveToNext()) {	
+				Abastecimento abs = preencherAbastecimento(cursor);
+				abss.add(abs);
+			}
+				cursor.close();
+				db.close();
+				return abss;
+			}
+		
+		public List<Abastecimento> listarAbastecimentosPorKilometragem(int veiculo, double valor){
+			List<Abastecimento> abss = new ArrayList<Abastecimento>();
+			SQLiteDatabase db = helper.getReadableDatabase();
+
+				Cursor cursor = db.rawQuery("SELECT * FROM abastecimento WHERE carro = ? AND kilometragem >= ?", new String[]{String.valueOf(veiculo), String.valueOf(valor)});	
 			
 			while (cursor.moveToNext()) {	
 				Abastecimento abs = preencherAbastecimento(cursor);
@@ -382,7 +397,7 @@ public class QualAbastecerDB {
 			List<Abastecimento> abss = new ArrayList<Abastecimento>();
 			SQLiteDatabase db = helper.getReadableDatabase();
 
-				Cursor cursor = db.rawQuery("SELECT * FROM abastecimento WHERE valorpago <= ?", new String[]{valor+""});	
+				Cursor cursor = db.rawQuery("SELECT * FROM abastecimento WHERE valorpago <= ?", new String[]{String.valueOf(valor)});	
 			
 			while (cursor.moveToNext()) {	
 				Abastecimento abs = preencherAbastecimento(cursor);
