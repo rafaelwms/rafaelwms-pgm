@@ -382,7 +382,7 @@ public class QualAbastecerDB {
 			List<Abastecimento> abss = new ArrayList<Abastecimento>();
 			SQLiteDatabase db = helper.getReadableDatabase();
 
-				Cursor cursor = db.rawQuery("SELECT * FROM abastecimento WHERE carro = ? AND kilometragem >= ?", new String[]{String.valueOf(veiculo), String.valueOf(valor)});	
+				Cursor cursor = db.rawQuery("SELECT * FROM abastecimento WHERE carro = ? AND kilometragem > ?", new String[]{String.valueOf(veiculo), String.valueOf(valor)});	
 			
 			while (cursor.moveToNext()) {	
 				Abastecimento abs = preencherAbastecimento(cursor);

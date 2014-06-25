@@ -55,6 +55,7 @@
             android:ems="10"
             android:focusableInTouchMode="true"
             android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
             android:text="@string/fieldEthanol" />
 
         <Button

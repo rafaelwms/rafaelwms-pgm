@@ -1,155 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
 
     <!-- ouououo -->
 
-    <string name="app_name">Qual Abastecer?</string>
-    <string name="action_settings">Sobre</string>
-    <string name="about">Design por: Rafael WMS\nDesenvolvido por: Rafael WMS\nPOGs por: Rafael WMS\nBrasil - Pernambuco</string>
-    <string name="hello_world">Olá mundo!</string>
-    <string name="topApp">Digite o custo de cada combustível.</string>
-    <string name="lblGas">Preço da Gasolina R$:</string>
+    <string name="app_name">Which Fuel?</string>
+    <string name="action_settings">About</string>
+    <string name="about">Designed by: Rafael WMS \nDeveloped by: Rafael WMS \nPOGs by: Rafael WMS \nBrasil - Pernambuco \n \nCONTATO: \nrafael.wmsa@gmail.com\n\n©2014 by Rafael WMS</string>
+    <string name="hello_world">Olá world!</string>
+    <string name="topApp">Type the cost of each fuel.</string>
+    <string name="lblGas">Gasoline\'s Price U$:</string>
     <string name="fieldGas"></string>
-    <string name="lblEthanol">Preço do Etanol R$:</string>
+    <string name="lblEthanol">Ethanol\'s Price U$:</string>
     <string name="fieldEthanol"></string>
-    <string name="btnActLbl">Calcular</string>
-    <string name="lblBestFuel">A melhor opção de combustível é:</string>
+    <string name="btnActLbl">Calculate</string>
+    <string name="lblBestFuel">The best fuel option is:</string>
+    <string name="use">USE</string>
     <string name="lblREsult">@null</string>
-    <string name="ethResult">ETANOL</string>
-    <string name="gasResult">GASOLINA</string>
+    <string name="ethResult">ETHANOL</string>
+    <string name="gasResult">GASOLINE</string>
     <string name="flexResult">FLEX POWER</string>
     <string name="dieselResult">DIESEL</string>
-    <string name="btnAct2lbl">Detalhes</string>
-    <string name="title_activity_details">Detalhes</string>
-    <string name="lblAct2Tilte">Informações:</string>
-    <string name="lblAct2Gas">Preço da Gasolina R$:</string>
+    <string name="btnAct2lbl">Details</string>
+    <string name="title_activity_details">Details</string>
+    <string name="lblAct2Tilte">Information:</string>
+    <string name="lblAct2Gas">Gasoline\'s Price U$:</string>
     <string name="lblAct2GasPrice">\@null</string>
-    <string name="lblAct2Eth">Preço do Etanol R$:</string>
+    <string name="lblAct2Eth">Ethanol\'s Price U$:</string>
     <string name="lblAct2EthPrice">\@null</string>
-    <string name="btnAct2Back">Voltar</string>
+    <string name="btnAct2Back">To come back</string>
     <string name="lblAct2Result">\@null</string>
-    <string name="lblAct2ResultValueEth">O preço do Etanol está 70% abaixo do preço da Gasolina.\n\nUSE ETANOL.</string>
-    <string name="lblAct2ResultGas">O preço do Etanol está acima de 70% do preço da Gasolina.\n\nUSE GASOLINA</string>
-    <string name="errorField">Necessário digitar um valor.</string>
-    <string name="title_activity_calculadora">Calculadora</string>
+    <string name="lblAct2ResultValueEth">Etanol\'s price is below of 70% of the Gasoline\'s price.\n\nUSE ETANOL.</string>
+    <string name="lblAct2ResultGas">Etanol\'s price is over 70% of the Gasoline\'s price.\n\nUSE GASOLINE</string>
+    <string name="errorField">Necessary to type a value.</string>
+    <string name="title_activity_calculadora">Calculator</string>
 
     <!-- Drawer -->
     <string-array name="drawer_options">
-        <item>Calculadora</item>
-        <item>Veículos</item>
-        <item>Postos</item>
-        <item>Abastecimentos</item>
-        <item>Estatísticas</item>
+        <item>Calculator</item>
+        <item>Vehicles</item>
+        <item>Gas Stations</item>
+        <item>Feedings</item>
+        <item>Statisticians</item>
     </string-array>
 
-    <string name="title_activity_carro">Meus Veículos</string>
-    <string name="lblDadosCarro">Informações do veículo:</string>
-    <string name="hintCarroNome">Apelido ou placa do Veículo.</string>
-    <string name="lblCarroCor">Ajuste\nde Cor</string>
+    <string name="title_activity_carro">My Vehicles</string>
+    <string name="lblDadosCarro">Vehicle\'s Info:</string>
+    <string name="hintCarroNome">Alias or plate of the Vehicle.</string>
+    <string name="lblCarroCor">Color\nSet</string>
 
     <!-- Menu -->
-    <string name="menuSalvarCarro">Salvar Veículo</string>
-    <string name="menuDeletarCarro">Deletar Veículo</string>
+    <string name="menuSalvarCarro">Save Vehicle</string>
+    <string name="menuDeletarCarro">Delete Vehicle</string>
     <string name="null_text">@null</string>
 
     <!-- Dialogs -->
-    <string name="corRed">COR VEREMLHA</string>
-    <string name="corGreen">COR VERDE.</string>
-    <string name="corBlue">COR AZUL.</string>
-    <string name="corRedValue">VERMELHO: </string>
-    <string name="corGreenValue">VERDE:</string>
-    <string name="corBlueValue">AZUL:</string>
+    <string name="corRed">RED COLOR</string>
+    <string name="corGreen">GREEN COLOR.</string>
+    <string name="corBlue">BLUE COLOR.</string>
+    <string name="corRedValue">RED: </string>
+    <string name="corGreenValue">GREEN:</string>
+    <string name="corBlueValue">BLUE:</string>
 
     <!-- Dialogs -->
-    <string name="dialogTitleDeleteFeed">DELETAR ABASTECIMENTO</string>
-    <string name="dialogMsgDeleteFeed">Tem certeza que deseja deletar o abastecimento?</string>
-    <string name="dialogTitleUpgradeFeed">ATUALIZAR ABASTECIMENTO</string>
-    <string name="dialogMsgUpgradeFeed">Tem certeza que deseja atualizar o abastecimento?\nNota: não afeta a data do abastecimento.</string>
-    <string name="dialogTitleDeleteCar">DELETAR VEÍCULO</string>
-    <string name="dialogMsgDeleteCar">Prosseguir com a deleção?\nTodos os registros de abastecimentos com este veículo \nserão deletados automaticamente. </string>
-    <string name="dialogTitleDeletePosto">DELETAR POSTO</string>
-    <string name="dialogMsgDeletePosto">Prosseguir com a deleção?\nTodos os registros de abastecimentos com este posto \nserão deletados automaticamente. </string>
+    <string name="dialogTitleDeleteFeed">DELETE FEED</string>
+    <string name="dialogMsgDeleteFeed">Proceed delete action?</string>
+    <string name="dialogTitleUpgradeFeed">UPDATE FEED</string>
+    <string name="dialogMsgUpgradeFeed">Proceed updating this feed? \nNote: it does not affect the date of the feeding.</string>
+    <string name="dialogTitleDeleteCar">DELETE VEHICLE</string>
+    <string name="dialogMsgDeleteCar">Proceed delete action? \nAll feeding registers with this vehicle \nwill be automatically deleted. </string>
+    <string name="dialogTitleDeletePosto">DELETAR RANK</string>
+    <string name="dialogMsgDeletePosto">Proceed delete action? \nAll feeding registers with this gas station \nwill be automatically deleted.  </string>
     <string name="dialogBtnOK">OK</string>
     <string name="dialogBtnCanclear">Cancel</string>
 
     <!-- Toasts -->
-    <string name="exceptionNomeVazio">Apelido ou placa do veículo não informados.</string>
-    <string name="exceptionCombustivelVazio">É necessário escolher um tipo de combustível.</string>
-    <string name="exceptionNomeUtilizadoCarro">Apelido ou placa já utilizados por outro veículo.</string>
-    <string name="exceptionTipo">Precisa escolher um tipo de veículo.</string>
-    <string name="toastSalvarCarro">Veículo salvo com êxito.</string>
-    <string name="toastAtualizarCarro">Veículo atualizado com êxito.</string>
-    <string name="toastDeletarCarro">Veículo deletado com êxito.</string>
-    <string name="toastSelecionarCarro">É necessário selecionar um veículo.</string>
-    <string name="lblCarrosLista">Minha lista de veículos</string>
+    <string name="exceptionNomeVazio">Alias or plate isn\'t typed.</string>
+    <string name="exceptionCombustivelVazio">It is necessary to choose a type of fuel.</string>
+    <string name="exceptionNomeUtilizadoCarro">Alias or plate already used by another vehicle.</string>
+    <string name="exceptionTipo">It needs to choose a kind of vehicle.</string>
+    <string name="toastSalvarCarro">Vehicle saved with success.</string>
+    <string name="toastAtualizarCarro">Vehicle updated to date with success.</string>
+    <string name="toastDeletarCarro">Vehicle deleted with success.</string>
+    <string name="toastSelecionarCarro">It is necessary to select a vehicle.</string>
+    <string name="lblCarrosLista">Vehicles List</string>
 
     <!-- Posto -->
-    <string name="title_activity_posto">Posto</string>
-    <string name="lblTelaPosto">Posto</string>
-    <string name="hintPostoNome">Nome ou companhia do posto.</string>
-    <string name="lblPostoAtendimento">Avalie o serviço:</string>
-    <string name="hintPostoGasolina">Preço da Gasolina R$</string>
-    <string name="hintPostoEtanol">Preço do Etanol R$</string>
-    <string name="hintPostoDiesel">Preço do Diesel R$</string>
-    <string name="lblPostoList">Lista de Postos</string>
-    <string name="lblPostoListPrecoGasolina">Preço da Gasolina R$:</string>
-    <string name="lblPostoListPrecoEtanol">Preço do Etanol R$:</string>
-    <string name="lblPostoListPrecoDiesel">Preço do Diesel R$:</string>
-    <string name="lblPostoListRating">Aval.:</string>
-    <string name="toastSalvarPosto">Posto salvo com êxito.</string>
-    <string name="toastAtualizarPosto">Posto atualizado com êxito</string>
-    <string name="toastDeletarPosto">Posto removido com êxito</string>
-    <string name="toastSelecionarPosto">É necessário selecionar um posto.</string>
-    <string name="exceptionNomePostoVazio">Nome ou companhia não informados.</string>
-    <string name="exceptionPostoCombustivelVazio">Necessário informar o valor de todos os combustíveis.</string>
-    <string name="exceptionNomeUtilizadoPosto">Nome ou companhia de posto já utilizados.</string>
-    <string name="title_activity_abastecimento">Abastecimento</string>
-    <string name="lblAbastecimentoTitulo">Abastecimento</string>
-    <string name="lblCombustivelUsado">Combustível:</string>
-    <string name="lblTipoSolicitacao">Solicitação</string>
-    <string name="lblListaAbastecimento">Lista de Abastecimentos</string>
+    <string name="title_activity_posto">Gas Station</string>
+    <string name="lblTelaPosto">Gas Station</string>
+    <string name="hintPostoNome">Name or company of the Gas Station.</string>
+    <string name="lblPostoAtendimento">It evaluates the service:</string>
+    <string name="hintPostoGasolina">Gasoline\'s Price U$:</string>
+    <string name="hintPostoEtanol">Etanol\' Price U$:</string>
+    <string name="hintPostoDiesel">Diesel\'s Price U$:</string>
+    <string name="lblPostoList">Gas Stations List</string>
+    <string name="lblPostoListPrecoGasolina">Gasoline\'s Price U$:</string>
+    <string name="lblPostoListPrecoEtanol">Etanol\' Price U$:</string>
+    <string name="lblPostoListPrecoDiesel">Diesel\'s Price U$:</string>
+    <string name="lblPostoListRating">Rate:</string>
+    <string name="toastSalvarPosto">Gas Station saved with success.</string>
+    <string name="toastAtualizarPosto">Gas Station updated with success</string>
+    <string name="toastDeletarPosto">Gas Station removed with success</string>
+    <string name="toastSelecionarPosto">It is necessary to select a Gas Station.</string>
+    <string name="exceptionNomePostoVazio">Name or company not typed.</string>
+    <string name="exceptionPostoCombustivelVazio">Necessary to type the cost of all the fuels.</string>
+    <string name="exceptionNomeUtilizadoPosto">Name or company of Gas Station already used.</string>
+    <string name="title_activity_abastecimento">Feedings</string>
+    <string name="lblAbastecimentoTitulo">Feedings</string>
+    <string name="lblCombustivelUsado">Fuel:</string>
+    <string name="lblTipoSolicitacao">Request</string>
+    <string name="lblListaAbastecimento">List of Feedings</string>
     <string name="hitnValorPago"></string>
-    <string name="hintValorPago">Valor pago R$</string>
-    <string name="hintLitres">Litros abastecido.</string>
-    <string name="hintKm">Kilometragem do veículo</string>
-    <string name="veiculo">VEÍCULO</string>
-    <string name="Posto">POSTO</string>
+    <string name="hintValorPago">Money spent U$</string>
+    <string name="hintLitres">Liters supplied.</string>
+    <string name="hintKm">KMmeter of the vehicle</string>
+    <string name="veiculo">VEHICLE</string>
+    <string name="Posto">GAS STATION</string>
 
     <!-- Abastecimento -->
-    <string name="abastecimentoSaved">Abastecimento salvo com êxito.</string>
-    <string name="abastecimentoUpdate">Abastecimento atualizado com êxito.</string>
-    <string name="abastecimentoDeleted">Abastecimento deletado com êxito.</string>
-    <string name="exceptionAbastecimentoSelecionado">Necessário selecionar um abastecimento.</string>
-    <string name="exceptionVeiculoSelecionado">Necessário selecionar um veículo.</string>
-    <string name="exceptionPostoSelecionado">Necessário selecionar um posto.</string>
-    <string name="exceptionCamposAPreencher">Necessário informar o valor pago ou litros abastecidos.</string>
-    <string name="exceptionCombPreencher">O veículo selecionado é FLEX POWER, \n favor, informar o combustível utilizado.</string>
-    <string name="exceptionCampoKm">Precisa informar a kilometragem.</string>
-    <string name="exceptionCampoKm2">A kilometragem é inferior a última registrada.</string>
-    <string name="data">Data:</string>
-    <string name="veiculoDP">Veículo:</string>
-    <string name="combustivelDP">Combustível:</string>
-    <string name="postoDP">Posto:</string>
+    <string name="abastecimentoSaved">Feeding saved with success.</string>
+    <string name="abastecimentoUpdate">Feeding updated with success.</string>
+    <string name="abastecimentoDeleted">Feeding deleted with success.</string>
+    <string name="exceptionAbastecimentoSelecionado">Necessary to select a Feeding.</string>
+    <string name="exceptionVeiculoSelecionado">Necessary to select a Vehicle.</string>
+    <string name="exceptionPostoSelecionado">Necessary to select a Gas Staion.</string>
+    <string name="exceptionCamposAPreencher">Necessary to inform the paid value or supplied liters.</string>
+    <string name="exceptionCombPreencher">The selected vehicle is FLEX POWER, \ n please, select the feed fuel.</string>
+    <string name="exceptionCampoKm">It needs to inform the KMmeter.</string>
+    <string name="exceptionCampoKm2">The KMmeter is inferior the last one registered.</string>
+    <string name="data">Date:</string>
+    <string name="veiculoDP">Vehicle:</string>
+    <string name="combustivelDP">Fuel:</string>
+    <string name="postoDP">G.Sation:</string>
     <string name="kilometragemDP">Km:</string>
-    <string name="cifra">R$:</string>
-    <string name="litros">Litros:</string>
-    <string name="title_activity_estatisticas">Estatisticas</string>
+    <string name="cifra">U$:</string>
+    <string name="litros">Liters:</string>
+    <string name="title_activity_estatisticas">Statisticians</string>
     
     
 	<!-- Spinner Valores -->
 	<string-array name="spinnerValores">
-    <item>SELECIONE UMA OPÇÃO ACIMA</item>
+    <item>SELECT AN OPTION ABOVE</item>
     </string-array>
     
 	<!-- Spinner Valores -->
 	<string-array name="spinnerCobustivel">
-	<item>COMBUSTÍVEL</item>
-    <item>GASOLINA</item>
+	<item>FUEL</item>
+    <item>GASOLINE</item>
     <item>ETANOL</item>
     <item>DIESEL</item>
     </string-array>
     
-	<string name="combustivel">COMBUSTÍVEL</string>
-	<string name="atualizarAbastecimento">Atualizar Abastecimento. \nNota: não afeta a data do abastecimento.</string>
-	<string name="visualizarEstatisticas">Visualizar Estatísticas.</string>
+	<string name="combustivel">FUEL</string>
+	<string name="atualizarAbastecimento">Upate Feeding. \ nNote: it does not affect the date of the supplying.</string>
+	<string name="visualizarEstatisticas">Visualize Statisticians.</string>
+	<string name="imeSalvar">Save</string>
+	<string name="imeCalcular">Calculate</string>
 </resources>

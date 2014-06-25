@@ -137,6 +137,7 @@
             android:focusableInTouchMode="true"
             android:hint="@string/hintKm"
             android:inputType="numberDecimal" 
+            android:imeActionLabel="@string/imeSalvar"
             android:imeOptions="actionDone" />
 
         <TextView

@@ -9,9 +9,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -23,6 +25,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import br.com.rafaelwms.qualabastecer.R;
 
@@ -84,6 +87,16 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 		edtValorPago = (EditText) findViewById(R.id.editValorPago);
 		edtLitros = (EditText) findViewById(R.id.editQtdLitros);
 		edtKm = (EditText) findViewById(R.id.editKm);
+		edtKm.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+		    @Override
+		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		        if (actionId == EditorInfo.IME_ACTION_DONE) {
+		           salvarAbastecimento();
+		            return true;
+		        }
+		        return false;
+		    }
+		});
 
 		spinVeiculos.setOnItemSelectedListener(this);
 		spinPostos.setOnItemSelectedListener(this);
@@ -100,8 +113,20 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 		abs = new Abastecimento();
 		abs = (Abastecimento)getIntent().getSerializableExtra(EstatisticasActivity.ABASTECIMENTO_UPGRADE);
 		if(abs != null && abs.getId() > 0){
-			selecionarAbastecimento(abs);
-		}
+			
+			edtValorPago.setEnabled(true);
+			edtValorPago.setText(String.valueOf(abs.getValorPago()));
+			edtLitros.setEnabled(true);
+			edtLitros.setText(String.valueOf(abs.getLitros()));
+			edtKm.setText(String.valueOf(abs.getKilometragem()));
+			edtValorPago.setEnabled(false);
+			edtLitros.setEnabled(false);
+			rbValoPago.setChecked(false);
+			rbLitros.setChecked(false);		
+
+			}
+			
+		
 	}
 
 	private void carregarSpinners() {
@@ -135,6 +160,9 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 		edtValorPago.setText("");
 		edtLitros.setText("");
 		edtKm.setText("");
+		
+		edtValorPago.setEnabled(false);
+		edtLitros.setEnabled(false);
 		
 		rbLitros.setChecked(false);
 		rbValoPago.setChecked(false);
@@ -275,118 +303,8 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 		int id = item.getItemId();
 		if (id == R.id.salvar_abastecimento) {
 			
-			try{
-				
-				if(abs == null || abs.getId() < 1){
-				
-				if(veiculo.getId() == -1){
-					throw new Exception(getResources().getString(R.string.exceptionVeiculoSelecionado));
-				}
-				if(posto.getId() == -1){
-					throw new Exception(getResources().getString(R.string.exceptionPostoSelecionado));
-				}
-				if(!calcularCampos()){
-					throw new Exception(getResources().getString(R.string.exceptionCamposAPreencher));
-				}
-				if(edtKm.getText().toString().trim().equals("")){
-					throw new Exception(getResources().getString(R.string.exceptionCampoKm));
-				}
-				
-				if(db.listarAbastecimentosPorKilometragem(veiculo.getId(), Double.parseDouble(edtKm.getText().toString())).size() > 0){
-					throw new Exception(getResources().getString(R.string.exceptionCampoKm2));
-				}
-				
-				Date data = new Date();
-				
-				if(veiculo.getCombustivel() == 2){
-					
-					if(!rbGasolina.isChecked() && !rbEtanol.isChecked()){
-						throw new Exception(getResources().getString(R.string.exceptionCombPreencher));
-					}
-					
-					
-					int comb = 0;
-					
-					if(rbGasolina.isChecked()){
-						comb = 0;
-					}
-					
-					if (rbEtanol.isChecked()){
-						comb = 1;
-					}
-					
-					
-					
-					calcularCampos();
-					Abastecimento  abst = new Abastecimento(Util.formatarDataCompletaUS(data), veiculo, posto, comb, valorAbastecimento, litrosAbastecido, Double.parseDouble(edtKm.getText().toString()));
-					db.insertAbastecimento(abst);
-					Toast.makeText(getApplication(), getResources().getString(R.string.abastecimentoSaved), Toast.LENGTH_SHORT).show();
-					carregarSpinners();
-					atualizarlista();
-				}else{
-				
-				Abastecimento  abst = new Abastecimento(Util.formatarDataCompletaUS(data), veiculo, posto, veiculo.getCombustivel(), valorAbastecimento, litrosAbastecido, Double.parseDouble(edtKm.getText().toString()));
-				calcularCampos();
-				db.insertAbastecimento(abst);
-				Toast.makeText(getApplication(), getResources().getString(R.string.abastecimentoSaved), Toast.LENGTH_SHORT).show();
-				carregarSpinners();
-				atualizarlista();
-				}
-				}else if(abs.getId() > 0){
-					if(veiculo.getId() == -1){
-						throw new Exception(getResources().getString(R.string.exceptionVeiculoSelecionado));
-					}
-					if(posto.getId() == -1){
-						throw new Exception(getResources().getString(R.string.exceptionPostoSelecionado));
-					}
-					if(!calcularCampos()){
-						throw new Exception(getResources().getString(R.string.exceptionCamposAPreencher));
-					}
-					if(edtKm.getText().toString().trim().equals("")){
-						throw new Exception(getResources().getString(R.string.exceptionCampoKm));
-					}
-					
-					if(db.listarAbastecimentosPorKilometragem(veiculo.getId(), Double.parseDouble(edtKm.getText().toString())).size() > 0){
-						throw new Exception(getResources().getString(R.string.exceptionCampoKm2));
-					}
-					
-					if(veiculo.getCombustivel() == 2){
-						
-						if(!rbGasolina.isChecked() && !rbEtanol.isChecked()){
-							throw new Exception(getResources().getString(R.string.exceptionCombPreencher));
-						}
-						
-						
-						int comb = 0;
-						
-						if(rbGasolina.isChecked()){
-							comb = 0;
-						}
-						
-						if (rbEtanol.isChecked()){
-							comb = 1;
-						}
-						calcularCampos();
-						Abastecimento  abst = new Abastecimento(abs.getId(),abs.getData(), veiculo, posto, comb, valorAbastecimento, litrosAbastecido, Double.parseDouble(edtKm.getText().toString()));
-						db.alterarAbastecimento(abst);
-						Toast.makeText(getApplication(), getResources().getString(R.string.abastecimentoUpdate), Toast.LENGTH_SHORT).show();
-						carregarSpinners();
-						atualizarlista();
-					}else{
-					
-					Abastecimento  abst = new Abastecimento(abs.getId(), abs.getData(), veiculo, posto, veiculo.getCombustivel(), valorAbastecimento, litrosAbastecido, Double.parseDouble(edtKm.getText().toString()));
-					calcularCampos();
-					db.alterarAbastecimento(abst);
-					Toast.makeText(getApplication(), getResources().getString(R.string.abastecimentoUpdate), Toast.LENGTH_SHORT).show();
-					carregarSpinners();
-					atualizarlista();
-					}
-					
-				}
-				
-			}catch(Exception ex){
-				Toast.makeText(getApplication(), ex.getMessage(), Toast.LENGTH_SHORT).show();
-			}
+			salvarAbastecimento();
+			
 			return true;
 		}
 		
@@ -507,6 +425,124 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 
 	}
 
+	
+	private void salvarAbastecimento(){
+		
+		try{
+			
+			if(abs == null || abs.getId() < 1){
+			
+			if(veiculo.getId() == -1){
+				throw new Exception(getResources().getString(R.string.exceptionVeiculoSelecionado));
+			}
+			if(posto.getId() == -1){
+				throw new Exception(getResources().getString(R.string.exceptionPostoSelecionado));
+			}
+			if(!calcularCampos()){
+				throw new Exception(getResources().getString(R.string.exceptionCamposAPreencher));
+			}
+			if(edtKm.getText().toString().trim().equals("")){
+				throw new Exception(getResources().getString(R.string.exceptionCampoKm));
+			}
+			
+			if(db.listarAbastecimentosPorKilometragem(veiculo.getId(), Double.parseDouble(edtKm.getText().toString())).size() > 0){
+				throw new Exception(getResources().getString(R.string.exceptionCampoKm2));
+			}
+			
+			Date data = new Date();
+			
+			if(veiculo.getCombustivel() == 2){
+				
+				if(!rbGasolina.isChecked() && !rbEtanol.isChecked()){
+					throw new Exception(getResources().getString(R.string.exceptionCombPreencher));
+				}
+				
+				
+				int comb = 0;
+				
+				if(rbGasolina.isChecked()){
+					comb = 0;
+				}
+				
+				if (rbEtanol.isChecked()){
+					comb = 1;
+				}
+				
+				
+				
+				calcularCampos();
+				Abastecimento  abst = new Abastecimento(Util.formatarDataCompletaUS(data), veiculo, posto, comb, valorAbastecimento, litrosAbastecido, Double.parseDouble(edtKm.getText().toString()));
+				db.insertAbastecimento(abst);
+				Toast.makeText(getApplication(), getResources().getString(R.string.abastecimentoSaved), Toast.LENGTH_SHORT).show();
+				carregarSpinners();
+				atualizarlista();
+			}else{
+			
+			Abastecimento  abst = new Abastecimento(Util.formatarDataCompletaUS(data), veiculo, posto, veiculo.getCombustivel(), valorAbastecimento, litrosAbastecido, Double.parseDouble(edtKm.getText().toString()));
+			calcularCampos();
+			db.insertAbastecimento(abst);
+			Toast.makeText(getApplication(), getResources().getString(R.string.abastecimentoSaved), Toast.LENGTH_SHORT).show();
+			carregarSpinners();
+			atualizarlista();
+			}
+			}else if(abs.getId() > 0){
+				if(veiculo.getId() == -1){
+					throw new Exception(getResources().getString(R.string.exceptionVeiculoSelecionado));
+				}
+				if(posto.getId() == -1){
+					throw new Exception(getResources().getString(R.string.exceptionPostoSelecionado));
+				}
+				if(!calcularCampos()){
+					throw new Exception(getResources().getString(R.string.exceptionCamposAPreencher));
+				}
+				if(edtKm.getText().toString().trim().equals("")){
+					throw new Exception(getResources().getString(R.string.exceptionCampoKm));
+				}
+				
+				if(db.listarAbastecimentosPorKilometragem(veiculo.getId(), Double.parseDouble(edtKm.getText().toString())).size() > 0){
+					throw new Exception(getResources().getString(R.string.exceptionCampoKm2));
+				}
+				
+				if(veiculo.getCombustivel() == 2){
+					
+					if(!rbGasolina.isChecked() && !rbEtanol.isChecked()){
+						throw new Exception(getResources().getString(R.string.exceptionCombPreencher));
+					}
+					
+					
+					int comb = 0;
+					
+					if(rbGasolina.isChecked()){
+						comb = 0;
+					}
+					
+					if (rbEtanol.isChecked()){
+						comb = 1;
+					}
+					calcularCampos();
+					Abastecimento  abst = new Abastecimento(abs.getId(),abs.getData(), veiculo, posto, comb, valorAbastecimento, litrosAbastecido, Double.parseDouble(edtKm.getText().toString()));
+					db.alterarAbastecimento(abst);
+					Toast.makeText(getApplication(), getResources().getString(R.string.abastecimentoUpdate), Toast.LENGTH_SHORT).show();
+					carregarSpinners();
+					atualizarlista();
+				}else{
+				
+				Abastecimento  abst = new Abastecimento(abs.getId(), abs.getData(), veiculo, posto, veiculo.getCombustivel(), valorAbastecimento, litrosAbastecido, Double.parseDouble(edtKm.getText().toString()));
+				calcularCampos();
+				db.alterarAbastecimento(abst);
+				Toast.makeText(getApplication(), getResources().getString(R.string.abastecimentoUpdate), Toast.LENGTH_SHORT).show();
+				carregarSpinners();
+				atualizarlista();
+				}
+				
+			}
+			
+		}catch(Exception ex){
+			Toast.makeText(getApplication(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+		}
+		
+	}
+	
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		// TODO Auto-generated method stub
@@ -544,52 +580,27 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 		super.onBackPressed();
 	}
 	
-	private void selecionarAbastecimento(Abastecimento aba){
-		
-		for(int i = 0; i <= veiculos.size(); i++){
-			 if(spinVeiculos.getItemIdAtPosition(i) == abs.getCarro().getId()){
-				 spinVeiculos.setSelection(i);
-			 }
-			}
-			
-			for(int i = 0; i <= postos.size(); i++){
-				 if(spinPostos.getItemIdAtPosition(i) == abs.getPosto().getId()){
-					 spinPostos.setSelection(i);
-				 }
-				}
-			edtValorPago.setEnabled(true);
-			edtValorPago.setText(String.valueOf(abs.getValorPago()));
-			edtLitros.setEnabled(true);
-			edtLitros.setText(String.valueOf(abs.getLitros()));
-			edtKm.setText(String.valueOf(abs.getKilometragem()));
-			edtValorPago.setEnabled(false);
-			edtLitros.setEnabled(false);
-			rbValoPago.setChecked(false);
-			rbLitros.setChecked(false);			
-				
-			if(abs.getCombustivel() == 0){
-				rbGasolina.setEnabled(true);
-				rbEtanol.setEnabled(true);
-				rbGasolina.setChecked(true);
-				return;
-			}
-			if(abs.getCombustivel() == 1){
-				rbGasolina.setEnabled(true);
-				rbEtanol.setEnabled(true);
-				rbEtanol.setChecked(true);
-				return;
-			}
-			
-	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		// TODO Auto-generated method stub
+		if(parent.getId() == listAbss.getId()){
 		abs = (Abastecimento) listAbss.getItemAtPosition(position);
-		selecionarAbastecimento(abs);
-	
 		
+		
+		edtValorPago.setEnabled(true);
+		edtValorPago.setText(String.valueOf(abs.getValorPago()));
+		edtLitros.setEnabled(true);
+		edtLitros.setText(String.valueOf(abs.getLitros()));
+		edtKm.setText(String.valueOf(abs.getKilometragem()));
+		edtValorPago.setEnabled(false);
+		edtLitros.setEnabled(false);
+		rbValoPago.setChecked(false);
+		rbLitros.setChecked(false);			
+			
+	
+		}
 	}
 
 }
