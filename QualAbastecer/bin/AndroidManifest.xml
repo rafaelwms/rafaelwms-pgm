@@ -12,7 +12,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Qual_abastecer" >
+        android:theme="@style/Theme.Qual_abastecer" 
+        >
+        
         <activity
             android:name="br.com.rafaelwms.qualabastecer.MainActivity"
             android:label="@string/app_name"
@@ -46,7 +48,8 @@
             android:name="br.com.rafaelwms.qualabastecer.VeiculoActivity"
             android:label="@string/title_activity_carro"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" 
+            android:windowSoftInputMode="adjustNothing">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -55,7 +58,8 @@
             android:name="br.com.rafaelwms.qualabastecer.PostoActivity"
             android:label="@string/title_activity_posto"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" 
+            android:windowSoftInputMode="adjustNothing">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -64,7 +68,8 @@
             android:name="br.com.rafaelwms.qualabastecer.AbastecimentoActivity"
             android:label="@string/title_activity_abastecimento"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" 
+            android:windowSoftInputMode="adjustNothing">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -73,7 +78,8 @@
             android:name="br.com.rafaelwms.qualabastecer.EstatisticasActivity"
             android:label="@string/title_activity_estatisticas" 
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" 
+            android:windowSoftInputMode="adjustNothing">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />

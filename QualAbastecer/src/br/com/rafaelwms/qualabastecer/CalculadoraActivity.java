@@ -5,10 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,6 +40,7 @@ public class CalculadoraActivity extends ActionBarActivity implements OnClickLis
 		fieldEth = (EditText) findViewById(id.editTextEthanol);
 		btnAct = (Button) findViewById(id.buttonAct);
 		btnAct2 = (Button) findViewById(id.buttonAct2);
+		
 
 		btnAct2.setEnabled(false);
 
@@ -108,43 +111,69 @@ public class CalculadoraActivity extends ActionBarActivity implements OnClickLis
 
 	}
 
+	
+	private void calcular(){
+		try {
+
+			if (fieldGas.getText().toString().trim().equals("")) {
+
+				fieldGas.setError(getResources().getString(
+						R.string.errorField));
+				return;
+			}
+
+			if (fieldEth.getText().toString().trim().equals("")) {
+
+				fieldEth.setError(getResources().getString(
+						R.string.errorField));
+				return;
+			}
+
+			double gasCost = Double.parseDouble(fieldGas.getText()
+					.toString());
+			double ethCost = Double.parseDouble(fieldEth.getText()
+					.toString());
+
+			if (ethCost < (gasCost * 0.7)) {
+				txtResult.setText(R.string.ethResult);
+			} else {
+				txtResult.setText(R.string.gasResult);
+				gas = true;
+			}
+			btnAct2.setEnabled(true);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+		builder.setMessage(getResources().getString(R.string.lblBestFuel)+" "+txtResult.getText().toString()).setTitle(
+				getResources().getString(R.string.use)+" "+txtResult.getText().toString());
+
+		builder.setPositiveButton("OK",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+					
+			
+					}
+				});
+	
+				
+
+		AlertDialog dialog = builder.create();
+
+		dialog.show();
+		
+		
+	}
+	
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		if (v.getId() == R.id.buttonAct) {
 
-			try {
-
-				if (fieldGas.getText().toString().trim().equals("")) {
-
-					fieldGas.setError(getResources().getString(
-							R.string.errorField));
-					return;
-				}
-
-				if (fieldEth.getText().toString().trim().equals("")) {
-
-					fieldEth.setError(getResources().getString(
-							R.string.errorField));
-					return;
-				}
-
-				double gasCost = Double.parseDouble(fieldGas.getText()
-						.toString());
-				double ethCost = Double.parseDouble(fieldEth.getText()
-						.toString());
-
-				if (ethCost < (gasCost * 0.7)) {
-					txtResult.setText(R.string.ethResult);
-				} else {
-					txtResult.setText(R.string.gasResult);
-					gas = true;
-				}
-				btnAct2.setEnabled(true);
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			calcular();
 
 		}
 

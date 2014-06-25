@@ -12,11 +12,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
@@ -61,6 +63,16 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 		precoGasolina = (EditText)findViewById(R.id.editPostoGasolina);
 		precoEtanol = (EditText)findViewById(R.id.editPostoEtanol);
 		precoDiesel = (EditText)findViewById(R.id.editPostoDiesel);
+		precoDiesel.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+		    @Override
+		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		        if (actionId == EditorInfo.IME_ACTION_DONE) {
+		           salvarPosto();
+		            return true;
+		        }
+		        return false;
+		    }
+		});
 		ratingAtendimento = (RatingBar)findViewById(R.id.ratingBarAtendimentoPosto);
 		postosListView = (ListView)findViewById(R.id.listViewPostos);
 		
@@ -106,6 +118,73 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 		
 		
 	}
+	
+	
+	private void salvarPosto(){
+		if(posto == null || posto.getId() <= 0){
+			try{
+			if(nomePosto.getText().toString().trim().equals("")){
+				throw new Exception(getResources().getString(R.string.exceptionNomePostoVazio));
+			}
+			String nome = nomePosto.getText().toString();
+			Posto result = db.buscarPostoPorNome(nome);
+			if(result != null && nomePosto.getText().toString().trim().equals(db.buscarPostoPorNome(nome).getNome())){
+				throw new Exception(getResources().getString(R.string.exceptionNomeUtilizadoPosto));
+			}
+			
+			if(precoGasolina.getText().equals("") || precoEtanol.getText().equals("") || precoDiesel.getText().equals("")){
+				throw new Exception(getResources().getString(R.string.exceptionPostoCombustivelVazio));
+			}
+			
+			gasolina = Double.parseDouble(precoGasolina.getText().toString());
+			etanol = Double.parseDouble(precoEtanol.getText().toString());
+			diesel = Double.parseDouble(precoDiesel.getText().toString());
+			
+			posto = new Posto(nomePosto.getText().toString(), ratingAtendimento.getProgress(), gasolina, etanol, diesel);
+			db.insertPosto(posto);
+			Toast.makeText(getApplication(), getResources().getString(R.string.toastSalvarPosto), Toast.LENGTH_LONG).show();
+			atualizarlista();
+			}catch (Exception ex){
+				Toast.makeText(getApplication(), ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			
+			
+		}else if (posto.getId() >= 1){
+			try{
+				if(nomePosto.getText().toString().trim().equals("")){
+					throw new Exception(getResources().getString(R.string.exceptionNomePostoVazio));
+				}
+				String nome = nomePosto.getText().toString();
+				Posto result = db.buscarPostoPorNome(nome);
+				if(result != null && result.getId() != posto.getId() && nomePosto.getText().toString().trim().equals(db.buscarPostoPorNome(nome).getNome())){
+					throw new Exception(getResources().getString(R.string.exceptionNomeUtilizadoPosto));
+				}
+				
+				if(precoGasolina.getText().equals("") || precoEtanol.getText().equals("") || precoDiesel.getText().equals("")){
+					throw new Exception(getResources().getString(R.string.exceptionPostoCombustivelVazio));
+				}
+				
+				gasolina = Double.parseDouble(precoGasolina.getText().toString());
+				etanol = Double.parseDouble(precoEtanol.getText().toString());
+				diesel = Double.parseDouble(precoDiesel.getText().toString());
+				
+				posto.setAtendimento(ratingAtendimento.getProgress());
+				posto.setNome(nomePosto.getText().toString());
+				posto.setLitroGasolina(gasolina);
+				posto.setLitroEtanol(etanol);
+				posto.setLitroDiesel(diesel);
+				
+				db.alterarPosto(posto);
+				Toast.makeText(getApplication(), getResources().getString(R.string.toastAtualizarPosto), Toast.LENGTH_LONG).show();
+				atualizarlista();
+				}catch (Exception ex){
+					Toast.makeText(getApplication(), ex.getMessage(), Toast.LENGTH_LONG).show();
+				}
+
+		}
+		
+	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -137,70 +216,7 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 		}
 			if (id == R.id.salvar_posto) {
 				
-				if(posto == null || posto.getId() <= 0){
-					try{
-					if(nomePosto.getText().toString().trim().equals("")){
-						throw new Exception(getResources().getString(R.string.exceptionNomePostoVazio));
-					}
-					String nome = nomePosto.getText().toString();
-					Posto result = db.buscarPostoPorNome(nome);
-					if(result != null && nomePosto.getText().toString().trim().equals(db.buscarPostoPorNome(nome).getNome())){
-						throw new Exception(getResources().getString(R.string.exceptionNomeUtilizadoPosto));
-					}
-					
-					if(precoGasolina.getText().equals("") || precoEtanol.getText().equals("") || precoDiesel.getText().equals("")){
-						throw new Exception(getResources().getString(R.string.exceptionPostoCombustivelVazio));
-					}
-					
-					gasolina = Double.parseDouble(precoGasolina.getText().toString());
-					etanol = Double.parseDouble(precoEtanol.getText().toString());
-					diesel = Double.parseDouble(precoDiesel.getText().toString());
-					
-					posto = new Posto(nomePosto.getText().toString(), ratingAtendimento.getProgress(), gasolina, etanol, diesel);
-					db.insertPosto(posto);
-					Toast.makeText(getApplication(), getResources().getString(R.string.toastSalvarPosto), Toast.LENGTH_LONG).show();
-					atualizarlista();
-					}catch (Exception ex){
-						Toast.makeText(getApplication(), ex.getMessage(), Toast.LENGTH_LONG).show();
-					}
-					
-					
-				}else if (posto.getId() >= 1){
-					try{
-						if(nomePosto.getText().toString().trim().equals("")){
-							throw new Exception(getResources().getString(R.string.exceptionNomePostoVazio));
-						}
-						String nome = nomePosto.getText().toString();
-						Posto result = db.buscarPostoPorNome(nome);
-						if(result != null && result.getId() != posto.getId() && nomePosto.getText().toString().trim().equals(db.buscarPostoPorNome(nome).getNome())){
-							throw new Exception(getResources().getString(R.string.exceptionNomeUtilizadoPosto));
-						}
-						
-						if(precoGasolina.getText().equals("") || precoEtanol.getText().equals("") || precoDiesel.getText().equals("")){
-							throw new Exception(getResources().getString(R.string.exceptionPostoCombustivelVazio));
-						}
-						
-						gasolina = Double.parseDouble(precoGasolina.getText().toString());
-						etanol = Double.parseDouble(precoEtanol.getText().toString());
-						diesel = Double.parseDouble(precoDiesel.getText().toString());
-						
-						posto.setAtendimento(ratingAtendimento.getProgress());
-						posto.setNome(nomePosto.getText().toString());
-						posto.setLitroGasolina(gasolina);
-						posto.setLitroEtanol(etanol);
-						posto.setLitroDiesel(diesel);
-						
-						db.alterarPosto(posto);
-						Toast.makeText(getApplication(), getResources().getString(R.string.toastAtualizarPosto), Toast.LENGTH_LONG).show();
-						atualizarlista();
-						}catch (Exception ex){
-							Toast.makeText(getApplication(), ex.getMessage(), Toast.LENGTH_LONG).show();
-						}
-					
-					
-				}
-				
-				return true;
+				salvarPosto();
 				
 			}			
 			
