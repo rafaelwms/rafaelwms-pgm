@@ -5,7 +5,7 @@
 
     <string name="app_name">Which Fuel?</string>
     <string name="action_settings">About</string>
-    <string name="about">Designed by: Rafael WMS \nDeveloped by: Rafael WMS \nPOGs by: Rafael WMS \nBrasil - Pernambuco \n \nCONTACT: \nrafael.wmsa@gmail.com\n\n©2014 by Rafael WMS</string>
+    <string name="about">Designed by: Rafael WMS \nDeveloped by: Rafael WMS \nPOGs by: Rafael WMS \nBrazil - Pernambuco \n \nCONTACT: \nrafael.wmsa@gmail.com\n\n©2014 by Rafael WMS</string>
     <string name="hello_world">Olá world!</string>
     <string name="topApp">Type the cost of each fuel.</string>
     <string name="lblGas">Gasoline\'s Price U$:</string>
@@ -40,7 +40,7 @@
         <item>Vehicles</item>
         <item>Gas Stations</item>
         <item>Feedings</item>
-        <item>Statisticians</item>
+        <item>Find Results</item>
     </string-array>
 
     <string name="title_activity_carro">My Vehicles</string>
@@ -134,7 +134,7 @@
     <string name="kilometragemDP">Km:</string>
     <string name="cifra">U$:</string>
     <string name="litros">Liters:</string>
-    <string name="title_activity_estatisticas">Statisticians</string>
+    <string name="title_activity_estatisticas">Results</string>
     
     
 	<!-- Spinner Valores -->
@@ -152,7 +152,7 @@
     
 	<string name="combustivel">FUEL</string>
 	<string name="atualizarAbastecimento">Upate Feeding. \ nNote: it does not affect the date of the supplying.</string>
-	<string name="visualizarEstatisticas">Visualize Statisticians.</string>
+	<string name="visualizarEstatisticas">Find Results</string>
 	<string name="imeSalvar">Save</string>
 	<string name="imeCalcular">Calculate</string>
 </resources>
