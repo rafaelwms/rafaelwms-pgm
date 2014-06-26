@@ -304,6 +304,7 @@ int drawable tab_selected_qual_abastecer 0x7f020096
 int drawable tab_unselected_focused_qual_abastecer 0x7f020097
 int drawable tab_unselected_pressed_qual_abastecer 0x7f020098
 int drawable tab_unselected_qual_abastecer 0x7f020099
+int drawable transparencia 0x7f02009a
 int id LinearLayoutCalculate 0x7f05004d
 int id action_bar 0x7f05001c
 int id action_bar_activity_content 0x7f050015

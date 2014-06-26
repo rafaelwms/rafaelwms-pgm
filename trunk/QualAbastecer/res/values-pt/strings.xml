@@ -40,7 +40,7 @@
         <item>Veículos</item>
         <item>Postos</item>
         <item>Abastecimentos</item>
-        <item>Estatísticas</item>
+        <item>Consultas</item>
     </string-array>
 
     <string name="title_activity_carro">Meus Veículos</string>
@@ -54,7 +54,7 @@
     <string name="null_text">@null</string>
 
     <!-- Dialogs -->
-    <string name="corRed">COR VEREMLHA</string>
+    <string name="corRed">COR VERMEMLHA</string>
     <string name="corGreen">COR VERDE.</string>
     <string name="corBlue">COR AZUL.</string>
     <string name="corRedValue">VERMELHO: </string>
@@ -134,7 +134,7 @@
     <string name="kilometragemDP">Km:</string>
     <string name="cifra">R$:</string>
     <string name="litros">Litros:</string>
-    <string name="title_activity_estatisticas">Estatisticas</string>
+    <string name="title_activity_estatisticas">Consultas</string>
     
     
 	<!-- Spinner Valores -->
@@ -152,7 +152,7 @@
     
 	<string name="combustivel">COMBUSTÍVEL</string>
 	<string name="atualizarAbastecimento">Atualizar Abastecimento. \nNota: não afeta a data do abastecimento.</string>
-	<string name="visualizarEstatisticas">Visualizar Estatísticas.</string>
+	<string name="visualizarEstatisticas">Consultar Abastecimentos</string>
 	<string name="imeSalvar">Salvar</string>
 	<string name="imeCalcular">Calcular</string>
 </resources>
