@@ -23,5 +23,12 @@
         android:orderInCategory="100"  
         app:showAsAction="always"
         android:title="@string/visualizarEstatisticas"/>
+   
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@android:drawable/ic_menu_help"
+        android:orderInCategory="100"  
+        app:showAsAction="always"
+        android:title="@string/action_settings"/>	
 
 </menu>

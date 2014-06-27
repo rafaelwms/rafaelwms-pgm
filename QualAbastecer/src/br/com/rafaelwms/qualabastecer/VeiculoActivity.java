@@ -274,7 +274,30 @@ public class VeiculoActivity extends ActionBarActivity implements OnItemClickLis
 			
 			
 			return true;
+			
 		}
+		
+		if(item.getItemId() == R.id.action_settings){
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+			builder.setMessage(R.string.helpMsgVeiculo).setTitle(
+					R.string.helpTituloVeiculo);
+
+			builder.setPositiveButton(R.string.dialogBtnOK,
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+
+						}
+					});
+			AlertDialog dialog = builder.create();
+
+			dialog.show();
+
+		return true;
+			
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 

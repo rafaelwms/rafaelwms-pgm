@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="ContentDescription">
+        <ignore path="res/layout-land/activity_veiculo.xml" />
         <ignore path="res/layout/activity_carro.xml" />
         <ignore path="res/layout/activity_veiculo.xml" />
     </issue>

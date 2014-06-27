@@ -155,4 +155,84 @@
 	<string name="visualizarEstatisticas">Consultar Abastecimentos</string>
 	<string name="imeSalvar">Salvar</string>
 	<string name="imeCalcular">Calcular</string>
+	
+	
+	<!-- Help Tela Calculadora -->
+	<string name="helpTituloCalculadora">CALCULADORA</string>
+	<string name="helpMsgCalculadora"> 
+	    A intenção desta funcionalidade é 
+	    ajudar a escolher uma opção de combustível mais 
+	    viável para quem irá utiliza veículo FLEX POWER. \n\n
+	    
+	    Digite o preço da Gasolina e do Etano e 
+	    pressione o botão CALCULAR para obter a melhor 
+	    opção de abastecimento dentre estes dois 
+	    combustíveis.	     
+	</string>
+	
+	
+	<!-- Help Tela Veiculo -->
+	<string name="helpTituloVeiculo">VEÍCULO</string>
+	<string name="helpMsgVeiculo"> 
+	    Nesta tela é possível cadastrar, 
+	    alterar e excluir veículos.\n\n
+	    
+	    Deve inserir um  nome, selecionar um tipo de veículo, 
+	    o combustível - para veículos FLEX, selecione Gasolina 
+	    e Etanol - por fim, escolha uma cor para o seu veículo
+	    ajustando as barras deslizantes, observando o efeito 
+	    no ícone à esquerda.
+	</string>
+	
+	<!-- Help Tela Posto -->
+	<string name="helpTituloPosto">POSTO</string>
+	<string name="helpMsgPosto"> 
+	    Nesta tela é possível cadastrar, 
+	    alterar e excluir Postos de Gasolina.\n\n
+	    
+	    Deve inserir um  nome, avaliar o atendimento 
+	    do estabelecimento através do nível de estrelas e  
+	    informar os preços da Gasolina, Etanol e Diesel.
+	</string>
+	
+	
+		<!-- Help Tela Abastecimento -->
+	<string name="helpTituloAbastecimento">ABASTECIMENTO</string>
+	<string name="helpMsgAbastecimento"> 
+	    Nesta tela é possível cadastrar, 
+	    alterar e excluir abastecimentos.\n\n
+	    
+	    Deve selecionar um veículo no dropdown. 
+	    Escolher um posto no dropdown logo abaixo. 
+	    Escolher entre Gasolina ou Etanol caso o
+	    veículo selecionado for FLEX POWER, para os
+	    demais veículos o combustível será 
+	    automaticamente selecionado. \n\n
+	    
+	    Na parte de Solicitação escolha entre 
+	    Valor Pago ou Litros Solicitado, digite 
+	    no campo pertinente a sua escolha que o 
+	    outro valor será automaticamente gerado.\n\n
+	    
+	    Por fim, informe a kilometragem atual de seu 
+	    veículo.
+	</string>
+	
+	<!-- Help Tela Consultas -->
+	<string name="helpTituloConsultas">CONSULTAS</string>
+	<string name="helpMsgConsultas"> 
+	    Nesta tela é possível consultar seus 
+	    registros de abastecimento utilizando filtros 
+	    específicos. \n\n
+	    
+	    Ao selecionar sua opção, entre: VEÍCULO, 
+	    POSTO e COMBUSTÍVEL, o dropdown abaixo 
+	    será populado com os registros de acordo 
+	    com a sua opção. Esolhendo um dos ítens no 
+	    dropdown, a lista de abastecimentos será 
+	    preenchida. 
+
+	</string>
+	
+	
 </resources>

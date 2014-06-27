@@ -76,8 +76,8 @@ public class CalculadoraActivity extends ActionBarActivity implements OnClickLis
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-			builder.setMessage(R.string.about).setTitle(
-					R.string.action_settings);
+			builder.setMessage(R.string.helpMsgCalculadora).setTitle(
+					R.string.helpTituloCalculadora);
 
 			builder.setPositiveButton("OK",
 					new DialogInterface.OnClickListener() {
