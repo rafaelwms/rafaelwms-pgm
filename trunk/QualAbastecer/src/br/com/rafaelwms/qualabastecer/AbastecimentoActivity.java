@@ -59,6 +59,8 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 	EditText edtValorPago;
 	EditText edtLitros;
 
+	private final String INSTANCIA_ABASTECIMENTO = "instanciaAbastecimento";
+	
 	double litrosAbastecido;
 	double valorAbastecimento;
 
@@ -111,7 +113,14 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 		atualizarlista();
 		
 		abs = new Abastecimento();
-		abs = (Abastecimento)getIntent().getSerializableExtra(EstatisticasActivity.ABASTECIMENTO_UPGRADE);
+		
+		
+		if(savedInstanceState != null){
+			abs = (Abastecimento)savedInstanceState.get(INSTANCIA_ABASTECIMENTO);
+		}else{
+			abs = (Abastecimento)getIntent().getSerializableExtra(EstatisticasActivity.ABASTECIMENTO_UPGRADE);
+		}
+		
 		if(abs != null && abs.getId() > 0){
 			
 			edtValorPago.setEnabled(true);
@@ -128,6 +137,25 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 			
 		
 	}
+	
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		if(!edtLitros.getText().toString().trim().equals("")){
+			abs.setLitros(Double.parseDouble(edtLitros.getText().toString()));
+		}
+		if(!edtValorPago.getText().toString().trim().equals("")){
+			abs.setValorPago(Double.parseDouble(edtValorPago.getText().toString()));
+		}
+		if(!edtKm.getText().toString().trim().equals("")){
+			abs.setKilometragem(Double.parseDouble(edtKm.getText().toString()));
+		}
+		outState.putSerializable(INSTANCIA_ABASTECIMENTO, abs);
+		super.onSaveInstanceState(outState);
+	}
+	
+	
 
 	private void carregarSpinners() {
 
@@ -365,7 +393,27 @@ public class AbastecimentoActivity extends ActionBarActivity implements
 			return true;
 		}
 		
+		if(item.getItemId() == R.id.action_settings){
+					
+					AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		
+					builder.setMessage(R.string.helpMsgAbastecimento).setTitle(
+							R.string.helpTituloAbastecimento);
+		
+					builder.setPositiveButton(R.string.dialogBtnOK,
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+		
+								}
+							});
+					AlertDialog dialog = builder.create();
+		
+					dialog.show();
+		
+				return true;
+					
+				}
+
 		return super.onOptionsItemSelected(item);
 	}
 

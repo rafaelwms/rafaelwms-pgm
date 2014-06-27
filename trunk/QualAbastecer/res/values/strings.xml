@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- ouououo -->
@@ -135,24 +135,93 @@
     <string name="cifra">U$:</string>
     <string name="litros">Liters:</string>
     <string name="title_activity_estatisticas">Results</string>
-    
-    
-	<!-- Spinner Valores -->
-	<string-array name="spinnerValores">
-    <item>SELECT AN OPTION ABOVE</item>
+
+    <!-- Spinner Valores -->
+    <string-array name="spinnerValores">
+        <item>SELECT AN OPTION ABOVE</item>
     </string-array>
-    
-	<!-- Spinner Valores -->
-	<string-array name="spinnerCobustivel">
-	<item>FUEL</item>
-    <item>GASOLINE</item>
-    <item>ETANOL</item>
-    <item>DIESEL</item>
+
+    <!-- Spinner Valores -->
+    <string-array name="spinnerCobustivel">
+        <item>FUEL</item>
+        <item>GASOLINE</item>
+        <item>ETANOL</item>
+        <item>DIESEL</item>
     </string-array>
-    
-	<string name="combustivel">FUEL</string>
-	<string name="atualizarAbastecimento">Upate Feeding. \ nNote: it does not affect the date of the supplying.</string>
-	<string name="visualizarEstatisticas">Find Results</string>
-	<string name="imeSalvar">Save</string>
-	<string name="imeCalcular">Calculate</string>
+
+    <string name="combustivel">FUEL</string>
+    <string name="atualizarAbastecimento">Upate Feeding. \ nNote: it does not affect the date of the supplying.</string>
+    <string name="visualizarEstatisticas">Find Results</string>
+    <string name="imeSalvar">Save</string>
+    <string name="imeCalcular">Calculate</string>
+
+    <!-- Help Tela Calculadora -->
+    <string name="helpTituloCalculadora">CALCULATOR</string>
+    <string name="helpMsgCalculadora">	   
+        The intent of this feature is 
+		help choose an option more fuel 
+		feasible for those who will use the vehicle FLEX POWER. \n \n 
+
+		Enter the price of gasoline and ethane and 
+		press the CALCULATE button to get the best 
+		supply option among these two 
+		fuels.     </string>
+
+    <!-- Help Tela Veiculo -->
+    <string name="helpTituloVeiculo">VEHICLE</string>
+    <string name="helpMsgVeiculo">	    
+        On this screen you can register, 
+		change and delete vehicles. \n \n 
+
+		You must enter a name, select a type of vehicle, 
+		fuel - to FLEX vehicles, select Gasoline 
+		Ethanol and - finally, choose a color for your vehicle 
+		adjusting the sliders, observing the effect 
+		the icon to the left.</string>
+
+    <!-- Help Tela Posto -->
+    <string name="helpTituloPosto">GAS STATION</string>
+    <string name="helpMsgPosto">	    
+        On this screen you can register,
+		change and delete Gas Stations. \n \n
+
+		You must enter a name, evaluate the service
+		through the establishment of the level of stars and
+		inform the prices of Petrol, Diesel and Ethanol.</string>
+
+    <!-- Help Tela Abastecimento -->
+    <string name="helpTituloAbastecimento">FEEDINGS</string>
+    <string name="helpMsgAbastecimento">	   
+		On this screen you can register, 
+		change and delete supplies. \n \n 
+		
+		Should select a vehicle in the dropdown. 
+		Choose a station from the dropdown below. 
+		Choose between Petrol or Ethanol if 
+		vehicle is selected FLEX POWER, for 
+		other vehicles the fuel will be 
+		automatically selected. \n \n 
+		
+		In the choice between Request 
+		Amount Paid or Requested Liters, type 
+		in the relevant field of your choice that 
+		other value will be generated automatically. \n \n 
+		
+		Finally, enter the current mileage of your 
+		vehicle.</string>
+
+    <!-- Help Tela Consultas -->
+    <string name="helpTituloConsultas">FIND RESULTS</string>
+    <string name="helpMsgConsultas">	    
+		On this screen you can consult their
+		supply records using filters
+		specific. \n \n
+		
+		When selecting your option, enter: VEHICLE
+		GAS STATION and FUEL, the dropdown below
+		will be populated with the records according
+		with your choice. Esolhendo one of the items in
+		dropdown, the list of supplies will be
+		filled.</string>
+
 </resources>

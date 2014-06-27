@@ -48,6 +48,7 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 	Double etanol;
 	Double diesel;
 	
+	private final String INSTANCIA_POSTO = "instanciaPosto";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +82,42 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 		ratingAtendimento.setMax(5);
 		ratingAtendimento.setStepSize(1);
 		
-		
-		
 		atualizarlista();
+		
+		if(savedInstanceState != null){
+			
+			posto = (Posto)savedInstanceState.get(INSTANCIA_POSTO);
+			nomePosto.setText(posto.getNome());
+			precoGasolina.setText(String.valueOf(posto.getLitroGasolina()));
+			precoEtanol.setText(String.valueOf(posto.getLitroEtanol()));
+			precoDiesel.setText(String.valueOf(posto.getLitroDiesel()));
+		
+		}
+		
 
 	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		
+		if(!nomePosto.getText().toString().trim().equals("")){
+			posto.setNome(nomePosto.getText().toString());
+		}
+		if(!precoGasolina.getText().toString().trim().equals("")){
+			posto.setLitroGasolina(Double.parseDouble(precoGasolina.getText().toString()));
+		}
+		if(!precoEtanol.getText().toString().trim().equals("")){
+			posto.setLitroEtanol(Double.parseDouble(precoEtanol.getText().toString()));
+		}
+		if(!precoDiesel.getText().toString().trim().equals("")){
+			posto.setLitroDiesel(Double.parseDouble(precoDiesel.getText().toString()));
+		}
+		
+		outState.putSerializable(INSTANCIA_POSTO, posto);
+		
+		super.onSaveInstanceState(outState);
+	}
+	
 	
 	private void atualizarlista(){
 		
@@ -200,20 +232,7 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(R.string.about).setTitle(
-					R.string.action_settings);
-			builder.setPositiveButton("OK",
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-						}
-					});		
-			AlertDialog dialog = builder.create();
-			dialog.show();
-			return true;
-		}
+		
 			if (id == R.id.salvar_posto) {
 				
 				salvarPosto();
@@ -258,6 +277,27 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 					dialog.show();					
 				}
 				return true;
+			}
+			
+			if(item.getItemId() == R.id.action_settings){
+				
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+				builder.setMessage(R.string.helpMsgPosto).setTitle(
+						R.string.helpTituloPosto);
+
+				builder.setPositiveButton(R.string.dialogBtnOK,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+
+							}
+						});
+				AlertDialog dialog = builder.create();
+
+				dialog.show();
+
+			return true;
+				
 			}
 
 		return super.onOptionsItemSelected(item);

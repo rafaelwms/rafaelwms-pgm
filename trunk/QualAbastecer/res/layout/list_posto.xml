@@ -16,6 +16,7 @@
         android:id="@+id/txtPostoNomeList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:singleLine="true" 
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
@@ -26,6 +27,7 @@
 
     <TextView
         android:id="@+id/txtPostoPrecosList"
+        android:singleLine="true" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/txtPostoRatingList"
@@ -38,6 +40,7 @@
 
     <TextView
         android:id="@+id/txtPostoRatingList"
+        android:singleLine="true" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

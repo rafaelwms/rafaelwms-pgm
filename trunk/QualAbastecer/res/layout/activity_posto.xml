@@ -1,18 +1,18 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollPosto"
+    android:background="@drawable/bcgd_posto"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
     <LinearLayout
         android:id="@+id/containerPosto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bcgd_posto"
+        android:layout_height="wrap_content"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical"
-        tools:context="br.com.rafaelwms.qualabastecer.PostoActivity"
+
         tools:ignore="MergeRootFrame" >
 
         <TextView
