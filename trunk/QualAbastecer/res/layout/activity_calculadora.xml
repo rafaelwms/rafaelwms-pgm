@@ -2,18 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollCalculadira"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:background="@drawable/bcgd_calculadora"
+    tools:context="br.ed.unibratec.qualabastecer.CalculadoraActivity" >
 
     <LinearLayout
         android:id="@+id/LinearLayoutCalculate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bcgd_calculadora"
+        android:layout_height="match_parent"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical"
-        android:padding="5dp"
-        tools:context="br.ed.unibratec.qualabastecer.CalculadoraActivity" >
+        android:padding="5dp" >
 
         <LinearLayout
             android:layout_width="0px"

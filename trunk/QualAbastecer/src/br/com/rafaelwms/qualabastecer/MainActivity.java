@@ -61,7 +61,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 	    
 	    // Pesquisar seu LinearLayout presumindo que ele foi dado
 	    // o atributo android:id="@+id/mainLayout"
-	    LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
+	    LinearLayout layout = (LinearLayout)findViewById(R.id.content_frame);
 
 	    // Adicionar o adView a ele
 	    layout.addView(adView);

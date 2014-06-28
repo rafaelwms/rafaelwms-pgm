@@ -6,27 +6,15 @@
 
     <!-- The main content view -->
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@drawable/qual_abastecer_backg_principal" >
 
-     <LinearLayout
-            android:id="@+id/mainLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
 
-            <com.google.ads.AdView
-                android:id="@+id/adView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-4671549534107534/6549452408"
-                ads:loadAdOnCreate="true"/>
-        </LinearLayout> 
-    </FrameLayout>
+    </LinearLayout>
     <!-- The navigation drawer -->
 
     <ListView
