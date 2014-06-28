@@ -8,17 +8,18 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Qual_abastecer" 
-        >
-        
+        android:theme="@style/Theme.Qual_abastecer" >
         <activity
             android:name="br.com.rafaelwms.qualabastecer.MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +29,7 @@
         <activity
             android:name="br.com.rafaelwms.qualabastecer.DetailsActivity"
             android:label="@string/title_activity_details"
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -36,7 +37,7 @@
         <activity
             android:name="br.com.rafaelwms.qualabastecer.CalculadoraActivity"
             android:label="@string/title_activity_calculadora"
-            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity">
+            android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -45,7 +46,7 @@
             android:name="br.com.rafaelwms.qualabastecer.VeiculoActivity"
             android:label="@string/title_activity_carro"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -54,7 +55,7 @@
             android:name="br.com.rafaelwms.qualabastecer.PostoActivity"
             android:label="@string/title_activity_posto"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
@@ -63,20 +64,23 @@
             android:name="br.com.rafaelwms.qualabastecer.AbastecimentoActivity"
             android:label="@string/title_activity_abastecimento"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
             android:name="br.com.rafaelwms.qualabastecer.EstatisticasActivity"
-            android:label="@string/title_activity_estatisticas" 
+            android:label="@string/title_activity_estatisticas"
             android:parentActivityName="br.com.rafaelwms.qualabastecer.MainActivity"
-            android:windowSoftInputMode="adjustNothing">
+            android:windowSoftInputMode="adjustNothing" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
+        <activity
+            android:name="com.google.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
     </application>
 
 </manifest>
