@@ -5,6 +5,7 @@ package br.com.rafaelwms.qualabastecer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.google.ads.*;
 
 import br.com.rafaelwms.qualabastecer.R;
 
@@ -21,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 
@@ -42,12 +44,31 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 	ListView mListView;
 	ActionBarDrawerToggle mDrawerToggle;
 	String mTitle;
+	private AdView adView;
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		 // Criar o adView
+	    adView = new AdView(this, AdSize.BANNER, "ca-app-pub-4671549534107534/6549452408");
+	    
+	  //AdRequest adRequest = new AdRequest();
+	  //adRequest.addTestDevice(AdRequest.TEST_EMULATOR);         // Emulador
+	  //adRequest.addTestDevice("TEST_DEVICE_ID");                // Dispositivo Android de teste
+	    
+	    // Pesquisar seu LinearLayout presumindo que ele foi dado
+	    // o atributo android:id="@+id/mainLayout"
+	    LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
+
+	    // Adicionar o adView a ele
+	    layout.addView(adView);
+
+	    // Iniciar uma solicitação genérica para carregá-lo com um anúncio
+	    adView.loadAd(new AdRequest());
+	  
 		
 
 		
@@ -90,6 +111,14 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 				mListView.setAdapter(adapter);
 				
 				mListView.setOnItemClickListener(this);
+	}
+
+	@Override
+	public void onDestroy() {
+	  if (adView != null) {
+	    adView.destroy();
+	  }
+	  super.onDestroy();
 	}
 
 	@Override

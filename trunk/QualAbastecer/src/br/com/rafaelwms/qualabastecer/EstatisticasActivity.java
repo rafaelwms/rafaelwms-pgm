@@ -7,24 +7,23 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
+import com.google.ads.*;
 
 public class EstatisticasActivity extends ActionBarActivity implements OnItemSelectedListener, OnItemClickListener, OnCheckedChangeListener {
 	
@@ -49,6 +48,8 @@ public class EstatisticasActivity extends ActionBarActivity implements OnItemSel
 	List<Posto> postos;
 	Posto posto;
 	
+	private AdView adView;
+	
 	public static final String ABASTECIMENTO_UPGRADE = "absUpg";
 	
 
@@ -56,6 +57,25 @@ public class EstatisticasActivity extends ActionBarActivity implements OnItemSel
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_estatisticas);
+		
+		// Criar o adView
+	    adView = new AdView(this, AdSize.BANNER, "ca-app-pub-4671549534107534/6549452408");
+	    
+	  //AdRequest adRequest = new AdRequest();
+	  //adRequest.addTestDevice(AdRequest.TEST_EMULATOR);         // Emulador
+	  //adRequest.addTestDevice("TEST_DEVICE_ID");                // Dispositivo Android de teste
+	    
+	    // Pesquisar seu LinearLayout presumindo que ele foi dado
+	    // o atributo android:id="@+id/mainLayout"
+	    LinearLayout layout = (LinearLayout)findViewById(R.id.container);
+
+	    // Adicionar o adView a ele
+	    layout.addView(adView);
+
+	    // Iniciar uma solicitação genérica para carregá-lo com um anúncio
+	    adView.loadAd(new AdRequest());
+		
+		
 		db = new QualAbastecerDB(this);
 
 		rbVeiculo = (RadioButton)findViewById(R.id.rbVeiculo);
