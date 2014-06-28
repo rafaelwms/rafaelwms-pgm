@@ -48,7 +48,7 @@ public class EstatisticasActivity extends ActionBarActivity implements OnItemSel
 	List<Posto> postos;
 	Posto posto;
 	
-	private AdView adView;
+	//private AdView adView;
 	
 	public static final String ABASTECIMENTO_UPGRADE = "absUpg";
 	
@@ -57,7 +57,7 @@ public class EstatisticasActivity extends ActionBarActivity implements OnItemSel
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_estatisticas);
-		
+	/*
 		// Criar o adView
 	    adView = new AdView(this, AdSize.BANNER, "ca-app-pub-4671549534107534/6549452408");
 	    
@@ -74,7 +74,7 @@ public class EstatisticasActivity extends ActionBarActivity implements OnItemSel
 
 	    // Iniciar uma solicitação genérica para carregá-lo com um anúncio
 	    adView.loadAd(new AdRequest());
-		
+		*/
 		
 		db = new QualAbastecerDB(this);
 
@@ -98,7 +98,7 @@ public class EstatisticasActivity extends ActionBarActivity implements OnItemSel
 
 	}
 	
-
+/*
 	@Override
 	public void onDestroy() {
 	  if (adView != null) {
@@ -106,7 +106,7 @@ public class EstatisticasActivity extends ActionBarActivity implements OnItemSel
 	  }
 	  super.onDestroy();
 	}
-
+*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
