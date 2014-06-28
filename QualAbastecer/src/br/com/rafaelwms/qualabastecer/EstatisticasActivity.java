@@ -97,6 +97,16 @@ public class EstatisticasActivity extends ActionBarActivity implements OnItemSel
 		
 
 	}
+	
+
+	@Override
+	public void onDestroy() {
+	  if (adView != null) {
+	    adView.destroy();
+	  }
+	  super.onDestroy();
+	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/qual_abastecer_backg_principal" >
 
-        <LinearLayout
+     <LinearLayout
             android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,7 +25,7 @@
                 ads:adSize="BANNER"
                 ads:adUnitId="ca-app-pub-4671549534107534/6549452408"
                 ads:loadAdOnCreate="true"/>
-        </LinearLayout>
+        </LinearLayout> 
     </FrameLayout>
     <!-- The navigation drawer -->
 
