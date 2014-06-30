@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.rafaelwms.qualabastecer.R;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ public class VeiculoAdapter extends BaseAdapter {
 		}
 
 		ImageView imgCarro = (ImageView) convertView.findViewById(R.id.imgCarroList);
+		ImageView imgComb = (ImageView) convertView.findViewById(R.id.imgVeiculoComb);
 		TextView txtNomeCarro = (TextView) convertView.findViewById(R.id.txtNomeCarroList);
 		TextView txtCombCarro = (TextView) convertView.findViewById(R.id.txtCarroComb);
 
@@ -66,7 +68,15 @@ public class VeiculoAdapter extends BaseAdapter {
 			break;
 		}
 		
-		
+		if(carro.getCombustivel() == 0){
+			imgComb.setBackgroundColor(Color.rgb(255, 128, 0));
+		}else if(carro.getCombustivel() == 1){
+			imgComb.setBackgroundColor(Color.rgb(0, 160, 0));
+		}else if(carro.getCombustivel() == 2){
+			imgComb.setBackgroundColor(Color.rgb(0, 128, 255));
+		}else if(carro.getCombustivel() == 3){
+			imgComb.setBackgroundColor(Color.rgb(108, 55, 0));
+		}
 		
 		
 		txtNomeCarro.setText(carro.getNome().toString());

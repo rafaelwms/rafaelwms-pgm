@@ -1,5 +1,6 @@
 package br.com.rafaelwms.qualabastecer;
 
+import java.util.Date;
 import java.util.List;
 
 import br.com.rafaelwms.qualabastecer.R;
@@ -64,6 +65,21 @@ public class AbastecimentoAdapter extends BaseAdapter {
 		}else if(abs.getCombustivel() == 3){
 			imgComb.setBackgroundColor(Color.rgb(108, 55, 0));
 		}
+		
+		/*
+		
+		//		TENTANDO FORMATAR A DATA PRA VISUALIZAÇÃO REGIONAL
+			
+		if(parent.getResources().getString(R.string.id_lang).equals("PORTUGUÊS")){
+			
+			Date dataUS = Util.criarDataBR(abs.getData());
+			
+			String data = Util.formatarDataCompleta(dataUS);
+			
+			abs.setData(data);
+			
+		}
+		*/
 		
 		txtAbsData.setText(parent.getResources().getString(R.string.data)+" "+abs.getData()+" - "+parent.getResources().getString(R.string.cifra)+" "+abs.getValorPago());
 		txtAbsVeiculo.setText(parent.getResources().getString(R.string.veiculoDP)+" "+abs.getCarro().getNome()+" - "+parent.getResources().getString(R.string.kilometragemDP)+" "+abs.getKilometragem());

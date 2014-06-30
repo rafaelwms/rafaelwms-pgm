@@ -26,27 +26,47 @@
         android:textColor="@android:color/white" />
 
     <TextView
-        android:id="@+id/txtPostoPrecosList"
-        android:singleLine="true" 
+        android:id="@+id/txtPostoGasolina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtPostoRatingList"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/txtPostoNomeList"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/imgPostoList"
+        android:singleLine="true"
         android:text="@string/null_text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/txtPostoRatingList"
-        android:singleLine="true" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtPostoDiesel"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@+id/imgPostoList"
         android:layout_below="@+id/imgPostoList"
+        android:singleLine="true"
         android:text="@string/null_text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/txtPostoEtanol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtPostoGasolina"
+        android:layout_below="@+id/txtPostoGasolina"
+        android:text="@string/null_text"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/txtPostoDiesel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtPostoEtanol"
+        android:layout_below="@+id/txtPostoEtanol"
+        android:text="@string/null_text"
+        android:singleLine="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

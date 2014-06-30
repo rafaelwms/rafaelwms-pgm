@@ -4,6 +4,7 @@
     <!-- ouououo -->
 
     <string name="app_name">Which Fuel?</string>
+    <string name="id_lang">ENGLISH</string>
     <string name="action_settings">About</string>
     <string name="about">Designed by: Rafael WMS \nDeveloped by: Rafael WMS \nPOGs by: Rafael WMS \nBrazil - Pernambuco \n \nCONTACT: \nrafael.wmsa@gmail.com\n\n©2014 by Rafael WMS</string>
     <string name="hello_world">Olá world!</string>

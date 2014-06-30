@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.rafaelwms.qualabastecer.R;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,19 +50,28 @@ public class PostoAdapter extends BaseAdapter {
 		
 		ImageView imgPosto = (ImageView)convertView.findViewById(R.id.imgPostoList);
 		TextView txtPostoNome = (TextView)convertView.findViewById(R.id.txtPostoNomeList);
-		TextView txtPostoPrecos = (TextView)convertView.findViewById(R.id.txtPostoPrecosList);
+		TextView txtPostoGasolina = (TextView)convertView.findViewById(R.id.txtPostoGasolina);
+		TextView txtPostoEtanol = (TextView)convertView.findViewById(R.id.txtPostoEtanol);
+		TextView txtPostoDiesel = (TextView)convertView.findViewById(R.id.txtPostoDiesel);
 		TextView txtPostoRating = (TextView)convertView.findViewById(R.id.txtPostoRatingList);
+		
+		txtPostoGasolina.setTextColor(Color.rgb(255, 128, 0));
+		txtPostoEtanol.setTextColor(Color.rgb(0, 160, 0));
+		txtPostoDiesel.setTextColor(Color.rgb(108, 55, 0));
 		
 		imgPosto.setBackgroundColor(Color.rgb(0, 0, 0));
 		
 		if(posto.getAtendimento() == 5){
 			imgPosto.setImageResource(R.drawable.ic_fav_posto);
+		}else{
+			imgPosto.setImageResource(R.drawable.ic_posto);
 		}
 				
 		txtPostoNome.setText(posto.getNome().toString());
-		txtPostoPrecos.setText(parent.getResources().getString(R.string.lblPostoListPrecoGasolina)+ " "+ posto.getLitroGasolina()
-				+"\n"+parent.getResources().getString(R.string.lblPostoListPrecoEtanol)+ " "+ posto.getLitroEtanol()
-				+"\n"+parent.getResources().getString(R.string.lblPostoListPrecoDiesel)+ " "+ posto.getLitroDiesel());
+		txtPostoNome.setTypeface(null,Typeface.BOLD);
+		txtPostoGasolina.setText(parent.getResources().getString(R.string.lblPostoListPrecoGasolina)+ " "+ posto.getLitroGasolina());
+		txtPostoEtanol.setText(parent.getResources().getString(R.string.lblPostoListPrecoEtanol)+ " "+ posto.getLitroEtanol());
+		txtPostoDiesel.setText(parent.getResources().getString(R.string.lblPostoListPrecoDiesel)+ " "+ posto.getLitroDiesel());
 		txtPostoRating.setText(parent.getResources().getString(R.string.lblPostoListRating)+" "+posto.getAtendimento());
 		
 		

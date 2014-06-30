@@ -4,6 +4,7 @@
     <!-- ouououo -->
 
     <string name="app_name">Qual Abastecer?</string>
+    <string name="id_lang">PORTUGUÊS</string>
     <string name="action_settings">Sobre</string>
     <string name="about">Qual Abastecer? v.2.0\n\nDesign por: Rafael WMS\nDesenvolvido por: Rafael WMS\nPOGs por: Rafael WMS\nBrasil - Pernambuco\n\nCONTATO:\nrafael.wmsa@gmail.com\n\n©2014 por Rafael WMS</string>
     <string name="hello_world">Olá mundo!</string>
