@@ -164,7 +164,15 @@ public class PostoActivity extends ActionBarActivity implements OnItemClickListe
 				throw new Exception(getResources().getString(R.string.exceptionNomeUtilizadoPosto));
 			}
 			
-			if(precoGasolina.getText().equals("") || precoEtanol.getText().equals("") || precoDiesel.getText().equals("")){
+			if(precoGasolina.getText().toString().trim().equals("")){
+				throw new Exception(getResources().getString(R.string.exceptionPostoCombustivelVazio));
+			}
+			
+			if(precoEtanol.getText().toString().trim().equals("")){
+				throw new Exception(getResources().getString(R.string.exceptionPostoCombustivelVazio));
+			}
+			
+			if(precoDiesel.getText().toString().trim().equals("")){
 				throw new Exception(getResources().getString(R.string.exceptionPostoCombustivelVazio));
 			}
 			
